@@ -30,6 +30,17 @@ public class helpdesklist {
 	Gson gson = GsonHelper.getBaseGsonBuilder().create();
 	
 	public List<HelpdeskQuery> heldeskquery;
+	public HelpdeskQuery singleQuery;
+	public String queryid;
+	
+	
+	public String getQueryid() {
+		return queryid;
+	}
+
+	public void setQueryid(String queryid) {
+		this.queryid = queryid;
+	}
 
 	public List<HelpdeskQuery> getHeldeskquery() {
 		return heldeskquery;
@@ -37,6 +48,14 @@ public class helpdesklist {
 
 	public void setHeldeskquery(List<HelpdeskQuery> heldeskquery) {
 		this.heldeskquery = heldeskquery;
+	}
+
+	public HelpdeskQuery getSingleQuery() {
+		return singleQuery;
+	}
+
+	public void setSingleQuery(HelpdeskQuery singleQuery) {
+		this.singleQuery = singleQuery;
 	}
 
 	public void init() {
@@ -59,6 +78,23 @@ public class helpdesklist {
 		
 		LoggerUtil.debug(query);
 		heldeskquery=query;
-		System.out.println("Calling init here");
+		LoggerUtil.debug("Calling init here");
 	}
+	
+	public void getQuery() {
+		HttpHeaders headers = new HttpHeaders();
+		headers.set("Accept", "application/json");
+
+		HttpEntity entity = new HttpEntity(headers);
+		HttpEntity<JsonObject> response = restTemplate.exchange(url + "/helpdesk/getbyid/"+queryid, HttpMethod.GET,
+				entity, JsonObject.class);
+		JsonObject jsonResponse = response.getBody();
+		
+		JsonObject object = jsonResponse.getAsJsonObject("body");
+		HelpdeskQuery obj = gson.fromJson(object, HelpdeskQuery.class); 
+		singleQuery=obj;
+		LoggerUtil.debug("Response received is "+object);
+		LoggerUtil.debug("Trying to fetch the query details with query id as "+queryid);
+	}
+
 }

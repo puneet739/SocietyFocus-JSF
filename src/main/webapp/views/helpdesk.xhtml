@@ -5,7 +5,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:f="http://java.sun.com/jsf/core"
-	template="/WEB-INF/layouts/application_layout.xhtml">
+	template="/WEB-INF/layouts/helpdesk_layout.xhtml">
 
 	<ui:define name="meta">
 		<f:metadata>
@@ -29,16 +29,15 @@
 			<div class="questiontabs">
 			<ui:repeat
 					var="question" value="#{helpdesklist.heldeskquery}">
-				<article class="question question-type-normal"
-					ng-repeat="question in questions"> 
+				<article class="question question-type-normal"> 
 					<h2>
-						<a href="#{applicationbean.applicationurl}/question/#{question.id}">#{question.title}</a>
+						<a href="#{applicationbean.applicationurl}/helpdeskview.xhtml?id=#{question.id}">#{question.title}</a>
 					</h2>
 					<div class="question-inner">
 						<div class="clearfix"></div>
 
 						<p class="question-desc">#{question.query}</p>
-						<a href="#{applicationbean.applicationurl}/question/#{question.id}">Show
+						<a href="#{applicationbean.applicationurl}/helpdeskview.xhtml?id=#{question.id}">Show
 							more...</a><br /> <br /> <span class="question-date"><i
 							class="icon-time"></i>#{question.createdDate} </span> 
 <!-- 							<ui:fragment rendered="#{question.commentCount ge 1}"> -->
@@ -49,7 +48,7 @@
 <!-- 							</span> -->
 <!-- 							</ui:fragment> -->
 						 <span class="question-comment"> <a
-							href="#{applicationbean.applicationurl}/question/#{question.id}"><i
+							href="#{applicationbean.applicationurl}/helpdeskview.xhtml?id=#{question.id}"><i
 								class="icon-comment"></i>#{question.commentCount} comment</a>
 						</span>
 						<div class="clearfix"></div>
