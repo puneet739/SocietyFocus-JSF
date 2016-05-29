@@ -371,6 +371,6 @@
 				<version>2.5.2</version>
 			</plugin>
 		</plugins>
-		<finalName>${artifactId}-${version}</finalName>
+		<finalName>${artifactId}</finalName>
 	</build>
 </project>
