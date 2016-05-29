@@ -7,8 +7,8 @@ import org.springframework.stereotype.Component;
 @Scope(value = "singleton")
 public class ApplicationBean {
 
-	//public final String applicationurl="http://societyfocus.com/helpdesk";
-	public final String applicationurl="http://localhost:8080/zircon-portal/views";
+	public final String applicationurl="http://societyfocus.com/helpdesk";
+//	public final String applicationurl="http://localhost:8080/zircon-portal/views";
 
 	public String getApplicationurl() {
 		return applicationurl;
