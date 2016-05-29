@@ -13,8 +13,12 @@
 			<f:viewParam name="id" value="#{helpdesklist.queryid}" />
 			<f:event type="preRenderView" listener="#{helpdesklist.getQuery()}" />
 			<ui:param name="query" value="#{helpdesklist.singleQuery}" />
-
 		</f:metadata>
+	</ui:define>
+	
+	<ui:define name="title">
+		<title>#{query.title}-#{query.username}-#{query.city} - Society Focus</title>
+		<meta property="og:description" itemprop="description" content="#{query.title}-#{query.username}-#{query.city} - Society Focus" />
 	</ui:define>
 
 	<ui:define name="body_content">
