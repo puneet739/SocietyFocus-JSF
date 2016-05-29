@@ -64,7 +64,7 @@ public class helpdesklist {
 
 		HttpEntity entity = new HttpEntity(headers);
 
-		HttpEntity<JsonObject> response = restTemplate.exchange(url + "/helpdesk/get?page=0&size=10", HttpMethod.GET,
+		HttpEntity<JsonObject> response = restTemplate.exchange(url + "/helpdesk/get?page=0&size=50", HttpMethod.GET,
 				entity, JsonObject.class);
 		JsonObject jsonResponse = response.getBody();
 		JsonArray objects  = jsonResponse.getAsJsonObject("body").getAsJsonArray("queries");
