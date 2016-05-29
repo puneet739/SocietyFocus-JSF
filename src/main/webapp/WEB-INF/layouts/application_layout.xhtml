@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets" lang="en" ng-app="helpdesk">
+	
+<head>
+    <base href="/helpdesk/" />
+    <meta name="fragment" content="!" />  
+    <!-- <title>Society Focus</title> -->
+    <ui:insert name="title">
+		<title>#{msg['dlm.description']}</title>
+	</ui:insert>
+    <script src="http://societyfocus.com/portal/external/angular/angular.js"></script>
+    <script src="http://societyfocus.com/portal/external/angular-animate/angular-animate.min.js"></script>
+    <script src="http://societyfocus.com/helpdesk/js/angular-route.js"></script>
+    <script src="http://societyfocus.com/portal/external/moment/moment.js"></script>
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css' />
+    <link href="http://societyfocus.com/portal/external/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="images/favicon.ico" />
+    <meta name="description" content="{{constant.description}}" />
+        <meta property="og:title" content="#{msg['dlm.description']}" />
+        <meta property="og:description" itemprop="description" content="#{msg['dlm.description']}" />
+        <meta property="og:image" itemprop="image" content="http://societyfocus.com/images/logo_black.png" />
+        <meta property="og:site_name" content="http://societyfocus.com" />
+        <meta property="article:publisher" content="https://www.facebook.com/societyfocus" />
+        <meta property="og:type" content="#{msg['dlm.description']}" />
+        <meta property="og:site_name" content="http://societyfocus.com" />
+        <meta property="og:url"    content="http://societyfocus.com/helpdesk" /> 
+        <meta name="google-play-app" content="app-id=com.zircon.app" />
+        <meta property="fb:app_id" content="1749929318576139" /> 
+    <link rel='stylesheet' type='text/css' href="http://societyfocus.com/helpdesk/css/style.css" />
+</head>
+
+<body>
+    <header class="container">
+        <div class="main-nav navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header col-sm-3">
+                    <a class="navbar-brand" href="http://societyfocus.com">
+                           SOCIETY FOCUS
+                        </a>
+                </div>
+                <div class="collapse navbar-collapse col-sm-9">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#{applicationbean.applicationurl}/">Home</a></li>
+                        <li><a href="http://societyfocus.com/#services">Service</a></li>
+                        <li><a href="http://societyfocus.com/#contact">About Us</a></li>
+                        <li><a href="http://blog.societyfocus.com">Blog</a></li>
+                        <li><a href="http://societyfocus.com/portal">Login</a></li>
+                    </ul>
+                </div>
+                <div class="navigation">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#{applicationbean.applicationurl}/askquestion">Ask A Question</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="container">
+        <div class="banner"></div>
+        <div class="title">
+            <h1>We Run Societies</h1>
+            <div class="banner_subheadtext">
+                <a href="http://societyfocus.com">Society Management Software</a><span class="banner_separator">|</span><a href="http://societyfocus.com/#services">Housing Society Services</a>
+            </div>
+        </div>
+    </section>
+    	<ui:insert name="body_content">
+		Here is the from the Layout
+	</ui:insert>
+<!--     <div ng-view></div> -->
+    <footer>
+        <div class="main-nav navbar-fixed row">
+            <div class="container">
+                <div class="collapse navbar-collapse col-sm-12">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#/">Home</a></li>
+                        <li><a href="http://societyfocus.com/#services">Service</a></li>
+                        <li><a href="http://societyfocus.com/#contact">About Us</a></li>
+                        <li><a href="http://blog.societyfocus.com">Blog</a></li>
+                        <li><a href="http://societyfocus.com/portal">Login</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+ <script type="text/javascript" src="js/helpdeskcontroller.js"></script>
+ <script type="text/javascript" src="js/angular-timeago.min.js"></script>
+</html>
