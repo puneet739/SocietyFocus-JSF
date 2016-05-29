@@ -26,7 +26,7 @@ import com.google.gson.JsonObject;
 public class helpdesklist {
 
 	RestTemplate restTemplate = new RestTemplate();
-	private final String url = "http://zircon.com/zservice";
+	private final String url = "http://societyfocus.com/service";
 	Gson gson = GsonHelper.getBaseGsonBuilder().create();
 	
 	public List<HelpdeskQuery> heldeskquery;
