@@ -7,16 +7,15 @@ import java.util.List;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import com.propertyplayer.zircon.model.CusineEnum;
-import com.propertyplayer.zircon.mongo.model.Image;
-import com.propertyplayer.zircon.mongo.model.Location;
+import com.fairdeal.action.model.CusineEnum;
+import com.fairdeal.action.model.Image;
+
 
 @Component(value = "store")
 @Scope(value = "session")
 public class StoreBean implements Serializable{
 
 	private String storeid;
-	private Location location;
 	private String name;
 	private String description;
 	private String address;
@@ -45,14 +44,6 @@ public class StoreBean implements Serializable{
 
 	public void setStoreid(String storeid) {
 		this.storeid = storeid;
-	}
-
-	public Location getLocation() {
-		return location;
-	}
-
-	public void setLocation(Location location) {
-		this.location = location;
 	}
 
 	public String getName() {
