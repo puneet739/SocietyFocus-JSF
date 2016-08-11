@@ -386,6 +386,6 @@
 				<version>2.5.2</version>
 			</plugin>
 		</plugins>
-		<finalName>${artifactId}</finalName>
+		<finalName>zircon-portal</finalName>
 	</build>
 </project>
