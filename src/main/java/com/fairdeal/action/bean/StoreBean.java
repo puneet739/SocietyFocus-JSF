@@ -7,9 +7,7 @@ import java.util.List;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import com.propertyplayer.zircon.model.CategoryEnum;
 import com.propertyplayer.zircon.model.CusineEnum;
-import com.propertyplayer.zircon.model.StatusEnum;
 import com.propertyplayer.zircon.mongo.model.Image;
 import com.propertyplayer.zircon.mongo.model.Location;
 
@@ -226,4 +224,12 @@ public class StoreBean implements Serializable{
 	}
 
 	
+}
+
+enum CategoryEnum {
+	SILVER,GOLD,PLATINUM,BRONZE;
+}
+
+enum StatusEnum {
+	DELISTED,ACTIVE,IN_PROCESS,NEW,SUSPENDED;
 }
