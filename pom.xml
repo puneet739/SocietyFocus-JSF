@@ -1,18 +1,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.propertyplayer</groupId>
-	<artifactId>zircon-portal</artifactId>
+	<groupId>com.societyfocus</groupId>
+	<artifactId>store-ui</artifactId>
 	<packaging>war</packaging>
-	<version>1.05-SNAPSHOT</version>
-	<name>fairdeal Maven Webapp</name>
+	<version>1.01-SNAPSHOT</version>
+	<name>fairdeal SocietyFocus</name>
 	<url>http://maven.apache.org</url>
-
-	<scm>
-		<connection>scm:svn:https://subversion.assembla.com/svn/propertyplayer/fairdeal/trunk</connection>
-		<developerConnection>scm:svn:https://subversion.assembla.com/svn/propertyplayer/fairdeal/trunk</developerConnection>
-		<url>scm:svn:https://subversion.assembla.com/svn/propertyplayer/fairdeal/trunk</url>
-	</scm>
 
 	<properties>
 		<spring.version>4.1.6.RELEASE</spring.version>
@@ -106,7 +100,6 @@
 			<artifactId>spring-orm</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
-
 		<dependency>
 			<groupId>org.ocpsoft.rewrite</groupId>
 			<artifactId>rewrite-servlet</artifactId>
@@ -336,7 +329,7 @@
 					<target>${java-version}</target>
 				</configuration>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
@@ -355,7 +348,7 @@
 					</includes>
 				</configuration>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-eclipse-plugin</artifactId>

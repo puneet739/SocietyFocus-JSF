@@ -1,11 +1,8 @@
 package com.fairdeal.bean.list;
 
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
-import org.json.JSONObject;
 import org.springframework.context.annotation.Scope;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -14,6 +11,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import com.fairdeal.action.bean.HelpdeskQuery;
+import com.fairdeal.utility.Constants;
 import com.fairdeal.utility.GsonHelper;
 import com.fairdeal.utility.LoggerUtil;
 import com.google.gson.Gson;
@@ -26,7 +24,6 @@ import com.google.gson.JsonObject;
 public class helpdesklist {
 
 	RestTemplate restTemplate = new RestTemplate();
-	private final String url = "http://societyfocus.com/service";
 	Gson gson = GsonHelper.getBaseGsonBuilder().create();
 	
 	public List<HelpdeskQuery> heldeskquery;
@@ -64,7 +61,7 @@ public class helpdesklist {
 
 		HttpEntity entity = new HttpEntity(headers);
 
-		HttpEntity<JsonObject> response = restTemplate.exchange(url + "/helpdesk/get?page=0&size=50", HttpMethod.GET,
+		HttpEntity<JsonObject> response = restTemplate.exchange(Constants.SERVICE_URL + "/helpdesk/get?page=0&size=50", HttpMethod.GET,
 				entity, JsonObject.class);
 		JsonObject jsonResponse = response.getBody();
 		JsonArray objects  = jsonResponse.getAsJsonObject("body").getAsJsonArray("queries");
@@ -86,7 +83,7 @@ public class helpdesklist {
 		headers.set("Accept", "application/json");
 
 		HttpEntity entity = new HttpEntity(headers);
-		HttpEntity<JsonObject> response = restTemplate.exchange(url + "/helpdesk/getbyid/"+queryid, HttpMethod.GET,
+		HttpEntity<JsonObject> response = restTemplate.exchange(Constants.SERVICE_URL + "/helpdesk/getbyid/"+queryid, HttpMethod.GET,
 				entity, JsonObject.class);
 		JsonObject jsonResponse = response.getBody();
 		
