@@ -5,6 +5,10 @@ public class Image {
 	private String imagedescription;
 	private String imageUrl;
 
+	public Image(String imageUrl){
+		this.imageUrl=imageUrl;
+	}
+	
 	public String getImagetitle() {
 		return imagetitle;
 	}

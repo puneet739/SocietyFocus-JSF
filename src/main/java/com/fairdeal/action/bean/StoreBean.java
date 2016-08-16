@@ -11,14 +11,15 @@ import com.fairdeal.action.model.CusineEnum;
 import com.fairdeal.action.model.Image;
 
 
-@Component(value = "store")
-@Scope(value = "session")
+@Component(value = "storebean")
+@Scope(value = "request")
 public class StoreBean implements Serializable{
 
 	private String storeid;
 	private String name;
 	private String description;
 	private String address;
+	private String area;
 	private List<CusineEnum> cusines;
 	private String promotion;
 	private double costForTwo;

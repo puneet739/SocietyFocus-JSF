@@ -1,5 +1,6 @@
 package com.fairdeal.bean.list;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -7,7 +8,10 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.fairdeal.action.bean.StoreBean;
+import com.fairdeal.action.model.CusineEnum;
+import com.fairdeal.action.model.Image;
 import com.fairdeal.bean.bean.Banner;
+import com.fairdeal.utility.LoggerUtil;
 
 @Component(value = "storelist")
 @Scope(value = "session")
@@ -21,9 +25,25 @@ public class StoreList {
 		stores = new LinkedList<>();
 		for (int i = 0; i < 10; i++) {
 			StoreBean store = new StoreBean();
-			store.setAddress("Address 124");
+			store.setName("Gulati");
+			store.setBackgroundImage(new Image("http://image6.buzzintown.com/files/venue/upload_22000/upload_original/523257-gulati-restaurant.jpg"));
+			store.setAddress("House no 124, Sec 37, Faridabad");
+			List<CusineEnum> cusines = new LinkedList<>();
+			cusines.add(CusineEnum.CONTINENTAL);
+			cusines.add(CusineEnum.MUGHLAI);
+			store.setDetail2("Open from 12:00 am to 12:00 pm");
+			store.setDetail3("Featured in best restaurants in delhi");
+			store.setCusines(cusines);
+			store.setCostForTwo(200);
+			store.setRating(2.4f);
+			store.setPromotion("Discount of 20% on food bill");
+			List<String> phoneNos = new ArrayList<>();
+			phoneNos.add("9711616135");
+			store.setPhoneNo(phoneNos);
 			stores.add(store);
 		}
+		
+		LoggerUtil.debug("Doing initalization of restaurants");
 	}
 
 	public List<StoreBean> getStores() {

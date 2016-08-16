@@ -13,20 +13,25 @@
 		</f:metadata>
 	</ui:define>
 
+	<ui:define name="banner">
+		<ui:include src="/views/stores/banner.xhtml"/>
+	</ui:define>
+	
 	<ui:define name="main_content">
 		<ul class="product-list-vertical">
-		
-		<c:forEach begin="1" end="10" >
+<!-- 		<c:forEach items="#{storelist.stores}" var="store" >  -->
+<!-- 		<ui:repeat value="#{storelist.stores}" var="store"> -->
+			<ui:repeat var="store" value="#{storelist.stores}">
 			<div>
 				<li class="list1"><a href="#" class="product-photo"> <img
-						src="img/1234.jpg" alt="hotel thumbnail"
+						src="#{store.backgroundImage.imageUrl}" alt="hotel thumbnail"
 						style="height: 100px; width: 150px; border-radius: 7px;" /></a>
 
 					<div class="product-details">
 
 						<div class="star">
 							<p>
-								<strong class="stron">4.5</strong>
+								<strong class="stron">#{store.rating}</strong>
 							</p>
 							<p style="margin-top: 10px;">
 								3,455 <br />views
@@ -37,13 +42,13 @@
 
 						<p class="product-compare1">Dinning</p>
 						<h2>
-							<a href="#">GulMohar</a>
+							<a href="#">#{store.name}</a>
 						</h2>
 						<p class="product-compare1"
 							style="margin-bottom: 8px; margin-top: 8px;">
-							<strong class="add">Pandar road Market</strong>
+							<strong class="add">#{store.address}</strong>
 						</p>
-						<p class="product-compare1">6, Pandar road market, New Delhi</p>
+						<p class="product-compare1">#{store.address}</p>
 
 
 					</div>
@@ -54,23 +59,25 @@
 							<!-- Details and services of hotel -->
 							<tr>
 								<td class="tabledata">CUISINS:</td>
-								<td class="black">North Indian, Muglai</td>
+								<td class="black">
+									<ui:repeat var="cusine" value="#{store.cusines}">#{cusine} , </ui:repeat>
+								</td>
 							</tr>
 							<tr>
 								<td class="tabledata">COST FOR TWO:</td>
-								<td class="black">Rs. 1500</td>
+								<td class="black">Rs. #{store.costForTwo}</td>
 							</tr>
 							<tr>
 								<td class="tabledata">HOURS:</td>
-								<td class="black">12 Noon to 12 Midnight</td>
+								<td class="black">#{store.detail2}</td>
 							</tr>
 							<tr>
 								<td class="tabledata">FEATURED IN:</td>
-								<td class="black">Legendary Outlet,Butter Chiken,Biriyani</td>
+								<td class="black">#{store.detail3}</td>
 							</tr>
 							<tr>
 								<td class="tabledata">DISCOUNT</td>
-								<td class="black">Get 15% off on all home delivery.</td>
+								<td class="black"> #{store.promotion}</td>
 							</tr>
 						</table>
 						<!-- Details END-->
@@ -80,7 +87,7 @@
 							<!-- THREE BUTTON -->
 							<div class="btn-group" role="group">
 								<button type="button" class="btn btn-default call btn2">
-									<span class="glyphicon glyphicon-earphone btn3"></span>CALL
+									<span class="glyphicon glyphicon-earphone btn3"></span><a href="tel:#{store.phoneNo[0]}">CALL</a>
 								</button>
 							</div>
 							<div class="btn-group" role="group">
@@ -98,7 +105,9 @@
 					</div>
 					</hr></li>
 			</div>
-		</c:forEach>
+			</ui:repeat>
+<!-- 			</c:forEach> -->
+<!-- 			</ui:repeat> -->
 		</ul>
 		
 		<!-- Pagination Bar -->
