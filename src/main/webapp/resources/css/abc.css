@@ -818,3 +818,13 @@ footer{
 .connect img{
     margin-right: 10px;
 }
+
+a{
+     Color:#fff;
+}
+
+.btn2{
+	padding: 5.5px 6px;
+	font-size: 12px;
+	font-weight: 600;
+}

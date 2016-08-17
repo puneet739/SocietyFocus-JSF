@@ -14,6 +14,7 @@ import com.fairdeal.action.bean.HelpdeskQuery;
 import com.fairdeal.utility.Constants;
 import com.fairdeal.utility.GsonHelper;
 import com.fairdeal.utility.LoggerUtil;
+import com.fairdeal.utility.Util;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -56,15 +57,9 @@ public class helpdesklist {
 	}
 
 	public void init() {
-		HttpHeaders headers = new HttpHeaders();
-		headers.set("Accept", "application/json");
-
-		HttpEntity entity = new HttpEntity(headers);
-
-		HttpEntity<JsonObject> response = restTemplate.exchange(Constants.SERVICE_URL + "/helpdesk/get?page=0&size=50", HttpMethod.GET,
-				entity, JsonObject.class);
-		JsonObject jsonResponse = response.getBody();
-		JsonArray objects  = jsonResponse.getAsJsonObject("body").getAsJsonArray("queries");
+		
+		JsonObject jsonResponse = Util.httpGetRequest(Constants.SERVICE_URL + "/helpdesk/get?page=0&size=50");
+		JsonArray objects  = jsonResponse.getAsJsonArray("queries");
 		
 		List<HelpdeskQuery> query = new LinkedList<>();
 		for(int i = 0; i < objects.size(); i++){
