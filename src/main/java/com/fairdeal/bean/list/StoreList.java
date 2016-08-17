@@ -23,6 +23,7 @@ public class StoreList {
 	public void init() {
 		// TODO :: add method to get data.
 		stores = new LinkedList<>();
+		banners= new LinkedList<>();
 		for (int i = 0; i < 10; i++) {
 			StoreBean store = new StoreBean();
 			store.setName("Gulati");
@@ -41,6 +42,15 @@ public class StoreList {
 			phoneNos.add("9711616135");
 			store.setPhoneNo(phoneNos);
 			stores.add(store);
+		}
+		
+		for (int i=0; i<3; i++){
+			Banner banner = new Banner();
+			banner.setImage_url("http://localhost:8080/store-ui/resources/images/1010.jpg");
+			banner.setTitle("Ttile:"+i);
+			banner.setDescription("this is a test description with banner: "+i);
+			banners.add(banner);
+			//dm.delhi-do@licindia.com
 		}
 		
 		LoggerUtil.debug("Doing initalization of restaurants");

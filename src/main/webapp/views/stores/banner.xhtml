@@ -8,41 +8,21 @@
 		<div class="container offer">
 			<div id="myCarousel" class="carousel slide">
 				<ol class="carousel-indicators">
-					<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-					<li data-target="#myCarousel" data-slide-to="1"></li>
-					<li data-target="#myCarousel" data-slide-to="2"></li>
+					<ui:repeat var="banner" value="#{banners}" varStatus="status">
+						<li data-target="#myCarousel" data-slide-to="#{status.index}" class="#{status.index==0 ? 'active' : ''}"></li>
+					</ui:repeat>
 				</ol>
 				<div class="carousel-inner">
-					<div class="item active">
-						<a href="#"> <img src="#{request.contextPath}/resources/images/1010.jpg" alt="" />
-							<div class="carousel-caption">
-								<h1>First Thumbnail label</h1>
-								<p>Cras justo odio, dapibus ac facilisis in, egestas eget
-									quam. Donec id elit non mi porta gravida at eget metus. Nullam
-									id dolor id nibh ultricies vehicula ut id elit.</p>
-							</div>
-						</a>
-					</div>
-					<div class="item">
-						<a href="#"> <img src="#{request.contextPath}/resources/images/1010.jpg" alt="" />
-							<div class="carousel-caption">
-								<h1>Second Thumbnail label</h1>
-								<p>Cras justo odio, dapibus ac facilisis in, egestas eget
-									quam. Donec id elit non mi porta gravida at eget metus. Nullam
-									id dolor id nibh ultricies vehicula ut id elit.</p>
-							</div>
-						</a>
-					</div>
-					<div class="item">
-						<a href="#"> <img src="#{request.contextPath}/resources/images/1010.jpg" alt="" />
-							<div class="carousel-caption">
-								<h1>Third Thumbnail label</h1>
-								<p>Cras justo odio, dapibus ac facilisis in, egestas eget
-									quam. Donec id elit non mi porta gravida at eget metus. Nullam
-									id dolor id nibh ultricies vehicula ut id elit.</p>
-							</div>
-						</a>
-					</div>
+					<ui:repeat var="banner" value="#{banners}" varStatus="status">
+						<div class="#{status.index==0 ? 'item active' : 'item'}">
+							<a href="#{banner.landingurl}"> <img src="#{banner.image_url}" alt="#{banner.title}" />
+								<div class="carousel-caption">
+									<h1>#{banner.title}</h1>
+									<p>#{banner.description}</p>
+								</div>
+							</a>
+						</div>
+					</ui:repeat>
 				</div>
 				<a class="left carousel-control" href="#myCarousel" role="button"
 					data-slide="prev"> <span
