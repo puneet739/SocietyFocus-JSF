@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
 import com.fairdeal.action.model.CusineEnum;
 import com.fairdeal.action.model.Image;
 
-
 @Component(value = "storebean")
 @Scope(value = "request")
 public class StoreBean implements Serializable{
@@ -20,6 +19,7 @@ public class StoreBean implements Serializable{
 	private String description;
 	private String address;
 	private String area;
+	private String viewCount;
 	private List<CusineEnum> cusines;
 	private String promotion;
 	private double costForTwo;

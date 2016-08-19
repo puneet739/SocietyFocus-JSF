@@ -52,8 +52,8 @@ public class Config {
 	@PostConstruct
 	public void init() throws ConfigurationException {
 		printSytemProperties();
-		String home = System.getProperty("catalina.home");
-		File file = new File(home + "/conf/zircon.properties");
+		String home = System.getenv("SOCIETY_CONFIG");
+		File file = new File(home + "/portalconfig.properties");
 		LoggerUtil.debug("This file should exist here. and it should include the desired property file"
 				+ file.getAbsolutePath());
 		LoggerUtil.debug("Parnet config file exists:" + file.exists());
