@@ -1,0 +1,70 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/WEB-INF/layouts/helpdesk_layout.xhtml">
+
+	<ui:define name="meta">
+		<f:metadata>
+			<f:event type="preRenderView" listener="#{helpdesklist.init}" />
+		</f:metadata>
+	</ui:define>
+	<ui:define name="title">
+		<title>#{msg['dlm.title']}</title>
+	</ui:define>
+	
+	<ui:define name="body_content">
+		<div class="container" style="margin-top: 10px"
+			ng-controller="helpdeskController">
+			<div class="tabcontainer">
+				<ul class="tabs">
+					<li class="tab"
+						style="padding: 10px; background-color: #3498db; color: #fff;">Recent
+						Questions</li>
+				</ul>
+			</div>
+			<div class="questiontabs">
+			<ui:repeat
+					var="question" value="#{helpdesklist.heldeskquery}">
+				<article class="question question-type-normal"> 
+					<h2>
+						<a href="#{applicationbean.applicationurl}/helpdeskview.xhtml?id=#{question.id}">#{question.title}</a>
+					</h2>
+					<div class="question-inner">
+						<div class="clearfix"></div>
+
+						<p class="question-desc">#{question.query}</p>
+						<a href="#{applicationbean.applicationurl}/helpdeskview.xhtml?id=#{question.id}">Show
+							more...</a><br /> <br /> <span class="question-date"><i
+							class="icon-time"></i>#{question.createdDate} </span> 
+<!-- 							<ui:fragment rendered="#{question.commentCount ge 1}"> -->
+<!-- 								<span -->
+<!-- 									class="question-comment"> <a -->
+<!-- 									href="#{applicationbean.applicationurl}/question/#{question.id}"> -->
+<!-- 										<i class="icon-comment"></i>No comment</a> -->
+<!-- 							</span> -->
+<!-- 							</ui:fragment> -->
+						 <span class="question-comment"> <a
+							href="#{applicationbean.applicationurl}/helpdeskview.xhtml?id=#{question.id}"><i
+								class="icon-comment"></i>#{question.commentCount} comment</a>
+						</span>
+						<div class="clearfix"></div>
+					</div>
+				</article></ui:repeat> 
+				<div class="container pageDiv">
+					<ul class="pagination margin-bottom-10">
+						<li><a href="javascript:void(0);"> Previous</a></li>
+						<li ng-repeat="n in [].constructor(totalCount) track by $index">
+							<a href="javascript:void(0);">{{ $index + 1}}</a>
+						</li>
+						<li><a href="javascript:void(0);">Next </a></li>
+					</ul>
+				</div>
+
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>

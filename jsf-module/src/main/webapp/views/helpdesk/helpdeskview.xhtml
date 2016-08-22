@@ -1,0 +1,96 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/WEB-INF/layouts/helpdesk_layout.xhtml">
+
+
+	<ui:define name="meta">
+		<f:metadata>
+			<f:viewParam name="id" value="#{helpdesklist.queryid}" />
+			<f:event type="preRenderView" listener="#{helpdesklist.getQuery()}" />
+			<ui:param name="query" value="#{helpdesklist.singleQuery}" />
+		</f:metadata>
+	</ui:define>
+	
+	<ui:define name="title">
+		<title>#{query.title}-#{query.username}-#{query.city} - Society Focus</title>
+		<meta property="og:description" itemprop="description" content="#{query.title}-#{query.username}-#{query.city} - Society Focus" />
+	</ui:define>
+
+	<ui:define name="body_content">
+		<div class="container" ng-controller="questionController">
+			<div class="container questionContainer" style="margin: 26px auto;">
+				<article class="question single-question ">
+				<h4 class="pull-left">
+					<a href="javascript:void(0);">#{query.title}</a>
+				</h4>
+				<h4 class="pull-right">#{query.city}</h4>
+				<div class="full-question"><br/>
+					<p class="ng-binding">#{query.query}</p>
+				</div>
+				</article>
+			</div>
+			<div class="container">
+				<h2>Comments</h2>
+
+				<ui:repeat var="comment" value="#{query.comments}">
+					<div class="commentContainer">
+						<div class="commentBody">
+							<h4>#{comment.username}</h4>
+							<div class="comment">
+								<p>#{comment.comment}</p>
+							</div>
+						</div>
+					</div>
+				</ui:repeat>
+
+			</div>
+			<div class="container formContainer" id="add_comment">
+				<h3>Add Comment</h3>
+<!-- 				<form class="form-horizontal"> -->
+					<div class="form-group">
+						<label for="inputUser" class="col-sm-2 control-label">User
+							Name :</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="inputUser"
+								placeholder="User Name" ng-model="comment.username" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="inputEmail" class="col-sm-2 control-label">Email
+							:</label>
+						<div class="col-sm-10">
+							<input type="email" class="form-control" id="inputEmail"
+								placeholder="Email Address" ng-model="comment.userEmail" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="inputComment" class="col-sm-2 control-label">Comment
+							:</label>
+						<div class="col-sm-10">
+							<textarea class="form-control" rows="3"
+								ng-model="comment.comment"></textarea>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-10">
+							<button type="submit" class="btn btn-default"
+								ng-click="addComment()">Add Comment</button>
+						</div>
+					</div>
+					<div class="form-group" ng-if="commentSuccess === true">
+						<div class="col-sm-offset-2 col-sm-10">
+							<span style="color: green">Comment Added Successfully</span>
+						</div>
+					</div>
+<!-- 				</form> -->
+			</div>
+		</div>
+
+	</ui:define>
+
+</ui:composition>
