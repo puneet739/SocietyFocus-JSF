@@ -125,19 +125,6 @@
 			<version>${org.slf4j-version}</version>
 		</dependency>
 
-		<dependency>
-			<groupId>com.property.player</groupId>
-			<artifactId>zircon</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-			<classifier>classes</classifier>
-			<exclusions>
-				<exclusion>
-					<groupId>*</groupId>
-            		<artifactId>*</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		
 		<!-- Common Configurations -->
 		<dependency>
 			<groupId>commons-configuration</groupId>
