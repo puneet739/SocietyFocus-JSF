@@ -1,0 +1,300 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="layout/storelayout.xhtml">
+
+
+	<ui:define name="main_body">
+		<div class="container" style="padding: 0;">
+			<h3>Add a new restaurant</h3>
+		</div>
+
+		<div class="container addrestaurent" style="margin-bottom: 30px;">
+			<div class="row">
+				<div class="col-md-9"
+					style="background-color: white; padding-top: 30px; padding-bottom: 10px;">
+					<form>
+						<div class="form-group">
+							<label for="restaurantName">RESTAURANT NAME*</label> <input
+								type="text" class="form-control" id="restaurantName" />
+						</div>
+						<div class="form-group">
+							<label for="restaurantAddress">STREET ADDRESS*</label> <input
+								type="text" class="form-control" id="restaurantAddress" />
+						</div>
+
+						<div class="row">
+							<div class="col-lg-6 col-sm-6 col-xs-12">
+								<div class="form-group">
+									<label for="location">LOCATION</label> <input type="text"
+										class="form-control" id="location" placeholder="Your Location" />
+								</div>
+								<!-- /input-group -->
+							</div>
+							<!-- /.col-lg-6 -->
+							<div class="col-lg-6 col-sm-6 col-xs-12">
+								<div class="form-group">
+									<label for="pincode">PINCODE</label> <input type="number"
+										class="form-control" id="pincode" placeholder="" />
+								</div>
+								<!-- /input-group -->
+							</div>
+							<!-- /.col-lg-6 -->
+						</div>
+						<!-- /.row -->
+
+						<div class="row">
+							<div class="col-md-12">
+								<div id="googleMap"
+									style="height: 250px; margin-bottom: 20px; margin-top: 10px; max-width: 100%;"></div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="landmark">LANDMARK (THIS WILL HELP US LOCATE
+								THIS OUTLET A LOT QUICKER)</label> <input type="text"
+								class="form-control" id="landmark" />
+						</div>
+
+						<div class="form-group">
+							<label for="restaurantNo">RESTAURANT PHONE NUMBER</label> <input
+								type="tel" class="form-control" id="restaurantNo" />
+						</div>
+
+						<div class="form-group">
+							<label for="restaurantEmail">RESTAURANT EMAIL</label> <input
+								type="email" class="form-control" id="restaurantEmail" />
+						</div>
+
+						<div class="row">
+							<div class="col-md-1 col-xs-2">
+								<input id="toggle-demo" type="checkbox" data-toggle="toggle"
+									data-on="YES" data-off="NO" />
+							</div>
+
+							<div class="col-md-11 col-xs-10">
+								<p class="owner">Are you the owner?</p>
+							</div>
+						</div>
+
+						<div class="dropdown" style="margin-top: 20px;">
+							<label for="exampleInputPassword1">OPENING STATUS</label>
+							<button class="btn btn-Default btn-block dropdown-toggle"
+								style="background: white; border: 1px solid #ccc;" type="button"
+								id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+								aria-expanded="true">
+								Opening status <span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu" style="width: 100%;"
+								aria-labelledby="dropdownMenu1">
+								<li><a href="#">OPEN</a></li>
+								<li><a href="#">OPENING SOON</a></li>
+								<li><a href="#">CLOSED</a></li>
+							</ul>
+						</div>
+						
+						<div class="form-group" style="margin-top: 20px;">
+							<label for="perEmail">YOUR EMAIL ADDRESS (WE WON'T SPAM
+								YOU, WE PROMISE)</label> <input type="email" class="form-control"
+								id="perEmail" placeholder="Email" />
+						</div>
+
+						<div class="form-group" style="margin-top: 20px;">
+							<label for="restaurantURL">RESTAURANT WEBSITE</label> <input
+								type="url" class="form-control" id="restaurantURL" />
+						</div>
+
+						<label for="exampleInputPassword1"
+							style="margin-top: 10px; margin-bottom: 25px;">FEATURES</label>
+						<div class="row">
+
+							<div class="col-md-6 col-sm-6 col-xs-6">
+								<p>
+									<label> <input type="checkbox" class="my" /> Cash
+									</label>
+								</p>
+
+								<p>
+									<label> <input type="checkbox" /> Breakfast </label>
+								</p>
+
+								<p>
+									<label> <input type="checkbox" /> Dinner </label>
+								</p>
+
+								<p>
+									<label> <input type="checkbox" /> Delivery </label>
+								</p>
+
+								<p>
+									<label> <input type="checkbox" /> Cafe </label>
+								</p>
+
+								<p>
+									<label> <input type="checkbox" /> Nightlife </label>
+								</p>
+
+
+							</div>
+
+							<div class="col-md-6 col-sm-6 col-xs-6">
+								<p class="flabel">
+									<label> <input type="checkbox" /> Lunch </label>
+								</p>
+
+								<p>
+									<label> <input type="checkbox" /> Indoor </label>
+								</p>
+
+								<p>
+									<label> <input type="checkbox" />Take-Away </label>
+								</p>
+
+								<p>
+									<label> <input type="checkbox" /> Luxury Dining </label>
+								</p>
+
+								<p>
+									<label> <input type="checkbox" /> Credit Cards
+											Accepted </label>
+								</p>
+
+								<p>
+									<label> <input type="checkbox" /> Meal Coupons
+											Accepted </label>
+								</p>
+							</div>
+
+						</div>
+
+						<div class="form-group" style="margin-top: 20px;">
+							<label for="exampleInputPassword1">TAGS</label> <input id="tags"
+								name="tags" type="text" value="" />
+						</div>
+
+						<div class="form-group" style="margin-top: 20px;">
+							<label for="exampleInputPassword1">CUISINES</label> <input
+								id="tags1" name="tags" type="text" value="" />
+						</div>
+
+
+						<label for="exampleInputPassword1">TIMINGS</label>
+						<div class="row">
+							<div class="col-md-6 timing">
+								<div class="timebutton" style="z-index: 0; overflow: hidden;">
+									<button class="btn btnspace">MON</button>
+									<button class="btn btnspace">TUE</button>
+									<button class="btn btnspace">WED</button>
+									<button class="btn btnspace">THUR</button>
+									<button class="btn btnspace">FRI</button>
+									<button class="btn btnspace">SAT</button>
+									<button class="btn btnspace">SUN</button>
+								</div>
+							</div>
+
+							<div class="col-md-1">
+								<input id="toggle-demo" type="checkbox" data-toggle="toggle"
+									data-on=" " data-off=" " />
+							</div>
+
+							<div class="col-md-5">
+								<p style="margin: 8px 0 0 0; font-size: 13px;">
+									<strong>SELECT ALL</strong>
+								</p>
+							</div>
+						</div>
+
+						<div class="row">
+							<!-- TIMING  -->
+							<div class="col-md-6  ">
+								<label style="font-size: 16px; margin-right: 7px;">FROM</label>
+								<select name="" id="" class="edit">
+									<option value="">1</option>
+									<option value="">2</option>
+									<option value="">3</option>
+									<option value="">4</option>
+									<option value="">5</option>
+								</select> <label
+									style="font-size: 16px; margin-right: 7px; margin-left: 15px;">TO</label>
+								<select name="" id="" class="edit">
+									<option value="">1</option>
+									<option value="">2</option>
+									<option value="">3</option>
+									<option value="">4</option>
+									<option value="">5</option>
+									<option value="">6</option>
+								</select>
+							</div>
+
+							<div class="col-md-1">
+								<input id="toggle-demo" type="checkbox" data-toggle="toggle"
+									data-on=" " data-off=" " />
+							</div>
+
+							<div class="col-md-5">
+								<p style="margin: 8px 0 0 0; font-size: 13px;">
+									<strong>24 HOURS</strong>
+								</p>
+							</div>
+						</div>
+						<!-- TIMING END -->
+
+						<div class="form-group" style="margin-top: 20px;">
+							<label for="fbpage" style="margin-bottom: 10px;">FACEBOOK
+								PAGE</label> <input type="text" class="form-control" id="fbpage"
+								placeholder="" />
+						</div>
+
+						<div class="form-group">
+							<label for="twitterpage" style="margin-bottom: 10px;">TWITTER
+								HANDLE</label> <input type="text" class="form-control" id="twitterpage"
+								placeholder="" />
+						</div>
+						<label for="details" style="margin-bottom: 10px;">OTHER
+							DETAILS</label>
+						<textarea class="form-control" rows="3" id="details"
+							placeholder="Details"></textarea>
+
+						<button type="button" class="btn btn-success btn-lg btn-block"
+							style="margin-top: 15px;">ADD RESTAURENT</button>
+
+
+					</form>
+				</div>
+
+				<div class="col-md-3">
+					<div class="panel panel-default">
+						<div class="panel-heading">HOW THIS WORKS</div>
+						<div class="panel-body">
+							<ul>
+								<p>
+									<li>If you are the owner of a restaurant, or if you are a
+										user who's discovered a place not listed on Zomato, let us
+										know using this form.</li>
+								</p>
+
+								<p>
+									<li>If you are the owner of a restaurant, or if you are a
+										user who's discovered a place not listed on Zomato, let us
+										know using this form.</li>
+								</p>
+
+								<p>
+									<li>If you are the owner of a restaurant, or if you are a
+										user who's discovered a place not listed on Zomato, let us
+										know using this form.</li>
+								</p>
+
+
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>
