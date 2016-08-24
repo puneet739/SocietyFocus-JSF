@@ -4,6 +4,7 @@ package com.property.player.model.mongo;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.property.player.model.generic.CategoryEnum;
@@ -13,6 +14,7 @@ import com.property.player.model.generic.StatusEnum;
 
 @Document
 public class Store {
+	@Id
 	private String storeid;
 	private Location location;
 	private String name;
@@ -222,5 +224,18 @@ public class Store {
 	public void setCategory(CategoryEnum category) {
 		this.category = category;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Store [storeid=" + storeid + ", location=" + location + ", name=" + name + ", description="
+				+ description + ", address=" + address + ", cusines=" + cusines + ", promotion=" + promotion
+				+ ", costForTwo=" + costForTwo + ", videoUrl=" + videoUrl + ", menu_image=" + menu_image
+				+ ", storeImages=" + storeImages + ", user_images=" + user_images + ", backgroundImage="
+				+ backgroundImage + ", detail1=" + detail1 + ", detail2=" + detail2 + ", detail3=" + detail3
+				+ ", rating=" + rating + ", views=" + views + ", phoneNo=" + phoneNo + ", scoring=" + scoring
+				+ ", createdDate=" + createdDate + ", modifiedDate=" + modifiedDate + ", status=" + status
+				+ ", category=" + category + "]";
+	}
+
 }
+

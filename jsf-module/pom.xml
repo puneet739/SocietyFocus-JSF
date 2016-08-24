@@ -17,7 +17,7 @@
 		<org.slf4j-version>1.7.5</org.slf4j-version>
 		<java-version>1.7</java-version>
 		<hibernate.verion>4.3.9.Final</hibernate.verion>
-		<prettyfaces.version>2.0.12.Final</prettyfaces.version>
+		<prettyfaces.version>3.4.1.Final</prettyfaces.version>
 		<!-- Common Configuration version -->
 		<common.configuration.version>1.10</common.configuration.version>
 		<google.gson.version>2.3.1</google.gson.version>
