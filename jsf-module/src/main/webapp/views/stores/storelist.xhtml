@@ -20,7 +20,8 @@
 	</ui:define>
 	
 	<ui:define name="main_body">
-	
+		<script src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"/>
+			
 		<div class="container-fluid filter_button" style="padding: 0;">
 		<button type="button" class="btn btn-primary btn-lg btn-block">Filter</button>
 	</div>
@@ -265,10 +266,12 @@
 				</div>
 			<!-- Section Ends-->
 			<div class="col-md-3 col-xs-12">
-				<div
-					style="height: 400px; background-color: white; text-align: center">
-					<h3 style="margin-top: 0; padding-top: 25px;">Advertising</h3>
-				</div>
+				<div class="text-center row"><ins class="adsbygoogle"
+				     style="display:block"
+				     data-ad-client="ca-pub-7208785423388103"
+				     data-ad-slot="3743651329"
+				     data-ad-format="auto"></ins>
+			   </div>
 			</div>
 
 
@@ -310,6 +313,10 @@
 			    		loadData(page);
 					}
 			});
+			
+			[].forEach.call(document.querySelectorAll('.adsbygoogle'), function(){
+		        (adsbygoogle = window.adsbygoogle || []).push({});
+		        });
 		</script>
 		
 		
