@@ -9,7 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.property.player.model.generic.CategoryEnum;
 import com.property.player.model.generic.CusineEnum;
-import com.property.player.model.generic.StatusEnum;
+import com.property.player.model.generic.StoreStatusEnum;
 
 
 @Document
@@ -37,7 +37,7 @@ public class Store {
 	private double scoring;
 	private Date createdDate;
 	private Date modifiedDate;
-	private StatusEnum status;
+	private StoreStatusEnum status;
 	private CategoryEnum category;
 	
 	
@@ -209,11 +209,11 @@ public class Store {
 		this.modifiedDate = modifiedDate;
 	}
 
-	public StatusEnum getStatus() {
+	public StoreStatusEnum getStatus() {
 		return status;
 	}
 
-	public void setStatus(StatusEnum status) {
+	public void setStatus(StoreStatusEnum status) {
 		this.status = status;
 	}
 

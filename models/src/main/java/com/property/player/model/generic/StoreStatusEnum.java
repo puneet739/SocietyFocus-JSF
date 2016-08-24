@@ -1,5 +1,5 @@
 package com.property.player.model.generic;
 
-public enum StatusEnum {
+public enum StoreStatusEnum {
 	DELISTED,ACTIVE,IN_PROCESS,NEW,SUSPENDED;
 }
