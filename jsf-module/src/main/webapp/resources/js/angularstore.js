@@ -23,6 +23,8 @@ app.controller("addQuestionController", function($scope,$http,$rootScope) {
 
 	$scope.addRestaurant = function(){
     	console.log("Scope restaurant here."+$scope.restaurant);
+    	console.log("Latitute here is."+marker.getPosition().lat());
+    	console.log("Longitute here is."+marker.getPosition().lng());
     }
     
  });

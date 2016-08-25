@@ -20,6 +20,9 @@ public class Store {
 	private String name;
 	private String description;
 	private String address;
+	private String nearLandmark;
+	private String pincode;
+	private String email;
 	private List<CusineEnum> cusines;
 	private String promotion;
 	private double costForTwo;
@@ -35,6 +38,7 @@ public class Store {
 	private double views;
 	private List<String> phoneNo;
 	private double scoring;
+	private String website;
 	private Date createdDate;
 	private Date modifiedDate;
 	private StoreStatusEnum status;

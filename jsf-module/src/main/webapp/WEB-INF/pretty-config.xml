@@ -8,4 +8,9 @@
 		<view-id value="/views/stores/storelist.xhtml" />
 	</url-mapping>
 
+	<url-mapping id="add">
+		<pattern value="/addRestaurant" />
+		<view-id value="/views/stores/addrestaurant.xhtml" />
+	</url-mapping>
+	
 </pretty-config>
