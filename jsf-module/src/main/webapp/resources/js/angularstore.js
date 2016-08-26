@@ -1,4 +1,35 @@
 var app = angular.module("stores", ["checklist-model"]);
+$body = $("body");
+
+app.value('loadingService', {
+	  loadingCount: 0,
+	  isLoading: function() { $body.addClass("loading");  },
+	  requested: function() { $body.addClass("loading"); },
+	  responded: function() { $body.removeClass("loading"); }
+	})
+
+
+app.factory('loadingInterceptor', function(loadingService) {
+	  return {
+	    request: function(config) {
+	      loadingService.requested();
+	      return config;
+	    },
+	    response: function(response) {
+	      loadingService.responded();
+	      return response;
+	    },
+	  }
+	});
+
+app.config(function ($httpProvider) {
+	$httpProvider.interceptors.push('loadingInterceptor');
+});
+
+var constant={
+//        SERVICE_URL:"http://localhost:8080/zircon/services",
+        SERVICE_URL:"http://societyfocus.com/service",
+    }
 
 app.filter('timeago',function(){
   return function(input) {
@@ -8,13 +39,6 @@ app.filter('timeago',function(){
     return timeAgo;
   };
 });
-
-app.run(function($rootScope) {
-    $rootScope.constant={
-            //SERVICE_URL:"http://localhost:8080/zircon/services",
-            SERVICE_URL:"http://societyfocus.com/service",
-        }
-})
 
 app.controller("addQuestionController", function($scope,$http,$rootScope) {
 	 $scope.restaurant = {
@@ -58,21 +82,24 @@ app.controller("addQuestionController", function($scope,$http,$rootScope) {
     		}
     		$scope.restaurant.location=location;
     	}
-    	
+    	$scope.restaurant.storeImages=pics;
     	if ($scope.restaurant.phonenonew!=null){
     			$scope.restaurant.phoneNo=[];
     			$scope.restaurant.phoneNo.push($scope.restaurant.phonenonew); 				
     	}
     	var jsonRestaurant = JSON.stringify($scope.restaurant, null, "\t")
     	console.log("Passing the Data: "+$scope.restaurant);
-    	
+    	uploadObj.startUpload();
+    	$body.addClass("loading");
+    	console.log("Response for file upload"+uploadObj.getResponses());
     	var req = {
                 method: 'POST',
-                url: $rootScope.constant.SERVICE_URL + '/v1/store',
+                url: constant.SERVICE_URL + '/v1/store',
                 data: jsonRestaurant
             }
             $http(req).then(function successCallback(response) {
-               console.log(response.data.body);
+               console.log("Store added Successfully : "+response.data.body);
+               alert("Store addedd successfully");
             });
     	
     }
@@ -122,6 +149,32 @@ function initialize() {
         });
 }
 
+var uploadObj; 
+var pics = [];
+$(document).ready(function()
+		{
+			uploadObj = $("#fileuploader").uploadFile({
+			url:constant.SERVICE_URL+"/upload/image",
+			fileName:"myfile",
+			showPreview:true,
+			dragDrop: true,
+			maxFileSize:500000*1024,
+			multiple:true,
+			autoSubmit : true,
+			previewHeight: "100px",
+			previewWidth: "100px",
+			onSuccess:function(files,data,xhr,pd)
+			{
+				console.log("files uplodaded successfully");
+				var pic = {
+						"imageUrl":data.body.fileName,
+				} 
+				pics.push(pic);
+				console.log(data);
+			}
+			});
+			   
+		});
 
 google.maps.event.addDomListener(window, 'load', initialize);
 function placeMarker(location) {

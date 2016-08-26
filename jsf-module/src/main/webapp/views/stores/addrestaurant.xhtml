@@ -13,6 +13,8 @@
 	
 	<ui:define name="main_body">
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js" />
+		<link href="http://hayageek.github.io/jQuery-Upload-File/4.0.10/uploadfile.css" rel="stylesheet" />
+		<script src="http://hayageek.github.io/jQuery-Upload-File/4.0.10/jquery.uploadfile.min.js"></script>
 		<script src="#{request.contextPath}/resources/js/checklist-model.js"/>
 		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXkHhlHh8l4_T-tiG4r2X9ONrmD5C87Fc&amp;libraries=places"/>
 		<script src="#{request.contextPath}/resources/js/angularstore.js"/>
@@ -97,6 +99,12 @@
 									<label for="restaurantEmail">RESTAURANT EMAIL</label> <input
 										type="email" class="form-control" id="restaurantEmail" ng-model="restaurant.email"/>
 								</div>
+
+								<div class="form-group">
+									File Upload
+									<div id="fileuploader">Upload</div>
+								</div>
+								
 								
 								<!-- We have removed this feature in Phase1 -->
 								<!-- <div class="row">
@@ -232,7 +240,8 @@
 		
 								<button type="button" class="btn btn-success btn-lg btn-block"
 									style="margin-top: 15px;" ng-click="addRestaurant()">ADD RESTAURENT</button>
-		
+								<div class="modal"><!-- Place at bottom of page --></div>
+								
 		
 							</form>
 						</div>
