@@ -3,12 +3,14 @@ package com.property.player.model.mongo;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.property.player.model.generic.CategoryEnum;
 import com.property.player.model.generic.CusineEnum;
+import com.property.player.model.generic.FeaturesEnum;
 import com.property.player.model.generic.StoreStatusEnum;
 
 
@@ -24,6 +26,7 @@ public class Store {
 	private String pincode;
 	private String email;
 	private List<CusineEnum> cusines;
+	private List<FeaturesEnum> features;
 	private String promotion;
 	private double costForTwo;
 	private String videoUrl;
@@ -43,6 +46,7 @@ public class Store {
 	private Date modifiedDate;
 	private StoreStatusEnum status;
 	private CategoryEnum category;
+	private Map<String,String> socialHandlers;
 	
 	
 	public String getStoreid() {
@@ -239,6 +243,62 @@ public class Store {
 				+ ", rating=" + rating + ", views=" + views + ", phoneNo=" + phoneNo + ", scoring=" + scoring
 				+ ", createdDate=" + createdDate + ", modifiedDate=" + modifiedDate + ", status=" + status
 				+ ", category=" + category + "]";
+	}
+
+	public String getNearLandmark() {
+		return nearLandmark;
+	}
+
+	public void setNearLandmark(String nearLandmark) {
+		this.nearLandmark = nearLandmark;
+	}
+
+	public String getPincode() {
+		return pincode;
+	}
+
+	public void setPincode(String pincode) {
+		this.pincode = pincode;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public double getViews() {
+		return views;
+	}
+
+	public void setViews(double views) {
+		this.views = views;
+	}
+
+	public String getWebsite() {
+		return website;
+	}
+
+	public void setWebsite(String website) {
+		this.website = website;
+	}
+
+	public Map<String, String> getSocialHandlers() {
+		return socialHandlers;
+	}
+
+	public void setSocialHandlers(Map<String, String> socialHandlers) {
+		this.socialHandlers = socialHandlers;
+	}
+
+	public List<FeaturesEnum> getFeatures() {
+		return features;
+	}
+
+	public void setFeatures(List<FeaturesEnum> features) {
+		this.features = features;
 	}
 
 }

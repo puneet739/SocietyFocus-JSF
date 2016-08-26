@@ -11,11 +11,8 @@ app.filter('timeago',function(){
 
 app.run(function($rootScope) {
     $rootScope.constant={
-            // SERVICE_URL:"http://zircon.com/zservice",
-            APP_PREFIX:"http://societyfocus.com/helpdesk",
+            //SERVICE_URL:"http://localhost:8080/zircon/services",
             SERVICE_URL:"http://societyfocus.com/service",
-            name: 'Society Focus Helpdesk, Forum for all society related issues, maintaince, Legal Advice, Resource handling, Parking issues.',
-            description: 'Society Focus Helpdesk, Forum for all society related issues, maintaince, Legal Advice, Resource handling, Parking issues.',
         }
 })
 
@@ -40,19 +37,45 @@ app.controller("addQuestionController", function($scope,$http,$rootScope) {
 		                {value: 'NORTH_INDIAN', text: 'North Indian'},
 		                {value: 'MUGHLAI', text: 'Mughlai'},
 		                {value: 'SOUTH_INDIAN', text: 'South Indian'},
-		                {value: 'FAST_FOOD', text: 'Fast food'}
+		                {value: 'FAST_FOOD', text: 'Fast food'},
+		                {value: 'STREET_FOOD', text: 'Street Food'},
+		                {value: 'SWEETS', text: 'Sweets'},
+		                {value: 'DESERTS', text: 'Deserts'},
+		                {value: 'MITHAI', text: 'Mithai'},
+		                {value: 'CONTINENTAL', text: 'Continental'},
+		                {value: 'ITALIAN', text: 'Italian'},
+		                {value: 'HEALTHY_FOOD', text: 'Healthy Food'},
 		              ];
 	
 	$scope.addRestaurant = function(){
     	console.log("Scope restaurant here."+$scope.restaurant);
-    	console.log("Latitute here is."+marker.getPosition().lat());
-    	console.log("Longitute here is."+marker.getPosition().lng());
+    	if (marker!=null){
+    		var location ={
+    				point : {
+    					x: marker.getPosition().lat(),
+    					y: marker.getPosition().lng()
+    				}
+    		}
+    		$scope.restaurant.location=location;
+    	}
     	
-    	angular.forEach($scope.features, function(album){
-    	    if (!!album.selected) $scope.albumNameArray.push(album.name);
-    	  })
+    	if ($scope.restaurant.phonenonew!=null){
+    			$scope.restaurant.phoneNo=[];
+    			$scope.restaurant.phoneNo.push($scope.restaurant.phonenonew); 				
+    	}
+    	var jsonRestaurant = JSON.stringify($scope.restaurant, null, "\t")
+    	console.log("Passing the Data: "+$scope.restaurant);
+    	
+    	var req = {
+                method: 'POST',
+                url: $rootScope.constant.SERVICE_URL + '/v1/store',
+                data: jsonRestaurant
+            }
+            $http(req).then(function successCallback(response) {
+               console.log(response.data.body);
+            });
+    	
     }
-    
  });
 
 

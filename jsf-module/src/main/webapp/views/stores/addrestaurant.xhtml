@@ -8,6 +8,9 @@
 	template="layout/storelayout.xhtml">
 
 
+	<ui:define name="banner">
+	</ui:define>
+	
 	<ui:define name="main_body">
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js" />
 		<script src="#{request.contextPath}/resources/js/checklist-model.js"/>
@@ -31,7 +34,27 @@
 									<label for="restaurantAddress">STREET ADDRESS*</label> <input
 										type="text" class="form-control" id="restaurantAddress" ng-model="restaurant.address"/>
 								</div>
-		
+								
+								<div class="row">
+									<div class="col-lg-6 col-sm-6 col-xs-12">
+										<div class="form-group">
+											<label for="location">Cost for Two</label> <input type="number"
+												class="form-control" id="cost"  ng-model="restaurant.costForTwo"  />
+										</div>
+										<!-- /input-group -->
+									</div>
+									<!-- /.col-lg-6 -->
+									<div class="col-lg-6 col-sm-6 col-xs-12">
+										<div class="form-group">
+											<label for="pincode">Opening Hours</label> <input type="text"
+												class="form-control" id="openhours"  ng-model="restaurant.detail2" />
+										</div>
+										<!-- /input-group -->
+									</div>
+									<!-- /.col-lg-6 -->
+								</div>
+								
+								
 								<div class="row">
 									<div class="col-lg-6 col-sm-6 col-xs-12">
 										<div class="form-group">
@@ -67,7 +90,7 @@
 		
 								<div class="form-group">
 									<label for="restaurantNo">RESTAURANT PHONE NUMBER</label> <input
-										type="tel" class="form-control" id="restaurantNo" ng-model="restaurant.phoneNo[0]"/>
+										type="number" class="form-control" id="restaurantNo" ng-model="restaurant.phonenonew"/>
 								</div>
 		
 								<div class="form-group">
@@ -90,7 +113,7 @@
 								
 								<div class="dropdown" style="margin-top: 20px;">
 									<label for="exampleInputPassword1">OPENING STATUS</label>
-									<select ng-model="restaurant.status">
+									<select ng-init="restaurant.status = restaurant.status || 'IN_PROCESS'" ng-model="restaurant.status">
 										<option value="DELISTED" label="Closed"/>
 										<option value="IN_PROCESS" label="Open"/>
 										<option value="IN_PROCESS" label="OPENING SOON"/>
@@ -130,7 +153,7 @@
 									</div>
 								</div>
 		
-								<label for="exampleInputPassword1">TIMINGS</label>
+								<!-- <label for="exampleInputPassword1">TIMINGS</label>
 								<div class="row">
 									<div class="col-md-6 timing">
 										<div class="timebutton" style="z-index: 0; overflow: hidden;">
@@ -154,10 +177,10 @@
 											<strong>SELECT ALL</strong>
 										</p>
 									</div>
-								</div>
-		
-								<div class="row">
-									<!-- TIMING  -->
+								</div> -->
+									
+								<!-- <div class="row">
+									TIMING 
 									<div class="col-md-6  ">
 										<label style="font-size: 16px; margin-right: 7px;">FROM</label>
 										<select name="" id="" class="edit">
@@ -188,24 +211,24 @@
 											<strong>24 HOURS</strong>
 										</p>
 									</div>
-								</div>
+								</div> -->
 								<!-- TIMING END -->
 		
 								<div class="form-group" style="margin-top: 20px;">
 									<label for="fbpage" style="margin-bottom: 10px;">FACEBOOK
 										PAGE</label> <input type="text" class="form-control" id="fbpage"
-										placeholder="" />
+										placeholder="" ng-model="restaurant.socialHandlers[facebook]" />
 								</div>
 		
 								<div class="form-group">
 									<label for="twitterpage" style="margin-bottom: 10px;">TWITTER
 										HANDLE</label> <input type="text" class="form-control" id="twitterpage"
-										placeholder="" />
+										placeholder="" ng-model="restaurant.socialHandlers[twitter]" />
 								</div>
 								<label for="details" style="margin-bottom: 10px;">OTHER
 									DETAILS</label>
 								<textarea class="form-control" rows="3" id="details"
-									placeholder="Details"></textarea>
+									placeholder="Details" ng-model="restaurant.description"></textarea>
 		
 								<button type="button" class="btn btn-success btn-lg btn-block"
 									style="margin-top: 15px;" ng-click="addRestaurant()">ADD RESTAURENT</button>
@@ -220,24 +243,18 @@
 								<div class="panel-body">
 									<ul>
 										<p>
-											<li>If you are the owner of a restaurant, or if you are a
-												user who's discovered a place not listed on Zomato, let us
-												know using this form.</li>
+											<li>Get your restaurant into web application for free.</li>
+										</p>
+		
+										<p>
+											<li>Let us know if anything is required from our system. www.societyfocus.com</li>
 										</p>
 		
 										<p>
 											<li>If you are the owner of a restaurant, or if you are a
-												user who's discovered a place not listed on Zomato, let us
+												user who's discovered a place not listed on SocietyFocus, let us
 												know using this form.</li>
 										</p>
-		
-										<p>
-											<li>If you are the owner of a restaurant, or if you are a
-												user who's discovered a place not listed on Zomato, let us
-												know using this form.</li>
-										</p>
-		
-		
 									</ul>
 								</div>
 							</div>
