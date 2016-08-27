@@ -105,6 +105,11 @@ app.controller("addQuestionController", function($scope,$http,$rootScope) {
 	    	
 	    }else{
 	    	alert('Form is not valid');
+	    	angular.forEach(form.$error, function (field) {
+	            angular.forEach(field, function(errorField){
+	                errorField.$setTouched();
+	            })
+	        });
 	    }
 	}
  });
