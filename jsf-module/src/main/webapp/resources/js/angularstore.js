@@ -71,38 +71,42 @@ app.controller("addQuestionController", function($scope,$http,$rootScope) {
 		                {value: 'HEALTHY_FOOD', text: 'Healthy Food'},
 		              ];
 	
-	$scope.addRestaurant = function(){
-    	console.log("Scope restaurant here."+$scope.restaurant);
-    	if (marker!=null){
-    		var location ={
-    				point : {
-    					x: marker.getPosition().lat(),
-    					y: marker.getPosition().lng()
-    				}
-    		}
-    		$scope.restaurant.location=location;
-    	}
-    	$scope.restaurant.storeImages=pics;
-    	if ($scope.restaurant.phonenonew!=null){
-    			$scope.restaurant.phoneNo=[];
-    			$scope.restaurant.phoneNo.push($scope.restaurant.phonenonew); 				
-    	}
-    	var jsonRestaurant = JSON.stringify($scope.restaurant, null, "\t")
-    	console.log("Passing the Data: "+$scope.restaurant);
-    	uploadObj.startUpload();
-    	$body.addClass("loading");
-    	console.log("Response for file upload"+uploadObj.getResponses());
-    	var req = {
-                method: 'POST',
-                url: constant.SERVICE_URL + '/v1/store',
-                data: jsonRestaurant
-            }
-            $http(req).then(function successCallback(response) {
-               console.log("Store added Successfully : "+response.data.body);
-               alert("Store addedd successfully");
-            });
-    	
-    }
+	$scope.addRestaurant = function(form){
+		if (form.$valid){
+	    	console.log("Scope restaurant here."+$scope.restaurant);
+	    	if (marker!=null){
+	    		var location ={
+	    				point : {
+	    					x: marker.getPosition().lat(),
+	    					y: marker.getPosition().lng()
+	    				}
+	    		}
+	    		$scope.restaurant.location=location;
+	    	}
+	    	$scope.restaurant.storeImages=pics;
+	    	if ($scope.restaurant.phonenonew!=null){
+	    			$scope.restaurant.phoneNo=[];
+	    			$scope.restaurant.phoneNo.push($scope.restaurant.phonenonew); 				
+	    	}
+	    	var jsonRestaurant = JSON.stringify($scope.restaurant, null, "\t")
+	    	console.log("Passing the Data: "+$scope.restaurant);
+	    	uploadObj.startUpload();
+	    	$body.addClass("loading");
+	    	console.log("Response for file upload"+uploadObj.getResponses());
+	    	var req = {
+	                method: 'POST',
+	                url: constant.SERVICE_URL + '/v1/store',
+	                data: jsonRestaurant
+	            }
+	            $http(req).then(function successCallback(response) {
+	               console.log("Store added Successfully : "+response.data.body);
+	               alert("Store addedd successfully");
+	            });
+	    	
+	    }else{
+	    	alert('Form is not valid');
+	    }
+	}
  });
 
 

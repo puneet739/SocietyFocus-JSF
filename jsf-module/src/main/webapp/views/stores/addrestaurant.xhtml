@@ -22,15 +22,14 @@
 			<div class="container" style="padding: 0;">
 				<h3>Add a new restaurant</h3>
 			</div>
-			<form>
 				<div class="container addrestaurent" style="margin-bottom: 30px;">
 					<div class="row">
 						<div class="col-md-9"
 							style="background-color: #f5f5f5; padding-top: 30px; padding-bottom: 10px;">
-							<form>
+							<form name="form" novalidate="true">
 								<div class="form-group">
 									<label for="restaurantName">RESTAURANT NAME*</label> <input
-										type="text" class="form-control" id="restaurantName" ng-model="restaurant.name" />
+										type="text" class="form-control" id="restaurantName" ng-model="restaurant.name"  required="true"/>
 								</div>
 								<div class="form-group">
 									<label for="restaurantAddress">STREET ADDRESS*</label> <input
@@ -239,7 +238,7 @@
 									placeholder="Details" ng-model="restaurant.description"></textarea>
 		
 								<button type="button" class="btn btn-success btn-lg btn-block"
-									style="margin-top: 15px;" ng-click="addRestaurant()">ADD RESTAURENT</button>
+									style="margin-top: 15px;" ng-click="addRestaurant(form)">ADD RESTAURENT</button>
 								<div class="modal"><!-- Place at bottom of page --></div>
 								
 		
@@ -270,7 +269,6 @@
 						</div>
 					</div>
 				</div>
-			</form>
 
 			<script>
 				
