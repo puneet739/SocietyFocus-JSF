@@ -51,7 +51,7 @@ public class Config {
 
 	@PostConstruct
 	public void init() throws ConfigurationException {
-		printSytemProperties();
+		//printSytemProperties();
 		String home = System.getenv("SOCIETY_CONFIG");
 		File file = new File(home + "/portalconfig.properties");
 		LoggerUtil.debug("This file should exist here. and it should include the desired property file"
