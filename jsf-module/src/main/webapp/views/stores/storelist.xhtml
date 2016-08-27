@@ -232,11 +232,13 @@
 													<span class="glyphicon glyphicon-earphone btn3"></span><a href="tel:#{store.phoneNo[0]}">CALL</a>
 												</button>
 											</div>
+											<ui:fragment rendered="#{store.storeType=='RESTAURANT'}">
 											<div class="btn-group" role="group">
 												<button type="button" class="btn btn-default call btn2">
 													<span class="glyphicon glyphicon-th-list btn3"></span>Menu
 												</button>
 											</div>
+											</ui:fragment>
 											<div class="btn-group" role="group">
 												<button type="button" class="btn btn-default order btn2 color">
 													<span class="glyphicon glyphicon-phone btn3"></span>Order Now
