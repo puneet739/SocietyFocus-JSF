@@ -32,24 +32,27 @@
 									<input name="name" type="text" class="form-control" id="restaurantName" ng-model="restaurant.name"  required="true"/>
 									<span ng-show="form.name.$touched &amp;&amp; form.name.$invalid" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"/>
 								</div>
-								<div class="form-group">
+								<div class="form-group has-feedback" ng-class="{'has-error':form.address.$touched &amp;&amp; form.address.$invalid}">
 									<label for="restaurantAddress">STREET ADDRESS*</label> <input
-										type="text" class="form-control" id="restaurantAddress" ng-model="restaurant.address"/>
+										type="text" class="form-control" name="address" id="restaurantAddress" ng-model="restaurant.address" required="true"/>
+										<span ng-show="form.address.$touched &amp;&amp; form.address.$invalid" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"/>
 								</div>
 								
 								<div class="row">
 									<div class="col-lg-6 col-sm-6 col-xs-12">
-										<div class="form-group">
-											<label for="location">Cost for Two</label> <input type="number"
-												class="form-control" id="cost"  ng-model="restaurant.costForTwo"  />
+										<div class="form-group has-feedback" ng-class="{'has-error':form.costfortwo.$touched &amp;&amp; form.costfortwo.$invalid}">
+											<label for="location">Cost for Two</label> {{form.costfortwo.$touched}} -- {{form.costfortwo.$invalid}}
+											<input type="number" name="costfortwo" class="form-control" id="cost"  ng-model="restaurant.costForTwo"  required="true"/>
+											<span ng-show="form.costfortwo.$touched &amp;&amp; form.costfortwo.$invalid" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"/>
 										</div>
 										<!-- /input-group -->
 									</div>
 									<!-- /.col-lg-6 -->
 									<div class="col-lg-6 col-sm-6 col-xs-12">
-										<div class="form-group">
-											<label for="pincode">Opening Hours</label> <input type="text"
-												class="form-control" id="openhours"  ng-model="restaurant.detail2" />
+										<div class="form-group has-feedback" ng-class="{'has-error':form.openhours.$touched &amp;&amp; form.openhours.$invalid}">
+											<label for="pincode">Opening Hours</label> 
+											<input type="text" name="openhours" class="form-control" id="openhours"  ng-model="restaurant.detail2" required="true" />
+											<span ng-show="form.openhours.$touched &amp;&amp; form.openhours.$invalid" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"/>
 										</div>
 										<!-- /input-group -->
 									</div>
@@ -59,9 +62,10 @@
 								
 								<div class="row">
 									<div class="col-lg-6 col-sm-6 col-xs-12">
-										<div class="form-group">
-											<label for="location">LOCATION</label> <input type="text"
-												class="form-control" id="location" placeholder="Your Location" />
+										<div class="form-group has-feedback" ng-class="{'has-error':form.location.$touched &amp;&amp; form.location.$invalid}">
+											<label for="location">LOCATION</label> 
+											<input type="text" name="location" class="form-control" id="location" placeholder="Your Location" required="true" />
+											<span ng-show="form.location.$touched &amp;&amp; form.location.$invalid" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"/>
 										</div>
 										<!-- /input-group -->
 									</div>
@@ -90,14 +94,16 @@
 										class="form-control" id="landmark" ng-model="restaurant.nearLandmark"/>
 								</div>
 		
-								<div class="form-group">
-									<label for="restaurantNo">RESTAURANT PHONE NUMBER</label> <input
-										type="number" class="form-control" id="restaurantNo" ng-model="restaurant.phonenonew"/>
+								<div class="form-group has-feedback" ng-class="{'has-error':form.phoneno.$touched &amp;&amp; form.phoneno.$invalid}">
+									<label for="restaurantNo">RESTAURANT PHONE NUMBER</label> 
+									<input name="phoneno" type="number" class="form-control" id="restaurantNo" ng-model="restaurant.phonenonew" required="true"/>
+									<span ng-show="form.phoneno.$touched &amp;&amp; form.phoneno.$invalid" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"/>
 								</div>
 		
-								<div class="form-group">
-									<label for="restaurantEmail">RESTAURANT EMAIL</label> <input
-										type="email" class="form-control" id="restaurantEmail" ng-model="restaurant.email"/>
+								<div class="form-group has-feedback" ng-class="{'has-error':form.email.$touched &amp;&amp; form.email.$invalid}">
+									<label for="restaurantEmail">RESTAURANT EMAIL</label> 
+									<input name="email" type="email" class="form-control" id="restaurantEmail" ng-model="restaurant.email" required="true"/>
+									<span ng-show="form.email.$touched &amp;&amp; form.email.$invalid" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"/>
 								</div>
 
 								<div class="form-group">
@@ -236,7 +242,7 @@
 								<label for="details" style="margin-bottom: 10px;">OTHER
 									DETAILS</label>
 								<textarea class="form-control" rows="3" id="details"
-									placeholder="Details" ng-model="restaurant.description"></textarea>
+									 ng-model="restaurant.description"></textarea>
 		
 								<button type="button" class="btn btn-success btn-lg btn-block"
 									style="margin-top: 15px;" ng-click="addRestaurant(form)">ADD RESTAURENT</button>
