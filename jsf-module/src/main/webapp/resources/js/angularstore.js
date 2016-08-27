@@ -32,9 +32,9 @@ app.config(function($httpProvider) {
 });
 
 var constant = {
-	// SERVICE_URL:"http://localhost:8080/zircon/services",
-	SERVICE_URL : "http://societyfocus.com/service",
-}
+		//SERVICE_URL:"http://localhost:8080/zircon/services",
+		SERVICE_URL : "http://societyfocus.com/service",
+	}
 
 app.filter('timeago', function() {
 	return function(input) {
@@ -132,13 +132,13 @@ app.controller("addQuestionController", function($scope, $http, $rootScope) {
 				$scope.restaurant.location = location;
 			}
 			$scope.restaurant.storeImages = pics;
+			$scope.restaurant.backgroundImage = mainPic;
 			if ($scope.restaurant.phonenonew != null) {
 				$scope.restaurant.phoneNo = [];
 				$scope.restaurant.phoneNo.push($scope.restaurant.phonenonew);
 			}
 			var jsonRestaurant = JSON.stringify($scope.restaurant, null, "\t")
 			console.log("Passing the Data: " + $scope.restaurant);
-			uploadObj.startUpload();
 			$body.addClass("loading");
 			console.log("Response for file upload" + uploadObj.getResponses());
 			var req = {
@@ -207,6 +207,8 @@ function initialize() {
 }
 
 var uploadObj;
+var mainPic;
+var mainImage;
 var pics = [];
 $(document).ready(function() {
 	uploadObj = $("#fileuploader").uploadFile({
@@ -225,6 +227,25 @@ $(document).ready(function() {
 				"imageUrl" : data.body.fileName,
 			}
 			pics.push(pic);
+			console.log(data);
+		}
+	});
+	
+	mainImage = $("#mainImageUpload").uploadFile({
+		url : constant.SERVICE_URL + "/upload/image",
+		fileName : "myfile",
+		showPreview : true,
+		dragDrop : true,
+		maxFileSize : 500000 * 1024,
+		multiple : false,
+		autoSubmit : true,
+		previewHeight : "100px",
+		previewWidth : "100px",
+		onSuccess : function(files, data, xhr, pd) {
+			console.log("files uplodaded successfully");
+			mainPic = {
+					"imageUrl" : data.body.fileName,
+				},
 			console.log(data);
 		}
 	});

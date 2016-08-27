@@ -20,15 +20,24 @@
 		<script src="#{request.contextPath}/resources/js/angularstore.js"/>
   		<div ng-app="stores" ng-controller="addQuestionController" >
 			<div class="container" style="padding: 0;">
-				<h3>Add a new restaurant</h3>
+				<h3>Add New Restaurant/Store</h3>
 			</div>
 				<div class="container addrestaurent" style="margin-bottom: 30px;">
 					<div class="row">
 						<div class="col-md-9"
 							style="background-color: #f5f5f5; padding-top: 30px; padding-bottom: 10px;">
 							<form name="form" novalidate="true">
+							
+								<div class="form-group has-feedback">
+									<label for="restaurantName">CATEGORY*</label>
+									<select class="form-control" ng-init="restaurant.storeType = restaurant.storeType || 'RESTAURANT'" ng-model="restaurant.storeType">
+										<option value="RESTAURANT" label="Restaurant"/>
+										<option value="STORE" label="Store"/>
+									</select>
+								</div>
+								
 								<div class="form-group has-feedback" ng-class="{'has-error':form.name.$touched &amp;&amp; form.name.$invalid}">
-									<label for="restaurantName">RESTAURANT NAME*</label> 
+									<label for="restaurantName">RESTAURANT/STORE NAME*</label> 
 									<input name="name" type="text" class="form-control" id="restaurantName" ng-model="restaurant.name"  required="true"/>
 									<span ng-show="form.name.$touched &amp;&amp; form.name.$invalid" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"/>
 								</div>
@@ -38,16 +47,12 @@
 										<span ng-show="form.address.$touched &amp;&amp; form.address.$invalid" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"/>
 								</div>
 								
-								<div class="row">
-									<div class="col-lg-6 col-sm-6 col-xs-12">
-										<div class="form-group has-feedback" ng-class="{'has-error':form.costfortwo.$touched &amp;&amp; form.costfortwo.$invalid}">
-											<label for="location">Cost for Two</label>
-											<input type="number" name="costfortwo" class="form-control" id="cost"  ng-model="restaurant.costForTwo"  required="true"/>
-											<span ng-show="form.costfortwo.$touched &amp;&amp; form.costfortwo.$invalid" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"/>
-										</div>
-										<!-- /input-group -->
+									<div class="form-group">
+										Store/Restaurant Main Images
+										<div id="mainImageUpload">MainImage</div>
 									</div>
-									<!-- /.col-lg-6 -->
+								
+								<div class="row">
 									<div class="col-lg-6 col-sm-6 col-xs-12">
 										<div class="form-group has-feedback" ng-class="{'has-error':form.openhours.$touched &amp;&amp; form.openhours.$invalid}">
 											<label for="pincode">Opening Hours</label> 
@@ -57,6 +62,16 @@
 										<!-- /input-group -->
 									</div>
 									<!-- /.col-lg-6 -->
+									<div class="col-lg-6 col-sm-6 col-xs-12" ng-show="restaurant.storeType=='RESTAURANT'">
+										<div class="form-group has-feedback" ng-class="{'has-error':form.costfortwo.$touched &amp;&amp; form.costfortwo.$invalid}">
+											<label for="location">Cost for Two</label>
+											<input type="number" name="costfortwo" class="form-control" id="cost"  ng-model="restaurant.costForTwo" />
+											<span ng-show="form.costfortwo.$touched &amp;&amp; form.costfortwo.$invalid" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"/>
+										</div>
+										<!-- /input-group -->
+									</div>
+									<!-- /.col-lg-6 -->
+									
 								</div>
 								
 								
@@ -107,7 +122,7 @@
 								</div>
 
 								<div class="form-group">
-									File Upload
+									Store/Restaurant Images
 									<div id="fileuploader">Upload</div>
 								</div>
 								
@@ -155,15 +170,17 @@
 										name="tags" type="text" value="" />
 								</div> -->
 								
-								<label for="exampleInputPassword1"
-									style="margin-top: 10px; margin-bottom: 25px;">CUSINES</label>
-								<div class="row"> 
-									<div class="col-md-6 col-sm-6 col-xs-6"  ng-repeat="cusine in cusines">
-										<p>
-											<label>
-												<input type="checkbox" checklist-model="restaurant.cusine" checklist-value="cusine.value"/> {{cusine.text}} 
-											</label>
-										</p>
+								<div ng-show="restaurant.storeType=='RESTAURANT'">
+									<label for="exampleInputPassword1"
+										style="margin-top: 10px; margin-bottom: 25px;">CUSINES</label>
+									<div class="row"> 
+										<div class="col-md-6 col-sm-6 col-xs-6"  ng-repeat="cusine in cusines">
+											<p>
+												<label>
+													<input type="checkbox" checklist-model="restaurant.cusine" checklist-value="cusine.value"/> {{cusine.text}} 
+												</label>
+											</p>
+										</div>
 									</div>
 								</div>
 		
@@ -245,7 +262,7 @@
 									 ng-model="restaurant.description"></textarea>
 		
 								<button type="button" class="btn btn-success btn-lg btn-block"
-									style="margin-top: 15px;" ng-click="addRestaurant(form)">ADD RESTAURENT</button>
+									style="margin-top: 15px;" ng-click="addRestaurant(form)">ADD STORE/RESTAURANT</button>
 								<div class="modal"><!-- Place at bottom of page --></div>
 								
 		

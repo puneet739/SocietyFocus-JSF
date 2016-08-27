@@ -46,6 +46,7 @@ public class Store {
 	private Date modifiedDate;
 	private StoreStatusEnum status;
 	private CategoryEnum category;
+	private String storeType;
 	private Map<String,String> socialHandlers;
 	
 	
@@ -299,6 +300,14 @@ public class Store {
 
 	public void setFeatures(List<FeaturesEnum> features) {
 		this.features = features;
+	}
+
+	public String getStoreType() {
+		return storeType;
+	}
+
+	public void setStoreType(String storeType) {
+		this.storeType = storeType;
 	}
 
 }
