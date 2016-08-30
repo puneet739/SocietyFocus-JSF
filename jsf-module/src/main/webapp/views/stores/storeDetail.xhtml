@@ -1,0 +1,439 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="layout/storelayout.xhtml">
+
+
+	<ui:define name="main_body">
+		<div class="container">
+
+			<div class="row">
+
+				<div class="col-md-8">
+					<div class="row">
+						<div class="panel panel-default">
+							<h2 class="h-name">Country Inn</h2>
+							<h3 class="prem">
+								Premium <img src="img/badge1.png" height="44" alt="" />
+							</h3>
+							<div class="panel-body">
+								<div>
+									<img src="img/2.jpg" alt="main_image" id="main_img"
+										class="img-responsive img-rounded" />
+								</div>
+								<div class="row">
+									<div class="col-md-8 col-sm-8 col-xs-8">
+										<p class="p-add">Pandar Market road, south Delhi, New
+											delhi, 395660</p>
+										<h4 class="h-type">Casual dining</h4>
+									</div>
+									<div class="col-md-2 col-sm-2 col-xs-2 open-pad op-img"
+										style="padding-right: 0;">
+										<div class="openning" style="border: none;">
+											<img src="img/openb.png" alt=""
+												style="margin-top: 0px; padding-left: 10px;" height="64" />
+										</div>
+
+									</div>
+
+									<div class="col-md-2 col-sm-2 col-xs-2 open-pad1"
+										style="padding-left: 0;">
+										<div class="openning rat" style="margin-top: 15px;">
+											<p>
+												<b>4.5/ <b class="rat-b">5</b></b>
+											</p>
+										</div>
+										<p class="p-rev">3445 reviews</p>
+									</div>
+								</div>
+
+
+
+							</div>
+						</div>
+					</div>
+
+
+
+					<div class="row detail">
+						<div class="panel panel-default">
+							<div class="panel-body">
+								<div class="col-md-4">
+									<ul class="ul-mar">
+										<li><h4 class="d-header">Phone number</h4></li>
+										<li
+											style="color: green; font-weight: 600; margin-bottom: 12px;">011
+											23562356</li>
+										<li><h4 class="d-header d-pad">COST</h4></li>
+										<li>Rs 1500 for two people</li>
+										<li><h4 class="d-header d-pad">Cuisines</h4></li>
+										<li style="color: #c31605;">North Indian,muglai</li>
+									</ul>
+								</div>
+								<div class="col-md-4">
+									<ul class="ul-mar">
+										<li><h4 class="d-header">Opening Hours</h4></li>
+										<li>12 Noon to 12 Midnight</li>
+										<li>Get directions</li>
+									</ul>
+
+									<ul class="ul-mar">
+										<li><h4 class="d-header" style="margin-bottom: 7px;">Get
+												Directions</h4></li>
+										<button id="map">
+											<div id="box1">
+												<a><img src="img/map.png" alt="map"
+													style="border-radius: 15px;" /></a>
+											</div>
+										</button>
+									</ul>
+								</div>
+								<div class="col-md-4">
+									<ul>
+										<li><h4 class="d-header">Hilights</h4></li>
+										<li><span class="glyphicon glyphicon-ok"></span>Home
+											Delivery</li>
+										<li><span class="glyphicon glyphicon-ok"></span>Wheel
+											Chair accisible</li>
+										<li><span class="glyphicon glyphicon-ok"></span>buffet</li>
+										<li><span class="glyphicon glyphicon-ok"></span>table
+											booking Available</li>
+
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="panel panel-default" id="show-map">
+							<div class="panel-body" style="padding: 0;">
+
+								<div class="col-md-12">
+									<div id="googleMap"
+										style="height: 150px; margin-bottom: 20px; margin-top: 10px; max-width: 100%;"></div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="panel panel-default">
+							<div class="panel-body">
+								<div class="col-md-2">
+									<h4 class="d-header1" style="margin-top: 0;">Description</h4>
+								</div>
+								<div class="col-md-10">
+									<p style="font-weight: 600; font-size: 15px;">Lorem Ipsum
+										has been the industry's standard dummy text ever since the
+										1500s, when an unknown printer took a galley of type and
+										scrambled it to make a type specimen book. It has survived not
+										only five centuries, but also the leap into electronic
+										typesetting, remaining essentially unchanged. It was
+										popularised in It has survived not only five centuries, but
+										also the leap into electronic typesetting, remaining
+										essentially unchanged. It was popularised in</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="panel panel-default">
+							<div class="panel-body">
+								<div class="col-md-12">
+									<h4 class="d-header" style="margin-bottom: 12px;">Discount</h4>
+									<p
+										style="font-weight: 900; font-size: 15px; margin-bottom: 3px;">get
+										15% discount on all home delivery abover order Rs 999, valid
+										only when yoy Order with Zomato</p>
+									<p style="font-weight: 900; font-size: 15px;">
+										<b>Valid only from, 8 Aug 2015 to Thurs , 11 Aug 2016s</b>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="panel panel-default">
+							<div class="panel-body">
+								<h4 class="d-header"
+									style="margin-left: 15px; margin-bottom: 15px;">Restaurent
+									Images</h4>
+								<a href="img/01.jpg" data-lightbox="image-1"
+									data-title="My caption"><img src="img/01.jpg"
+									class="img-rounded res-img" alt="" /></a> <a href="img/02.jpg"
+									data-lightbox="image-1" data-title="My caption"><img
+									src="img/02.jpg" class="img-rounded res-img" alt="" /></a> <a
+									href="img/03.jpg" data-lightbox="image-1"
+									data-title="My caption"><img src="img/03.jpg"
+									class="img-rounded res-img" alt=""/></a> <a href="img/04.jpg"
+									data-lightbox="image-1" data-title="My caption"><img
+									src="img/04.jpg" class="img-rounded res-img" alt="" /></a> <a
+									href="img/04.jpg" data-lightbox="image-1"
+									data-title="My caption"><img src="img/04.jpg"
+									class="img-rounded res-img" alt="" /></a> <a
+									href="http://www.tajmahal.org.uk/gifs/taj-mahal.jpeg"
+									data-lightbox="image-1" data-title="My caption"><img
+									src="http://www.tajmahal.org.uk/gifs/taj-mahal.jpeg"
+									class="img-rounded res-img" alt="" /></a>
+
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="panel panel-default">
+							<div class="panel-body">
+								<h4 class="d-header" style="margin-left: 15px;">Videos</h4>
+								<iframe src="" frameborder="0" name="show" id="show"
+									style="display: none; width: 100%; height: 350px;"> </iframe>
+								<br />
+									
+									<c:forEach begin="0" end="7">
+									<div id="box">
+										<a href="https://www.youtube.com/embed/nZ6XS0GEzz8"
+											target="show" id="thum1">
+											<div id="overlay">
+												<img src="img/02.jpg" alt="" />
+													<div class="overlay"></div>
+											</div> <img src="img/play2.png" alt="" class="play" width="44" />
+										</a>
+									</div>
+									</c:forEach>
+
+									<div id="box">
+										<a href="https://www.youtube.com/embed/nZ6XS0GEzz8"
+											target="show" id="thum2">
+											<div id="overlay">
+												<img src="img/03.jpg" alt="" />
+													<div class="overlay"></div>
+											</div> <img src="img/play2.png" alt="" class="play" width="44" />
+										</a>
+									</div>
+
+									<div id="box">
+										<a href="https://www.youtube.com/embed/nZ6XS0GEzz8"
+											target="show" id="thum3">
+											<div id="overlay">
+												<img src="img/04.jpg" alt="" />
+													<div class="overlay"></div>
+											</div> <img src="img/play2.png" alt="" class="play" width="44" />
+										</a>
+									</div>
+
+									<div id="box">
+										<a href="https://www.youtube.com/embed/nZ6XS0GEzz8"
+											target="show" id="thum4">
+											<div id="overlay">
+												<img src="img/01.jpg" alt="" />
+													<div class="overlay"></div>
+											</div> <img src="img/play2.png" alt="" class="play" width="44" />
+										</a>
+									</div>
+
+									<div id="box">
+										<a href="https://www.youtube.com/embed/nZ6XS0GEzz8"
+											target="show" id="thum4">
+											<div id="overlay">
+												<img src="img/01.jpg" alt="" />
+													<div class="overlay"></div>
+											</div> <img src="img/play2.png" alt="" class="play" width="44" />
+										</a>
+									</div>
+
+									<div id="box">
+										<a href="https://www.youtube.com/embed/nZ6XS0GEzz8"
+											target="show" id="thum4">
+											<div id="overlay">
+												<img src="img/01.jpg" alt="" />
+													<div class="overlay"></div>
+											</div> <img src="img/play2.png" alt="" class="play" width="44" />
+										</a>
+									</div>
+									<div id="box" style="margin-right: 0;">
+										<a href="https://www.youtube.com/embed/nZ6XS0GEzz8"
+											target="show" id="thum4">
+											<div id="overlay">
+												<img src="img/01.jpg" alt="" />
+													<div class="overlay"></div>
+											</div> <img src="img/play2.png" alt="" class="play" width="44" />
+										</a>
+									</div>
+							</div>
+						</div>
+
+
+					</div>
+
+
+
+					<div class="row">
+
+						<div class="panel panel-default">
+							<div class="panel-body">
+								<label for="review"
+									style="margin-top: 5px; margin-bottom: 15px; font-weight: 900; font-size: 18px;">Write
+									Your review</label>
+								<div class="input-group">
+									<input type="text" class="form-control" id="review"
+										placeholder="Write your Review here" /> <span
+										class="input-group-btn">
+											<button class="btn btn-danger" type="button">Write
+												review</button>
+									</span>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="row">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="d-header" style="margin-left: 15px;">Reviews</h4>
+							</div>
+							<div class="panel-body">
+								<div class="panel panel-default"
+									style="border: transparent; box-shadow: none;">
+									<div class="panel-body">
+										<div class="row">
+											<div class="col-md-2 col-sm-2 r-image">
+												<img src="img/men.jpg" alt=""
+													class="img-responsive img-circle thumbnail"
+													style="margin-bottom: 8px;" />
+													<h5
+														style="font-size: 14px; font-weight: 600; margin-top: 0;">User
+														Name</h5>
+											</div>
+											<div class="col-md-10 col-sm-10" style="padding-left: 0;">
+												<div class="panel panel-default" style="margin-bottom: 0;">
+													<div class="panel-heading"
+														style="font-weight: 600; padding: 10px 15px 0;">
+														<p style="display: inline-block;">Room Need To be
+															Improved</p>
+														<b
+															style="margin-left: 10px; padding: 2px 4px 2px 4px; background-color: green; color: white; border-radius: 2px; font-weight: 900;">4.5</b>
+													</div>
+													<div class="panel-body">
+														<p style="margin-bottom: 0; font-size: 13px;">Lorem
+															Ipsum is simply dummy text of the printing and
+															typesetting industry. Lorem Ipsum has been the industry's
+															standard dummy text ever since the 1500s, when an unknown
+															printer took a galley of type and scrambled it to make a
+															type specimen book. It has survived not only five
+															centuries</p>
+													</div>
+												</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+
+								<div class="panel panel-default"
+									style="border: transparent; box-shadow: none;">
+									<div class="panel-body">
+										<div class="row">
+											<div class="col-md-2 col-sm-2 r-image">
+												<img src="img/men.jpg" alt=""
+													class="img-responsive img-circle thumbnail"
+													style="margin-bottom: 8px;" />
+													<h5
+														style="font-size: 14px; font-weight: 600; margin-top: 0;">User
+														Name</h5>
+											</div>
+											<div class="col-md-10 col-sm-10" style="padding-left: 0;">
+												<div class="panel panel-default" style="margin-bottom: 0;">
+													<div class="panel-heading"
+														style="font-weight: 600; padding: 10px 15px 0;">
+														<p style="display: inline-block;">Room Need To be
+															Improved</p>
+														<b
+															style="margin-left: 10px; padding: 2px 4px 2px 4px; background-color: green; color: white; border-radius: 2px; font-weight: 900;">4.5</b>
+													</div>
+													<div class="panel-body">
+														<p style="margin-bottom: 0; font-size: 13px;">Lorem
+															Ipsum is simply dummy text of the printing and
+															typesetting industry. Lorem Ipsum has been the industry's
+															standard dummy text ever since the 1500s, when an unknown
+															printer took a galley of type and scrambled it to make a
+															type specimen book. It has survived not only five
+															centuries</p>
+													</div>
+												</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+
+								<div class="panel panel-default"
+									style="border: transparent; box-shadow: none;">
+									<div class="panel-body">
+										<div class="row">
+											<div class="col-md-2 col-sm-2 r-image">
+												<img src="img/men.jpg" alt=""
+													class="img-responsive img-circle thumbnail"
+													style="margin-bottom: 8px;" />
+													<h5
+														style="font-size: 14px; font-weight: 600; margin-top: 0;">User
+														Name</h5>
+											</div>
+											<div class="col-md-10 col-sm-10" style="padding-left: 0;">
+												<div class="panel panel-default" style="margin-bottom: 0;">
+													<div class="panel-heading"
+														style="font-weight: 600; padding: 10px 15px 0;">
+														<p style="display: inline-block;">Room Need To be
+															Improved</p>
+														<b
+															style="margin-left: 10px; padding: 2px 4px 2px 4px; background-color: green; color: white; border-radius: 2px; font-weight: 900;">4.5</b>
+													</div>
+													<div class="panel-body">
+														<p style="margin-bottom: 0; font-size: 13px;">Lorem
+															Ipsum is simply dummy text of the printing and
+															typesetting industry. Lorem Ipsum has been the industry's
+															standard dummy text ever since the 1500s, when an unknown
+															printer took a galley of type and scrambled it to make a
+															type specimen book. It has survived not only five
+															centuries</p>
+													</div>
+												</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+
+					<!-- /panel panel-default -->
+
+				</div>
+
+
+				<div class="col-md-4 col-xs-12">
+					<div
+						style="height: 400px; background-color: white; text-align: center">
+						<h3 style="margin-top: 0; padding-top: 25px;">FaceBook
+							handler</h3>
+					</div>
+				</div>
+
+
+			</div>
+			<!-- /.ROW -->
+		</div>
+		<!-- /.container -->
+
+		<div class="container"></div>
+	</ui:define>
+</ui:composition>
