@@ -8,8 +8,9 @@
 	template="layout/storelayout.xhtml">
 
 
+	<ui:define name="banner" />
+	
 	<ui:define name="meta">
-		<link href="#{request.contextPath}/resources/css/storedetail.css" rel="stylesheet" />
 		<f:metadata>
 			<f:viewParam name="id" value="#{storedetail.storeId}" />
 			<f:event type="preRenderView" listener="#{storedetail.fetchstore(storedetail.storeId)}" />
@@ -17,20 +18,31 @@
 	</ui:define>
 
 	<ui:define name="main_body">
+		<script>
+		(function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&amp;version=v2.6&amp;appId=774361825993005";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+		</script>
+		<link href="#{request.contextPath}/resources/css/storedetail.css" rel="stylesheet" />
+		<link href="#{request.contextPath}/resources/css/lightbox.css" rel="stylesheet" />
+		<script src="#{request.contextPath}/resources/js/lightbox.js"/>
 		<div class="container">
-
 			<div class="row">
-
 				<div class="col-md-8">
 					<div class="row">
 						<div class="panel panel-default">
 							<h2 class="h-name">Country Inn</h2>
 							<h3 class="prem">
-								Premium <img src="img/badge1.png" height="44" alt="" />
+								Premium <img src="http://www.alonia.ro/design/images/ro/premiumBadge.jpg" height="44" alt="" />
 							</h3>
 							<div class="panel-body">
 								<div>
-									<img src="img/2.jpg" alt="main_image" id="main_img"
+									<img src="http://www.tajmahal.org.uk/gifs/taj-mahal.jpeg" alt="main_image" id="main_img"
 										class="img-responsive img-rounded" />
 								</div>
 								<div class="row">
@@ -42,7 +54,7 @@
 									<div class="col-md-2 col-sm-2 col-xs-2 open-pad op-img"
 										style="padding-right: 0;">
 										<div class="openning" style="border: none;">
-											<img src="img/openb.png" alt=""
+											<img src="https://pbs.twimg.com/profile_images/497577090/ol_400x400.png" alt=""
 												style="margin-top: 0px; padding-left: 10px;" height="64" />
 										</div>
 
@@ -173,11 +185,18 @@
 								<h4 class="d-header"
 									style="margin-left: 15px; margin-bottom: 15px;">Restaurent
 									Images</h4>
-								<a href="img/01.jpg" data-lightbox="image-1"
-									data-title="My caption"><img src="img/01.jpg"
-									class="img-rounded res-img" alt="" /></a> <a href="img/02.jpg"
-									data-lightbox="image-1" data-title="My caption"><img
-									src="img/02.jpg" class="img-rounded res-img" alt="" /></a> <a
+								
+								<c:forEach begin="0" end="7">
+									<a href="http://www.tajmahal.org.uk/gifs/taj-mahal.jpeg" data-lightbox="image-1" data-title="My caption">
+										<img src="http://www.tajmahal.org.uk/gifs/taj-mahal.jpeg" class="img-rounded res-img" alt="" />
+									</a>
+								</c:forEach>
+									<!-- 
+								 <a href="img/02.jpg" data-lightbox="image-1" data-title="My caption">
+								 	<img src="img/02.jpg" class="img-rounded res-img" alt="" />
+								 </a> 
+								 
+								 <a
 									href="img/03.jpg" data-lightbox="image-1"
 									data-title="My caption"><img src="img/03.jpg"
 									class="img-rounded res-img" alt="" /></a> <a href="img/04.jpg"
@@ -190,7 +209,7 @@
 									data-lightbox="image-1" data-title="My caption"><img
 									src="http://www.tajmahal.org.uk/gifs/taj-mahal.jpeg"
 									class="img-rounded res-img" alt="" /></a>
-
+ -->
 							</div>
 						</div>
 					</div>
@@ -208,71 +227,12 @@
 										<a href="https://www.youtube.com/embed/nZ6XS0GEzz8"
 											target="show" id="thum1">
 											<div id="overlay">
-												<img src="img/02.jpg" alt="" />
+												<img src="http://www.tajmahal.org.uk/gifs/taj-mahal.jpeg" alt="" />
 												<div class="overlay"></div>
-											</div> <img src="img/play2.png" alt="" class="play" width="44" />
+											</div> <img src="#{request.contextPath}/resources/images/play2.png" alt="" class="play" width="44" />
 										</a>
 									</div>
 								</c:forEach>
-
-								<div id="box">
-									<a href="https://www.youtube.com/embed/nZ6XS0GEzz8"
-										target="show" id="thum2">
-										<div id="overlay">
-											<img src="img/03.jpg" alt="" />
-											<div class="overlay"></div>
-										</div> <img src="img/play2.png" alt="" class="play" width="44" />
-									</a>
-								</div>
-
-								<div id="box">
-									<a href="https://www.youtube.com/embed/nZ6XS0GEzz8"
-										target="show" id="thum3">
-										<div id="overlay">
-											<img src="img/04.jpg" alt="" />
-											<div class="overlay"></div>
-										</div> <img src="img/play2.png" alt="" class="play" width="44" />
-									</a>
-								</div>
-
-								<div id="box">
-									<a href="https://www.youtube.com/embed/nZ6XS0GEzz8"
-										target="show" id="thum4">
-										<div id="overlay">
-											<img src="img/01.jpg" alt="" />
-											<div class="overlay"></div>
-										</div> <img src="img/play2.png" alt="" class="play" width="44" />
-									</a>
-								</div>
-
-								<div id="box">
-									<a href="https://www.youtube.com/embed/nZ6XS0GEzz8"
-										target="show" id="thum4">
-										<div id="overlay">
-											<img src="img/01.jpg" alt="" />
-											<div class="overlay"></div>
-										</div> <img src="img/play2.png" alt="" class="play" width="44" />
-									</a>
-								</div>
-
-								<div id="box">
-									<a href="https://www.youtube.com/embed/nZ6XS0GEzz8"
-										target="show" id="thum4">
-										<div id="overlay">
-											<img src="img/01.jpg" alt="" />
-											<div class="overlay"></div>
-										</div> <img src="img/play2.png" alt="" class="play" width="44" />
-									</a>
-								</div>
-								<div id="box" style="margin-right: 0;">
-									<a href="https://www.youtube.com/embed/nZ6XS0GEzz8"
-										target="show" id="thum4">
-										<div id="overlay">
-											<img src="img/01.jpg" alt="" />
-											<div class="overlay"></div>
-										</div> <img src="img/play2.png" alt="" class="play" width="44" />
-									</a>
-								</div>
 							</div>
 						</div>
 
@@ -307,116 +267,44 @@
 								<h4 class="d-header" style="margin-left: 15px;">Reviews</h4>
 							</div>
 							<div class="panel-body">
-								<div class="panel panel-default"
-									style="border: transparent; box-shadow: none;">
-									<div class="panel-body">
-										<div class="row">
-											<div class="col-md-2 col-sm-2 r-image">
-												<img src="img/men.jpg" alt=""
-													class="img-responsive img-circle thumbnail"
-													style="margin-bottom: 8px;" />
-												<h5
-													style="font-size: 14px; font-weight: 600; margin-top: 0;">User
-													Name</h5>
-											</div>
-											<div class="col-md-10 col-sm-10" style="padding-left: 0;">
-												<div class="panel panel-default" style="margin-bottom: 0;">
-													<div class="panel-heading"
-														style="font-weight: 600; padding: 10px 15px 0;">
-														<p style="display: inline-block;">Room Need To be
-															Improved</p>
-														<b
-															style="margin-left: 10px; padding: 2px 4px 2px 4px; background-color: green; color: white; border-radius: 2px; font-weight: 900;">4.5</b>
-													</div>
-													<div class="panel-body">
-														<p style="margin-bottom: 0; font-size: 13px;">Lorem
-															Ipsum is simply dummy text of the printing and
-															typesetting industry. Lorem Ipsum has been the industry's
-															standard dummy text ever since the 1500s, when an unknown
-															printer took a galley of type and scrambled it to make a
-															type specimen book. It has survived not only five
-															centuries</p>
+								<c:forEach begin="0" end="10">
+									<div class="panel panel-default"
+										style="border: transparent; box-shadow: none;">
+										<div class="panel-body">
+											<div class="row">
+												<div class="col-md-2 col-sm-2 r-image">
+													<img src="http://www.exclutips.com/wp-content/uploads/2015/08/wordpress-custom-user-avatar.png" alt=""
+														class="img-responsive img-circle thumbnail"
+														style="margin-bottom: 8px;" />
+													<h5
+														style="font-size: 14px; font-weight: 600; margin-top: 0;">User
+														Name</h5>
+												</div>
+												<div class="col-md-10 col-sm-10" style="padding-left: 0;">
+													<div class="panel panel-default" style="margin-bottom: 0;">
+														<div class="panel-heading"
+															style="font-weight: 600; padding: 10px 15px 0;">
+															<p style="display: inline-block;">Room Need To be
+																Improved</p>
+															<b
+																style="margin-left: 10px; padding: 2px 4px 2px 4px; background-color: green; color: white; border-radius: 2px; font-weight: 900;">4.5</b>
+														</div>
+														<div class="panel-body">
+															<p style="margin-bottom: 0; font-size: 13px;">Lorem
+																Ipsum is simply dummy text of the printing and
+																typesetting industry. Lorem Ipsum has been the industry's
+																standard dummy text ever since the 1500s, when an unknown
+																printer took a galley of type and scrambled it to make a
+																type specimen book. It has survived not only five
+																centuries</p>
+														</div>
 													</div>
 												</div>
 											</div>
+	
 										</div>
-
 									</div>
-								</div>
-
-								<div class="panel panel-default"
-									style="border: transparent; box-shadow: none;">
-									<div class="panel-body">
-										<div class="row">
-											<div class="col-md-2 col-sm-2 r-image">
-												<img src="img/men.jpg" alt=""
-													class="img-responsive img-circle thumbnail"
-													style="margin-bottom: 8px;" />
-												<h5
-													style="font-size: 14px; font-weight: 600; margin-top: 0;">User
-													Name</h5>
-											</div>
-											<div class="col-md-10 col-sm-10" style="padding-left: 0;">
-												<div class="panel panel-default" style="margin-bottom: 0;">
-													<div class="panel-heading"
-														style="font-weight: 600; padding: 10px 15px 0;">
-														<p style="display: inline-block;">Room Need To be
-															Improved</p>
-														<b
-															style="margin-left: 10px; padding: 2px 4px 2px 4px; background-color: green; color: white; border-radius: 2px; font-weight: 900;">4.5</b>
-													</div>
-													<div class="panel-body">
-														<p style="margin-bottom: 0; font-size: 13px;">Lorem
-															Ipsum is simply dummy text of the printing and
-															typesetting industry. Lorem Ipsum has been the industry's
-															standard dummy text ever since the 1500s, when an unknown
-															printer took a galley of type and scrambled it to make a
-															type specimen book. It has survived not only five
-															centuries</p>
-													</div>
-												</div>
-											</div>
-										</div>
-
-									</div>
-								</div>
-
-								<div class="panel panel-default"
-									style="border: transparent; box-shadow: none;">
-									<div class="panel-body">
-										<div class="row">
-											<div class="col-md-2 col-sm-2 r-image">
-												<img src="img/men.jpg" alt=""
-													class="img-responsive img-circle thumbnail"
-													style="margin-bottom: 8px;" />
-												<h5
-													style="font-size: 14px; font-weight: 600; margin-top: 0;">User
-													Name</h5>
-											</div>
-											<div class="col-md-10 col-sm-10" style="padding-left: 0;">
-												<div class="panel panel-default" style="margin-bottom: 0;">
-													<div class="panel-heading"
-														style="font-weight: 600; padding: 10px 15px 0;">
-														<p style="display: inline-block;">Room Need To be
-															Improved</p>
-														<b
-															style="margin-left: 10px; padding: 2px 4px 2px 4px; background-color: green; color: white; border-radius: 2px; font-weight: 900;">4.5</b>
-													</div>
-													<div class="panel-body">
-														<p style="margin-bottom: 0; font-size: 13px;">Lorem
-															Ipsum is simply dummy text of the printing and
-															typesetting industry. Lorem Ipsum has been the industry's
-															standard dummy text ever since the 1500s, when an unknown
-															printer took a galley of type and scrambled it to make a
-															type specimen book. It has survived not only five
-															centuries</p>
-													</div>
-												</div>
-											</div>
-										</div>
-
-									</div>
-								</div>
+								</c:forEach>
 							</div>
 						</div>
 
@@ -430,9 +318,16 @@
 
 				<div class="col-md-4 col-xs-12">
 					<div
-						style="height: 400px; background-color: white; text-align: center">
-						<h3 style="margin-top: 0; padding-top: 25px;">FaceBook
-							handler</h3>
+						style="height: 400px; text-align: center">
+<!-- 						<h3 style="margin-top: 0; padding-top: 25px;">FaceBook -->
+<!-- 							handler</h3> -->
+						<div class="fb-page" data-href="https://www.facebook.com/aquagiriofficial/" 
+						data-tabs="timeline" data-height="800" data-small-header="false" data-adapt-container-width="true" 
+						data-hide-cover="false" data-show-facepile="true">
+							<blockquote cite="https://www.facebook.com/aquagiriofficial/" class="fb-xfbml-parse-ignore">
+								<a href="https://www.facebook.com/aquagiriofficial/"></a>
+							</blockquote>
+						</div>
 					</div>
 				</div>
 
@@ -446,6 +341,17 @@
 
 
 		<script>
+			function initialize() {
+	          var mapProp = {
+	            center:new google.maps.LatLng(51.508742,-0.120850),
+	            zoom:5,
+	            mapTypeId:google.maps.MapTypeId.ROADMAP
+	          };
+	          var map=new google.maps.Map(document.getElementById("googleMap"), mapProp);
+	        }
+	        google.maps.event.addDomListener(window, 'load', initialize);
+
+	        
 			$("#thum1").click(function() {
 				$("#show").show('5000');
 			});
