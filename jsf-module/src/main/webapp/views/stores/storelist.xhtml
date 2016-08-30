@@ -198,29 +198,37 @@
 									<hr>
 									<div>
 										<table>
-											<!-- Details and services of hotel -->
-											<tr>
-												<td class="tabledata">CUISINS:</td>
-												<td class="black">
-													<ui:repeat var="cusine" value="#{store.cusines}">#{cusine} , </ui:repeat>
-												</td>
-											</tr>
-											<tr>
-												<td class="tabledata">COST FOR TWO:</td>
-												<td class="black">Rs. #{store.costForTwo}</td>
-											</tr>
+											<ui:fragment rendered="#{store.cusines ne null}">
+												<!-- Details and services of hotel -->
+												<tr>
+													<td class="tabledata">CUISINS:</td>
+													<td class="black">
+														<ui:repeat var="cusine" value="#{store.cusines}">#{cusine} , </ui:repeat>
+													</td>
+												</tr>
+											</ui:fragment>
+											<ui:fragment rendered="#{store.costForTwo ne null}">
+												<tr>
+													<td class="tabledata">COST FOR TWO:</td>
+													<td class="black">Rs. #{store.costForTwo}</td>
+												</tr>
+											</ui:fragment>
 											<tr>
 												<td class="tabledata">HOURS:</td>
 												<td class="black">#{store.detail2}</td>
 											</tr>
-											<tr>
-												<td class="tabledata">FEATURED IN:</td>
-												<td class="black">#{store.detail3}</td>
-											</tr>
-											<tr>
-												<td class="tabledata">DISCOUNT</td>
-												<td class="black"> #{store.promotion}</td>
-											</tr>
+											<ui:fragment rendered="#{store.detail3 ne null}">
+												<tr>
+													<td class="tabledata">FEATURED IN:</td>
+													<td class="black">#{store.detail3}</td>
+												</tr>
+											</ui:fragment>
+											<ui:fragment rendered="#{store.promotion ne null}">
+												<tr>
+													<td class="tabledata">DISCOUNT</td>
+													<td class="black"> #{store.promotion}</td>
+												</tr>
+											</ui:fragment>
 										</table>
 										<!-- Details END-->
 				
