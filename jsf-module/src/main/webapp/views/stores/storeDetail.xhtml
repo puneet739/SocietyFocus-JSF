@@ -8,6 +8,14 @@
 	template="layout/storelayout.xhtml">
 
 
+	<ui:define name="meta">
+		<link href="#{request.contextPath}/resources/css/storedetail.css" rel="stylesheet" />
+		<f:metadata>
+			<f:viewParam name="id" value="#{storedetail.storeId}" />
+			<f:event type="preRenderView" listener="#{storedetail.fetchstore(storedetail.storeId)}" />
+		</f:metadata>
+	</ui:define>
+
 	<ui:define name="main_body">
 		<div class="container">
 
@@ -172,7 +180,7 @@
 									src="img/02.jpg" class="img-rounded res-img" alt="" /></a> <a
 									href="img/03.jpg" data-lightbox="image-1"
 									data-title="My caption"><img src="img/03.jpg"
-									class="img-rounded res-img" alt=""/></a> <a href="img/04.jpg"
+									class="img-rounded res-img" alt="" /></a> <a href="img/04.jpg"
 									data-lightbox="image-1" data-title="My caption"><img
 									src="img/04.jpg" class="img-rounded res-img" alt="" /></a> <a
 									href="img/04.jpg" data-lightbox="image-1"
@@ -194,77 +202,77 @@
 								<iframe src="" frameborder="0" name="show" id="show"
 									style="display: none; width: 100%; height: 350px;"> </iframe>
 								<br />
-									
-									<c:forEach begin="0" end="7">
+
+								<c:forEach begin="0" end="7">
 									<div id="box">
 										<a href="https://www.youtube.com/embed/nZ6XS0GEzz8"
 											target="show" id="thum1">
 											<div id="overlay">
 												<img src="img/02.jpg" alt="" />
-													<div class="overlay"></div>
+												<div class="overlay"></div>
 											</div> <img src="img/play2.png" alt="" class="play" width="44" />
 										</a>
 									</div>
-									</c:forEach>
+								</c:forEach>
 
-									<div id="box">
-										<a href="https://www.youtube.com/embed/nZ6XS0GEzz8"
-											target="show" id="thum2">
-											<div id="overlay">
-												<img src="img/03.jpg" alt="" />
-													<div class="overlay"></div>
-											</div> <img src="img/play2.png" alt="" class="play" width="44" />
-										</a>
-									</div>
+								<div id="box">
+									<a href="https://www.youtube.com/embed/nZ6XS0GEzz8"
+										target="show" id="thum2">
+										<div id="overlay">
+											<img src="img/03.jpg" alt="" />
+											<div class="overlay"></div>
+										</div> <img src="img/play2.png" alt="" class="play" width="44" />
+									</a>
+								</div>
 
-									<div id="box">
-										<a href="https://www.youtube.com/embed/nZ6XS0GEzz8"
-											target="show" id="thum3">
-											<div id="overlay">
-												<img src="img/04.jpg" alt="" />
-													<div class="overlay"></div>
-											</div> <img src="img/play2.png" alt="" class="play" width="44" />
-										</a>
-									</div>
+								<div id="box">
+									<a href="https://www.youtube.com/embed/nZ6XS0GEzz8"
+										target="show" id="thum3">
+										<div id="overlay">
+											<img src="img/04.jpg" alt="" />
+											<div class="overlay"></div>
+										</div> <img src="img/play2.png" alt="" class="play" width="44" />
+									</a>
+								</div>
 
-									<div id="box">
-										<a href="https://www.youtube.com/embed/nZ6XS0GEzz8"
-											target="show" id="thum4">
-											<div id="overlay">
-												<img src="img/01.jpg" alt="" />
-													<div class="overlay"></div>
-											</div> <img src="img/play2.png" alt="" class="play" width="44" />
-										</a>
-									</div>
+								<div id="box">
+									<a href="https://www.youtube.com/embed/nZ6XS0GEzz8"
+										target="show" id="thum4">
+										<div id="overlay">
+											<img src="img/01.jpg" alt="" />
+											<div class="overlay"></div>
+										</div> <img src="img/play2.png" alt="" class="play" width="44" />
+									</a>
+								</div>
 
-									<div id="box">
-										<a href="https://www.youtube.com/embed/nZ6XS0GEzz8"
-											target="show" id="thum4">
-											<div id="overlay">
-												<img src="img/01.jpg" alt="" />
-													<div class="overlay"></div>
-											</div> <img src="img/play2.png" alt="" class="play" width="44" />
-										</a>
-									</div>
+								<div id="box">
+									<a href="https://www.youtube.com/embed/nZ6XS0GEzz8"
+										target="show" id="thum4">
+										<div id="overlay">
+											<img src="img/01.jpg" alt="" />
+											<div class="overlay"></div>
+										</div> <img src="img/play2.png" alt="" class="play" width="44" />
+									</a>
+								</div>
 
-									<div id="box">
-										<a href="https://www.youtube.com/embed/nZ6XS0GEzz8"
-											target="show" id="thum4">
-											<div id="overlay">
-												<img src="img/01.jpg" alt="" />
-													<div class="overlay"></div>
-											</div> <img src="img/play2.png" alt="" class="play" width="44" />
-										</a>
-									</div>
-									<div id="box" style="margin-right: 0;">
-										<a href="https://www.youtube.com/embed/nZ6XS0GEzz8"
-											target="show" id="thum4">
-											<div id="overlay">
-												<img src="img/01.jpg" alt="" />
-													<div class="overlay"></div>
-											</div> <img src="img/play2.png" alt="" class="play" width="44" />
-										</a>
-									</div>
+								<div id="box">
+									<a href="https://www.youtube.com/embed/nZ6XS0GEzz8"
+										target="show" id="thum4">
+										<div id="overlay">
+											<img src="img/01.jpg" alt="" />
+											<div class="overlay"></div>
+										</div> <img src="img/play2.png" alt="" class="play" width="44" />
+									</a>
+								</div>
+								<div id="box" style="margin-right: 0;">
+									<a href="https://www.youtube.com/embed/nZ6XS0GEzz8"
+										target="show" id="thum4">
+										<div id="overlay">
+											<img src="img/01.jpg" alt="" />
+											<div class="overlay"></div>
+										</div> <img src="img/play2.png" alt="" class="play" width="44" />
+									</a>
+								</div>
 							</div>
 						</div>
 
@@ -284,8 +292,8 @@
 									<input type="text" class="form-control" id="review"
 										placeholder="Write your Review here" /> <span
 										class="input-group-btn">
-											<button class="btn btn-danger" type="button">Write
-												review</button>
+										<button class="btn btn-danger" type="button">Write
+											review</button>
 									</span>
 								</div>
 							</div>
@@ -307,9 +315,9 @@
 												<img src="img/men.jpg" alt=""
 													class="img-responsive img-circle thumbnail"
 													style="margin-bottom: 8px;" />
-													<h5
-														style="font-size: 14px; font-weight: 600; margin-top: 0;">User
-														Name</h5>
+												<h5
+													style="font-size: 14px; font-weight: 600; margin-top: 0;">User
+													Name</h5>
 											</div>
 											<div class="col-md-10 col-sm-10" style="padding-left: 0;">
 												<div class="panel panel-default" style="margin-bottom: 0;">
@@ -344,9 +352,9 @@
 												<img src="img/men.jpg" alt=""
 													class="img-responsive img-circle thumbnail"
 													style="margin-bottom: 8px;" />
-													<h5
-														style="font-size: 14px; font-weight: 600; margin-top: 0;">User
-														Name</h5>
+												<h5
+													style="font-size: 14px; font-weight: 600; margin-top: 0;">User
+													Name</h5>
 											</div>
 											<div class="col-md-10 col-sm-10" style="padding-left: 0;">
 												<div class="panel panel-default" style="margin-bottom: 0;">
@@ -381,9 +389,9 @@
 												<img src="img/men.jpg" alt=""
 													class="img-responsive img-circle thumbnail"
 													style="margin-bottom: 8px;" />
-													<h5
-														style="font-size: 14px; font-weight: 600; margin-top: 0;">User
-														Name</h5>
+												<h5
+													style="font-size: 14px; font-weight: 600; margin-top: 0;">User
+													Name</h5>
 											</div>
 											<div class="col-md-10 col-sm-10" style="padding-left: 0;">
 												<div class="panel panel-default" style="margin-bottom: 0;">
@@ -435,5 +443,26 @@
 		<!-- /.container -->
 
 		<div class="container"></div>
+
+
+		<script>
+			$("#thum1").click(function() {
+				$("#show").show('5000');
+			});
+			$("#thum2").click(function() {
+				$("#show").show('5000');
+			});
+			$("#thum3").click(function() {
+				$("#show").show('5000');
+			});
+			$("#thum4").click(function() {
+				$("#show").show('5000');
+			});
+
+			$("#map").click(function() {
+				$("#show-map").show('slow');
+			});
+		</script>
+
 	</ui:define>
 </ui:composition>
