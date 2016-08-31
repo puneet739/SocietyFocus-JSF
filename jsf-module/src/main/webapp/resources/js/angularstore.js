@@ -152,7 +152,7 @@ app.controller("addQuestionController", function($scope, $http, $rootScope) {
 								+ response.data.body);
 						alert("Store addedd successfully");
 						var newURL = window.location.protocol + "/" + window.location.host + "/" + window.location.pathname
-						window.href="http://localhost:8080/store-ui/views/stores/addrestaurant.xhtml"
+						window.href="http://societyfocus.com/detail?id="+response.data.body.storeid;
 					},function errorCallback(response){
 						console.log("Error Caused while updloading the data to server. Try Again : "
 								+ response);
