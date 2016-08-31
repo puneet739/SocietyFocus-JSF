@@ -13,4 +13,9 @@
 		<view-id value="/views/stores/addrestaurant.xhtml" />
 	</url-mapping>
 	
+	<url-mapping id="details">
+		<pattern value="/detail" />
+		<view-id value="/views/stores/storeinfo.xhtml" />
+	</url-mapping>
+
 </pretty-config>

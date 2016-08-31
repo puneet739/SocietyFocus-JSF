@@ -160,12 +160,11 @@
 			<p:commandButton id="actionButton" actionListener="#{storelist.doNothing}" update=":stores"/>
 		</h:form>
 		
-		
 				<h:panelGroup id="stores">
 					<ul class="product-list-vertical">
 						<ui:repeat var="store" value="#{storelist.stores}">
 							<div>
-								<li class="list1"><a href="#" class="product-photo"> <img
+								<li class="list1"><a href="#{request.contextPath}/detail?id=#{store.storeid}" class="product-photo"> <img
 										src="#{store.backgroundImage.imageUrl}" alt="hotel thumbnail"
 										style="height: 100px; width: 150px; border-radius: 7px;" /></a>
 				
@@ -184,7 +183,7 @@
 				
 										<p class="product-compare1">Dinning</p>
 										<h2>
-											<a href="#">#{store.name}</a>
+											<a href="#{request.contextPath}/detail?id=#{store.storeid}">#{store.name}</a>
 										</h2>
 										<p class="product-compare1"
 											style="margin-bottom: 8px; margin-top: 8px;">
@@ -248,9 +247,9 @@
 											</div>
 											</ui:fragment>
 											<div class="btn-group" role="group">
-												<button type="button" class="btn btn-default order btn2 color">
+												<a href="#{request.contextPath}/detail?id=#{store.storeid}"><button type="button" class="btn btn-default order btn2 color">
 													<span class="glyphicon glyphicon-phone btn3"></span>Order Now
-												</button>
+												</button></a>
 											</div>
 										</div>
 										<!-- THREE BUTTON END -->

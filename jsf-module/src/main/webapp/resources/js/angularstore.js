@@ -32,7 +32,7 @@ app.config(function($httpProvider) {
 });
 
 var constant = {
-		//SERVICE_URL:"http://localhost:8080/zircon/services",
+//		SERVICE_URL:"http://localhost:8080/zircon/services",
 		SERVICE_URL : "http://societyfocus.com/service",
 	}
 
@@ -206,6 +206,8 @@ function initialize() {
 	});
 }
 
+//Size in KB
+var imageSize = 1024;
 var uploadObj;
 var mainPic;
 var mainImage;
@@ -216,7 +218,7 @@ $(document).ready(function() {
 		fileName : "myfile",
 		showPreview : true,
 		dragDrop : true,
-		maxFileSize : 500000 * 1024,
+		maxFileSize : imageSize * 1024,
 		multiple : true,
 		autoSubmit : true,
 		previewHeight : "100px",
@@ -236,7 +238,7 @@ $(document).ready(function() {
 		fileName : "myfile",
 		showPreview : true,
 		dragDrop : true,
-		maxFileSize : 500000 * 1024,
+		maxFileSize : imageSize * 1024,
 		multiple : false,
 		autoSubmit : true,
 		previewHeight : "100px",

@@ -298,9 +298,9 @@ hr{
 
     }
 
-    .panel{
+    /* .panel{
         display: none;
-    }
+    } */
     .navbar-brand>img{
         display: none;
     }

@@ -10,11 +10,13 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="shortcut icon" href="#{request.contextPath}/resources/images/favicon.ico" />
-	<meta name="description" content="" />
-	<meta name="author" content="" />
 	
-	<title>Shop Homepage - Start Bootstrap Template</title>
-	
+	<ui:insert name="metaTags">
+		<meta name="description" content="" />
+		<meta name="author" content="" />
+		<title>Society Focus Store</title>
+	</ui:insert>	
+
 	<!-- Bootstrap Core CSS -->
 	<link href="#{request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet" />
 	
@@ -37,7 +39,7 @@
 	
 		<!-- Bootstrap Core JavaScript -->
 		<script src="#{request.contextPath}/resources/js/bootstrap.min.js"></script>
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXkHhlHh8l4_T-tiG4r2X9ONrmD5C87Fc&amp;libraries=places"/>
+		<script async="async" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXkHhlHh8l4_T-tiG4r2X9ONrmD5C87Fc&amp;libraries=places"/>
 </h:head>
 
 <body>
