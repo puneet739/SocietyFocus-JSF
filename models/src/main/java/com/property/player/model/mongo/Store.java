@@ -1,6 +1,5 @@
 package com.property.player.model.mongo;
 
-
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -12,7 +11,6 @@ import com.property.player.model.generic.CategoryEnum;
 import com.property.player.model.generic.CusineEnum;
 import com.property.player.model.generic.FeaturesEnum;
 import com.property.player.model.generic.StoreStatusEnum;
-
 
 @Document
 public class Store {
@@ -29,7 +27,7 @@ public class Store {
 	private List<FeaturesEnum> features;
 	private String promotion;
 	private double costForTwo;
-	private String videoUrl;
+	private List<String> videoUrl;
 	private List<Image> menu_image;
 	private List<Image> storeImages;
 	private List<Image> user_images;
@@ -47,9 +45,8 @@ public class Store {
 	private StoreStatusEnum status;
 	private CategoryEnum category;
 	private String storeType;
-	private Map<String,String> socialHandlers;
-	
-	
+	private Map<String, String> socialHandlers;
+
 	public String getStoreid() {
 		return storeid;
 	}
@@ -112,14 +109,6 @@ public class Store {
 
 	public void setCostForTwo(double costForTwo) {
 		this.costForTwo = costForTwo;
-	}
-
-	public String getVideoUrl() {
-		return videoUrl;
-	}
-
-	public void setVideoUrl(String videoUrl) {
-		this.videoUrl = videoUrl;
 	}
 
 	public List<Image> getMenu_image() {
@@ -310,5 +299,12 @@ public class Store {
 		this.storeType = storeType;
 	}
 
-}
+	public List<String> getVideoUrl() {
+		return videoUrl;
+	}
 
+	public void setVideoUrl(List<String> videoUrl) {
+		this.videoUrl = videoUrl;
+	}
+
+}
