@@ -89,20 +89,25 @@
 											style="color: green; font-weight: 600; margin-bottom: 12px;">
 											#{store.phoneNo}</li>
 										
-										<li><h4 class="d-header d-pad">COST</h4></li>
-										<li>Rs #{store.costForTwo} for two people</li>
+										<ui:fragment rendered="#{store.costForTwo ge 1}">
+											<li><h4 class="d-header d-pad">COST</h4></li>
+											<li>Rs #{store.costForTwo} for two people</li>
+										</ui:fragment>
 										
-										<li><h4 class="d-header d-pad">Cuisines</h4></li>
-										<li style="color: #c31605;">
-											<ui:repeat var="cusines" value="#{store.cusines}">#{cusines},
-											</ui:repeat>
-										</li>
+										<ui:fragment rendered="#{store.cusines.size() ge 1}">
+											<li><h4 class="d-header d-pad">Cuisines</h4></li>
+											<li style="color: #c31605;">
+												<ui:repeat var="cusines" value="#{store.cusines}">#{cusines},
+												</ui:repeat>
+											</li>
+										</ui:fragment>
+										
 									</ul>
 								</div>
 								<div class="col-md-4">
 									<ul class="ul-mar">
 										<li><h4 class="d-header">Opening Hours</h4></li>
-										<li>#{store.detail1}</li>
+										<li>#{store.detail2}</li>
 									</ul>
 
 									<ul class="ul-mar">
@@ -111,7 +116,7 @@
 										<button id="map">
 											<div id="box1">
 												<a>
-												<img id="map" width="600" src="http://maps.googleapis.com/maps/api/staticmap?key=AIzaSyBXkHhlHh8l4_T-tiG4r2X9ONrmD5C87Fc&amp;center=Albany,+NY&amp;zoom=13&amp;scale=false&amp;size=600x300&amp;maptype=roadmap&amp;format=png&amp;visual_refresh=true" alt="Google Map of Albany, NY"/>
+												<img id="map" width="600" src="https://maps.googleapis.com/maps/api/staticmap?center=#{store.cordinates}&amp;zoom=17&amp;scale=false&amp;size=600x300&amp;maptype=roadmap&amp;format=png&amp;visual_refresh=true&amp;key=AIzaSyBXkHhlHh8l4_T-tiG4r2X9ONrmD5C87Fc" alt="Google Map of Albany, NY"/>
 												</a>
 											</div>
 										</button>
@@ -119,7 +124,7 @@
 								</div>
 								<div class="col-md-4">
 									<ul>
-										<li><h4 class="d-header">Hilights</h4></li>
+										<li><h4 class="d-header">Highlights</h4></li>
 										<ui:repeat var="feature" value="#{store.features}"><li><span class="glyphicon glyphicon-ok"></span>#{feature}</li></ui:repeat>
 									</ul>
 								</div>
@@ -282,20 +287,20 @@
 				</div>
 
 
-				<div class="col-md-4 col-xs-12">
-					<div
-						style="height: 1000px; background-color: white; text-align: center">
-<!-- 						<h3 style="margin-top: 0; padding-top: 25px;">FaceBook -->
-<!-- 							handler</h3> -->
-						<div class="fb-page" data-href="https://www.facebook.com/aquagiriofficial/" 
-						data-tabs="timeline" data-height="1000px" data-small-header="false" data-adapt-container-width="true" 
-						data-hide-cover="false" data-show-facepile="true">
-							<blockquote cite="https://www.facebook.com/aquagiriofficial/" class="fb-xfbml-parse-ignore">
-								<a href="https://www.facebook.com/aquagiriofficial/"></a>
-							</blockquote>
+				<ui:fragment rendered="#{store.socialHandlers[facebook] ne null}">
+					<div class="col-md-4 col-xs-12">
+						<div
+							style="height: 1000px; background-color: white; text-align: center">
+							<div class="fb-page" data-href="#{store.socialHandlers[facebook]}" 
+							data-tabs="timeline" data-height="1000px" data-small-header="false" data-adapt-container-width="true" 
+							data-hide-cover="false" data-show-facepile="true">
+								<blockquote cite="#{store.socialHandlers[facebook]}" class="fb-xfbml-parse-ignore">
+									<a href="#{store.socialHandlers[facebook]}"></a>
+								</blockquote>
+							</div>
 						</div>
 					</div>
-				</div>
+				</ui:fragment>
 
 
 			</div>
