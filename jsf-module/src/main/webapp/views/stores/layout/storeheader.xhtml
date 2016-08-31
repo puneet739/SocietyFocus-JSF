@@ -19,10 +19,10 @@
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="#">Home</a></li>
-					<li><a href="#">About Us</a></li>
-					<li><a href="#">Services</a></li>
-					<li><a href="#">Blog</a></li>
+					<li><a href="#{request.contextPath}/stores">Home</a></li>
+					<li><a href="#{request.contextPath}/stores">About Us</a></li>
+					<li><a href="#{request.contextPath}/stores">Services</a></li>
+					<li><a href="#{request.contextPath}/stores">Blog</a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
@@ -30,7 +30,7 @@
 					<li><a href="#"><span id="login">LOGIN</span></a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-				<a href="#{request.contextPath}/views/stores/addrestaurant.xhtml">
+				<a href="#{request.contextPath}/addRestaurant">
 					<div class="btn btn-default navbar-btn"
 						id="addbutton">
 						<i class="glyphicon glyphicon-plus"></i>
@@ -84,7 +84,8 @@
 							</ul>
 						</div>
 					</div>
-					<div class="col-md-4 hidden-sm hidden-xs" style="padding: 0;">
+					<!-- Commenting out orders in phase1 -->
+					<!-- <div class="col-md-4 hidden-sm hidden-xs" style="padding: 0;">
 						<div>
 							<img src="#{request.contextPath}/resources/images/basket.png" alt="" style="padding-top: 15px;" />
 							<button class="btn btn-primary bgbtn" type="button">
@@ -92,7 +93,7 @@
 									style="color: black; margin-left: 5px;">4</span>
 							</button>
 						</div>
-					</div>
+					</div> -->
 				</div>
 			</div>
 		</div>
