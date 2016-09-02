@@ -10,6 +10,7 @@
 	<ui:define name="meta">
 		<f:metadata>
 			<f:viewParam name="sortby" value="#{storelist.sortby}" />
+			<f:viewParam name="page" value="#{storelist.pageNo}" />
 			<f:event type="preRenderView" listener="#{storelist.init}" />
 		</f:metadata>
 	</ui:define>
@@ -65,11 +66,11 @@
 						<div class="panel-heading">Sort by</div>
 						<div class="panel-body">
 							<ul class="list-group">
-								<a href="?sortby=views"><li class="list-group-item"><span class="badge"> High to Low</span> Popularity</li></a> 
-								<a href="?sortby=rating"><li class="list-group-item"><span class="badge">High to Low</span> Rating</li></a>
-								<a href="?sortby=views"><li class="list-group-item"><span class="badge">High to Low</span> Cost</li></a>
-								<a href="?sortby=costForTwo"><li class="list-group-item"><span class="badge">Low to High</span> Cost</li></a>
-								<a href="?sortby=createdDate"><li class="list-group-item"><span class="badge">High to Low</span> Recently added</li></a>
+								<a href="#{request.requestURI}?sortby=views#{not empty request.queryString ? '&amp;' : ''}#{request.queryString}"><li class="list-group-item"><span class="badge"> High to Low</span> Popularity</li></a> 
+								<a href="#{request.requestURI}?sortby=rating#{not empty request.queryString ? '&amp;' : ''}#{request.queryString}"><li class="list-group-item"><span class="badge">High to Low</span> Rating</li></a>
+								<a href="#{request.requestURI}?sortby=costForTwo#{not empty request.queryString ? '&amp;' : ''}#{request.queryString}"><li class="list-group-item"><span class="badge">High to Low</span> Cost</li></a>
+								<a href="#{request.requestURI}?sortby=costForTwo#{not empty request.queryString ? '&amp;' : ''}#{request.queryString}"><li class="list-group-item"><span class="badge">Low to High</span> Cost</li></a>
+								<a href="#{request.requestURI}?sortby=createdDate#{not empty request.queryString ? '&amp;' : ''}#{request.queryString}"><li class="list-group-item"><span class="badge">High to Low</span> Recently added</li></a>
 							</ul>
 						</div>
 					</div>
@@ -287,10 +288,11 @@
 			$('#pagination-container').twbsPagination({
 				totalPages: Math.ceil(#{storelist.totalCount/storelist.PAGE_SIZE}),
 				visiblePages: 7,
+				startPage: #{storelist.pageNo},
 				href: '?page={{number}}',
-			    onPageClick: function(event, page) {
-			    		loadData(page);
-					}
+// 			    onPageClick: function(event, page) {
+// 			    		loadData(page);
+// 					}
 			});
 		}
 		
