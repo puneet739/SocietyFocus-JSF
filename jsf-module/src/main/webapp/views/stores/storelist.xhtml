@@ -9,6 +9,7 @@
 
 	<ui:define name="meta">
 		<f:metadata>
+			<f:viewParam name="sortby" value="#{storelist.sortby}" />
 			<f:event type="preRenderView" listener="#{storelist.init}" />
 		</f:metadata>
 	</ui:define>
@@ -44,7 +45,7 @@
 		<div class="row">
 
 			<div class="col-md-3 col-sm-4">
-
+			<h:form>
 				<div class="mybar">
 					<div class="panel panel-default">
 						<div class="panel-heading" style="text-align: center">Filters</div>
@@ -64,16 +65,11 @@
 						<div class="panel-heading">Sort by</div>
 						<div class="panel-body">
 							<ul class="list-group">
-								<li class="list-group-item"><span class="badge">High
-										to Low</span> Popularity</li>
-								<li class="list-group-item"><span class="badge">High
-										to Low</span> Rating</li>
-								<li class="list-group-item"><span class="badge">High
-										to Low</span> Cost</li>
-								<li class="list-group-item"><span class="badge">Low
-										to High</span> Cost</li>
-								<li class="list-group-item"><span class="badge"></span>
-									Recently added</li>
+								<a href="?sortby=views"><li class="list-group-item"><span class="badge"> High to Low</span> Popularity</li></a> 
+								<a href="?sortby=rating"><li class="list-group-item"><span class="badge">High to Low</span> Rating</li></a>
+								<a href="?sortby=views"><li class="list-group-item"><span class="badge">High to Low</span> Cost</li></a>
+								<a href="?sortby=costForTwo"><li class="list-group-item"><span class="badge">Low to High</span> Cost</li></a>
+								<a href="?sortby=createdDate"><li class="list-group-item"><span class="badge">High to Low</span> Recently added</li></a>
 							</ul>
 						</div>
 					</div>
@@ -138,6 +134,7 @@
 						</div>
 					</div>
 				</div>
+				</h:form>
 			</div>
 
 
@@ -206,7 +203,7 @@
 													</td>
 												</tr>
 											</ui:fragment>
-											<ui:fragment rendered="#{store.costForTwo ne null}">
+											<ui:fragment rendered="#{store.costForTwo ne 0}">
 												<tr>
 													<td class="tabledata">COST FOR TWO:</td>
 													<td class="black">Rs. #{store.costForTwo}</td>
@@ -288,7 +285,7 @@
 		var totalCount = #{storelist.totalCount};
 		if (totalCount>0){
 			$('#pagination-container').twbsPagination({
-				totalPages: #{storelist.totalCount/storelist.PAGE_SIZE},
+				totalPages: Math.ceil(#{storelist.totalCount/storelist.PAGE_SIZE}),
 				visiblePages: 7,
 				href: '?page={{number}}',
 			    onPageClick: function(event, page) {

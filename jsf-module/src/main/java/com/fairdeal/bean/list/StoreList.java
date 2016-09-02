@@ -1,7 +1,12 @@
 package com.fairdeal.bean.list;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang.math.NumberUtils;
 import org.springframework.context.annotation.Scope;
@@ -21,13 +26,14 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
 
 @Component(value = "storelist")
-@Scope(value = "session")
+@Scope(value = "request")
 public class StoreList {
 
 	private Gson gson = GsonHelper.getBaseGsonBuilder().create();
 	private final int PAGE_SIZE=10;
 	public List<StoreBean> stores =new LinkedList<>();
 	public List<Banner> banners  =new LinkedList<>();
+	private String sortby;
 	private long pageNo=1;
 	private long totalCount;
 
@@ -40,7 +46,14 @@ public class StoreList {
 //		if (!FacesContext.getCurrentInstance().isPostback()) {
 			stores =new LinkedList<>();
 			banners  =new LinkedList<>();
-			JsonObject jsonResponse = Util.httpGetRequest(Constants.SERVICE_URL + "/v1/store?maxcount="+PAGE_SIZE+"&pageNo="+pageNo);
+			Map<String, String> queryParams = new HashMap<>();
+			queryParams.put("pageNo", ""+pageNo);
+			queryParams.put("maxcount", ""+PAGE_SIZE);
+			if (sortby!=null){
+				queryParams.put("sort", sortby);
+			}
+			String queryString = createQueryString(queryParams);
+			JsonObject jsonResponse = Util.httpGetRequest(Constants.SERVICE_URL + "/v1/store"+queryString);
 			JsonArray objects  = jsonResponse.getAsJsonArray("stores");
 			
 			for(int i = 0; i < objects.size(); i++){
@@ -65,6 +78,24 @@ public class StoreList {
 			}
 			LoggerUtil.debug("Doing initalization of restaurants");
 //	    }
+	}
+
+	private String createQueryString(Map<String, String> queryParams) {
+		if (queryParams==null || queryParams.size()<1)return "";
+		StringBuffer queryString = new StringBuffer("?");
+		for (String key : queryParams.keySet()){
+			String value = queryParams.get(key);
+			if (value!=null){
+				queryString.append(key+"="+value);
+			}
+			queryString.append("&");
+		};
+		return queryString.toString();
+	}
+
+	public void addQueryParam(String queryParam){
+		String uri = ((HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest()).getRequestURI();
+		uri+=queryParam;
 	}
 	
 	public List<StoreBean> getStores() {
@@ -103,5 +134,13 @@ public class StoreList {
 
 	public int getPAGE_SIZE() {
 		return PAGE_SIZE;
+	}
+
+	public String getSortby() {
+		return sortby;
+	}
+
+	public void setSortby(String sortby) {
+		this.sortby = sortby;
 	}
 }
