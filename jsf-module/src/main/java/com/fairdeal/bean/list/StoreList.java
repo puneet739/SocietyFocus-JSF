@@ -1,5 +1,6 @@
 package com.fairdeal.bean.list;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -14,6 +15,8 @@ import org.springframework.stereotype.Component;
 
 import com.fairdeal.action.bean.StoreBean;
 import com.fairdeal.bean.bean.Banner;
+import com.fairdeal.portal.bean.filter.DisplayOption;
+import com.fairdeal.portal.bean.filter.Filter;
 import com.fairdeal.utility.Config;
 import com.fairdeal.utility.Constants;
 import com.fairdeal.utility.GsonHelper;
@@ -36,22 +39,19 @@ public class StoreList {
 	private String sortby;
 	private long pageNo=1;
 	private long totalCount;
+	private List<Filter> filters;
 
 	public void doNothing() {
-		LoggerUtil.debug("Working here to get the filters");
+		LoggerUtil.debug("Working here to get the Filter");
 		init();
 	}
 
 	public void init() {
+		initalizefilterCategories();
 //		if (!FacesContext.getCurrentInstance().isPostback()) {
 			stores =new LinkedList<>();
 			banners  =new LinkedList<>();
-			Map<String, String> queryParams = new HashMap<>();
-			queryParams.put("pageNo", ""+pageNo);
-			queryParams.put("maxcount", ""+PAGE_SIZE);
-			if (sortby!=null){
-				queryParams.put("sort", sortby);
-			}
+			Map<String, String> queryParams = getQueryMap();
 			String queryString = createQueryString(queryParams);
 			JsonObject jsonResponse = Util.httpGetRequest(Constants.SERVICE_URL + "/v1/store"+queryString);
 			JsonArray objects  = jsonResponse.getAsJsonArray("stores");
@@ -80,6 +80,34 @@ public class StoreList {
 //	    }
 	}
 
+	private void initalizefilterCategories() {
+		filters= new ArrayList<>();
+		Filter filter = new Filter("Sort by");
+		List<DisplayOption> DisplayOption = new ArrayList<>();
+		DisplayOption option1= new DisplayOption("Popularity","High to Low","?sortby=views");
+		DisplayOption option2= new DisplayOption("Rating","High to Low","?sortby=rating");
+		DisplayOption option3= new DisplayOption("Cost","High to Low","?sortby=costForTwo&direction=descending");
+		DisplayOption option4= new DisplayOption("Cost","Low to High","?sortby=costForTwo&direction=ascending");
+		DisplayOption option5= new DisplayOption("Recently added","Recently added","?sortby=createdDate");
+		DisplayOption.add(option1);
+		DisplayOption.add(option2);
+		DisplayOption.add(option3);
+		DisplayOption.add(option4);
+		DisplayOption.add(option5);
+		filter.setDisplayOptions(DisplayOption);
+		
+		filters.add(filter);
+	}
+
+	public Map<String,String> getQueryMap(){
+		Map<String, String> queryParams = new HashMap<>();
+		queryParams.put("pageNo", ""+pageNo);
+		queryParams.put("maxcount", ""+PAGE_SIZE);
+		if (sortby!=null){
+			queryParams.put("sort", sortby);
+		}
+		return queryParams;
+	}
 	private String createQueryString(Map<String, String> queryParams) {
 		if (queryParams==null || queryParams.size()<1)return "";
 		StringBuffer queryString = new StringBuffer("?");
@@ -90,12 +118,32 @@ public class StoreList {
 			}
 			queryString.append("&");
 		};
-		return queryString.toString();
+		return removelastand(queryString.toString());
 	}
 
-	public void addQueryParam(String queryParam){
-		String uri = ((HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest()).getRequestURI();
-		uri+=queryParam;
+	public String queryParam(){
+		String uri = ((HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest()).getQueryString();
+		String newstring="";
+		if (uri!=null){
+			newstring = uri.replaceAll("page=\\d", "");
+			System.out.println(newstring);
+		}
+		return removelastand(newstring);
+	}
+	
+	public String queryOnlyOnce(String queryParam){
+		String uri = ((HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest()).getQueryString();
+		uri+=uri+queryParam;
+		return queryParam;
+	}
+	
+	private String removelastand(String queryString){
+		if (queryString!=null){
+			while (queryString.endsWith("&")){
+				queryString=queryString.substring(0, queryString.length()-1);
+			}
+		}
+		return queryString;
 	}
 	
 	public List<StoreBean> getStores() {
@@ -143,4 +191,13 @@ public class StoreList {
 	public void setSortby(String sortby) {
 		this.sortby = sortby;
 	}
+
+	public List<Filter> getFilters() {
+		return filters;
+	}
+
+	public void setFilters(List<Filter> filters) {
+		this.filters = filters;
+	}
+
 }

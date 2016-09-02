@@ -61,19 +61,34 @@
 							</div>
 						</div>
 					</div>
-
-					<div class="panel panel-default">
+					
+					<ui:repeat var="filter" value="#{storelist.filters}">
+						<div class="panel panel-default">
+							<div class="panel-heading">#{filter.name}</div>
+							<div class="panel-body">
+								<ul class="list-group">
+									<ul class="list-group">
+										<ui:repeat var="displayoption" value="#{filter.displayOptions}">
+											<a href="#{displayoption.url}"><li class="list-group-item"><span class="badge"> #{displayoption.displayresult}</span>  #{displayoption.name}</li></a>
+										</ui:repeat>
+									</ul>
+								</ul>
+							</div>
+						</div>
+					</ui:repeat>
+					
+					<!-- <div class="panel panel-default">
 						<div class="panel-heading">Sort by</div>
 						<div class="panel-body">
 							<ul class="list-group">
-								<a href="#{request.requestURI}?sortby=views#{not empty request.queryString ? '&amp;' : ''}#{request.queryString}"><li class="list-group-item"><span class="badge"> High to Low</span> Popularity</li></a> 
-								<a href="#{request.requestURI}?sortby=rating#{not empty request.queryString ? '&amp;' : ''}#{request.queryString}"><li class="list-group-item"><span class="badge">High to Low</span> Rating</li></a>
-								<a href="#{request.requestURI}?sortby=costForTwo#{not empty request.queryString ? '&amp;' : ''}#{request.queryString}"><li class="list-group-item"><span class="badge">High to Low</span> Cost</li></a>
-								<a href="#{request.requestURI}?sortby=costForTwo#{not empty request.queryString ? '&amp;' : ''}#{request.queryString}"><li class="list-group-item"><span class="badge">Low to High</span> Cost</li></a>
-								<a href="#{request.requestURI}?sortby=createdDate#{not empty request.queryString ? '&amp;' : ''}#{request.queryString}"><li class="list-group-item"><span class="badge">High to Low</span> Recently added</li></a>
+								<a href="?sortby=views"><li class="list-group-item"><span class="badge"> High to Low</span> Popularity</li></a> 
+								<a href="?sortby=rating"><li class="list-group-item"><span class="badge">High to Low</span> Rating</li></a>
+								<a href="?sortby=costForTwo&amp;direction=descending"><li class="list-group-item"><span class="badge">High to Low</span> Cost</li></a>
+								<a href="?sortby=costForTwo&amp;direction=ascending"><li class="list-group-item"><span class="badge">Low to High</span> Cost</li></a>
+								<a href="?sortby=createdDate"><li class="list-group-item"><span class="badge">Latest first</span> Recently added</li></a>
 							</ul>
 						</div>
-					</div>
+					</div> -->
 
 					<div class="panel panel-default">
 						<div class="panel-heading">Category</div>
@@ -179,7 +194,7 @@
 				
 				
 				
-										<p class="product-compare1">Dinning</p>
+										<p class="product-compare1">#{store.storeType}</p>
 										<h2>
 											<a href="#{request.contextPath}/detail?id=#{store.storeid}">#{store.name}</a>
 										</h2>
@@ -289,7 +304,7 @@
 				totalPages: Math.ceil(#{storelist.totalCount/storelist.PAGE_SIZE}),
 				visiblePages: 7,
 				startPage: #{storelist.pageNo},
-				href: '?page={{number}}',
+				href: '?page={{number}}&amp;#{storelist.queryParam()}',
 // 			    onPageClick: function(event, page) {
 // 			    		loadData(page);
 // 					}
