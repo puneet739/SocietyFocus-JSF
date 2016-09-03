@@ -10,11 +10,27 @@
 
 	<ui:define name="banner" />
 	
-	<ui:define name="meta">
+	<ui:define name="metaTags">
 		<f:metadata>
 			<f:viewParam name="id" value="#{storedetail.storeId}" />
 			<f:event type="preRenderView" listener="#{storedetail.fetchstore(storedetail.storeId)}" />
+			<ui:param name="store" value="#{storedetail.storebean}" />			
 		</f:metadata>
+		
+		<!-- Twitter Card data -->
+		<meta name="twitter:card" value="#{store.name} " />
+		
+		<!-- Place this data between the <head> tags of your website -->
+		<title>#{store.name} #{store.address}</title>
+		<meta name="description" content="#{store.description} #{store.address}" />
+		
+		<!-- Open Graph data -->
+		<meta property="og:title" content="#{store.name}" />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content="http://societyfocus.com/jsf-portal/detail?id=##{store.storeid}" />
+		<meta property="og:image" content="#{store.backgroundImage.imageUrl}" />
+		<meta property="og:description" content="#{store.description} #{store.address}" />
+		
 	</ui:define>
 
 	<ui:define name="main_body">
@@ -32,7 +48,7 @@
 		<link href="#{request.contextPath}/resources/css/lightbox.css" rel="stylesheet" />
 		<script src="#{request.contextPath}/resources/js/lightbox.js"/>
 		<div class="container">
-		<ui:param name="store" value="#{storedetail.storebean}" />
+
 			<div class="row">
 				<div class="col-md-8">
 					<div class="row">
