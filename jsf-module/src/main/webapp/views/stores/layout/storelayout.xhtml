@@ -98,6 +98,16 @@
 		$(".footer .mybutton4").click(function() {
 			$(".footer .list-group4").slideToggle('fast');
 		});
+		
+		//Added for facebook social page. 
+		(function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&amp;version=v2.6&amp;appId=774361825993005";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
 	</script>
 
 </body>

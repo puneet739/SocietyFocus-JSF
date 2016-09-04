@@ -175,7 +175,10 @@
 		
 				<h:panelGroup id="stores">
 					<ul class="product-list-vertical">
-						<ui:repeat var="store" value="#{storelist.stores}">
+						<ui:include src="/views/stores/layout/facebookpagelike.xhtml">
+									<ui:param name="fbpageurl" value="https://www.facebook.com/societyfocus"></ui:param>
+						</ui:include>
+						<ui:repeat var="store" value="#{storelist.stores}" varStatus="status">
 							<div>
 								<li class="list1"><a href="#{request.contextPath}/detail?id=#{store.storeid}" class="product-photo"> <img
 										src="#{store.backgroundImage.imageUrl}" alt="hotel thumbnail"
