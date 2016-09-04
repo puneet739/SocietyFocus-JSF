@@ -48,8 +48,10 @@ app.filter('timeago', function() {
 
 app.controller("addQuestionController", function($scope, $http, $rootScope) {
 	$scope.restaurant = {
-		feature : []
+		feature : [],
+		videoUrl:[]
 	};
+	
 	$scope.features = [ {
 		value : 'CASH',
 		text : 'Cash'
@@ -118,7 +120,9 @@ app.controller("addQuestionController", function($scope, $http, $rootScope) {
 		value : 'HEALTHY_FOOD',
 		text : 'Healthy Food'
 	}, ];
-
+	$scope.addvideolink =  function() {
+		$scope.restaurant.videoUrl.push('');
+	}
 	$scope.addRestaurant = function(form) {
 		if (form.$valid) {
 			console.log("Scope restaurant here." + $scope.restaurant);

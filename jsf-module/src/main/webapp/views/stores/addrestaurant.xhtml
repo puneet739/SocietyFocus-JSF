@@ -125,6 +125,17 @@
 									<div id="fileuploader">Upload</div>
 								</div>
 								
+								<div class="form-group has-feedback" >
+									<lablel for="videourl">Videos</lablel>
+									<li ng-repeat="video in restaurant.videoUrl track by $index">
+										<div class="row form-inline">
+											<input class="form-control " name="video" type="text" ng-model="restaurant.videoUrl[$index]"/>
+											<button  ng-click="restaurant.videoUrl.splice($index, 1)">Remove</button>
+										</div>
+									</li>
+									<button ng-click="addvideolink($event)">Add video</button>
+								</div>
+								
 								
 								<!-- We have removed this feature in Phase1 -->
 								<!-- <div class="row">
