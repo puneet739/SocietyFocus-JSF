@@ -180,7 +180,16 @@
 						</ui:include>
 						<ui:repeat var="store" value="#{storelist.stores}" varStatus="status">
 							<div>
-								<li class="list1"><a href="#{request.contextPath}/detail?id=#{store.storeid}" class="product-photo"> <img
+							
+								<ui:fragment rendered="#{status.index eq 5}">
+									<ui:include src="/views/stores/layout/facebookpagelike.xhtml">
+										<ui:param name="fbpageurl" value="https://www.facebook.com/societyfocus"></ui:param>
+									</ui:include> 
+								</ui:fragment>
+								
+								<li class="list1">
+								
+								<a href="#{request.contextPath}/detail?id=#{store.storeid}" class="product-photo"> <img
 										src="#{store.backgroundImage.imageUrl}" alt="hotel thumbnail"
 										style="height: 100px; width: 150px; border-radius: 7px;" /></a>
 				
