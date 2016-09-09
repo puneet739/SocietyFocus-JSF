@@ -40,12 +40,14 @@ public class StoreList {
 	private long pageNo=1;
 	private long totalCount;
 	private List<Filter> filters;
-
+	private String feature;
+	private String cordinates;
+	
 	public void doNothing() {
 		LoggerUtil.debug("Working here to get the Filter");
 		init();
 	}
-
+	
 	public void init() {
 		initalizefilterCategories();
 //		if (!FacesContext.getCurrentInstance().isPostback()) {
@@ -105,6 +107,9 @@ public class StoreList {
 		queryParams.put("maxcount", ""+PAGE_SIZE);
 		if (sortby!=null){
 			queryParams.put("sort", sortby);
+		}
+		if (cordinates!=null){
+			queryParams.put("cordinates", cordinates);
 		}
 		return queryParams;
 	}
@@ -198,6 +203,22 @@ public class StoreList {
 
 	public void setFilters(List<Filter> filters) {
 		this.filters = filters;
+	}
+
+	public String getFeature() {
+		return feature;
+	}
+
+	public void setFeature(String feature) {
+		this.feature = feature;
+	}
+
+	public String getCordinates() {
+		return cordinates;
+	}
+
+	public void setCordinates(String cordinates) {
+		this.cordinates = cordinates;
 	}
 
 }

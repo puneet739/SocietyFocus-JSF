@@ -11,6 +11,8 @@
 		<f:metadata>
 			<f:viewParam name="sortby" value="#{storelist.sortby}" />
 			<f:viewParam name="page" value="#{storelist.pageNo}" />
+			<f:viewParam name="feature" value="#{storelist.feature}" />
+			<f:viewParam name="cordinates" value="#{storelist.cordinates}" />
 			<f:event type="preRenderView" listener="#{storelist.init}" />
 		</f:metadata>
 	</ui:define>

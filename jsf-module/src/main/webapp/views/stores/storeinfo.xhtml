@@ -27,7 +27,7 @@
 		<!-- Open Graph data -->
 		<meta property="og:title" content="#{store.name}" />
 		<meta property="og:type" content="article" />
-		<meta property="og:url" content="http://societyfocus.com/jsf-portal/detail?id=##{store.storeid}" />
+		<meta property="og:url" content="http://societyfocus.com/jsf-portal/detail?id=#{store.storeid}" />
 		<meta property="og:image" content="#{store.backgroundImage.imageUrl}" />
 		<meta property="og:description" content="#{store.description} #{store.address}" />
 		
@@ -54,7 +54,7 @@
 								</div>
 								<div class="row">
 									<div class="col-md-8 col-sm-8 col-xs-8">
-										<p class="p-add">#{store.address}</p>
+										<a style="color:#337ab7" href="#{request.contextPath}/stores?cordinates=#{store.getCordinates()}"><p class="p-add">#{store.address}</p></a>
 										<h4 class="h-type">Casual dining</h4>
 									</div>
 									<div class="col-md-2 col-sm-2 col-xs-2 open-pad op-img"
@@ -286,22 +286,33 @@
 					<!-- /panel panel-default -->
 
 				</div>
-
-
-				<ui:fragment rendered="#{store.socialHandlers[facebook] ne null}">
-					<div class="col-md-4 col-xs-12">
-						<div
-							style="height: 1000px; background-color: white; text-align: center">
-							<div class="fb-page" data-href="#{store.socialHandlers[facebook]}" 
-							data-tabs="timeline" data-height="1000px" data-small-header="false" data-adapt-container-width="true" 
-							data-hide-cover="false" data-show-facepile="true">
-								<blockquote cite="#{store.socialHandlers[facebook]}" class="fb-xfbml-parse-ignore">
-									<a href="#{store.socialHandlers[facebook]}"></a>
-								</blockquote>
-							</div>
+				
+				<div class="col-md-4 col-xs-12">
+					<div class="row"
+						style="background-color: white; text-align: center">
+						<div style="margin-top:20px ;  margin-bottom: 20px;">
+							<ui:fragment rendered="#{store.socialHandlers[facebook] eq null}">
+								<div class="fb-page" data-href="https://www.facebook.com/societyfocus" 
+									data-tabs="timeline" data-height="1000px" data-small-header="false" data-adapt-container-width="true" 
+									data-hide-cover="false" data-show-facepile="true">
+									<blockquote cite="#{store.socialHandlers[facebook]}" class="fb-xfbml-parse-ignore">
+										<a href="#{store.socialHandlers[facebook]}"></a>
+									</blockquote>
+								</div>
+							</ui:fragment>
+							<ui:fragment rendered="#{store.socialHandlers[facebook] ne null}">
+								<div class="fb-page" data-href="#{store.socialHandlers[facebook]}" 
+								data-tabs="timeline" data-height="1000px" data-small-header="false" data-adapt-container-width="true" 
+								data-hide-cover="false" data-show-facepile="true">
+								
+									<blockquote cite="#{store.socialHandlers[facebook]}" class="fb-xfbml-parse-ignore">
+										<a href="#{store.socialHandlers[facebook]}"></a>
+									</blockquote>
+								</div>
+							</ui:fragment>
 						</div>
 					</div>
-				</ui:fragment>
+				</div>
 
 
 			</div>
