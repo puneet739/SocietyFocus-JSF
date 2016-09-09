@@ -212,16 +212,16 @@ public class StoreList {
 		return features;
 	}
 
-	public void setFeature(String features) {
-		this.features = features;
-	}
-
 	public String getCordinates() {
 		return cordinates;
 	}
 
 	public void setCordinates(String cordinates) {
 		this.cordinates = cordinates;
+	}
+
+	public void setFeatures(String features) {
+		this.features = features;
 	}
 
 }

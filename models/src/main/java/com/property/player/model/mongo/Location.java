@@ -2,6 +2,7 @@ package com.property.player.model.mongo;
 
 import java.io.Serializable;
 
+//db.store.ensureIndex({"location.point":"2dsphere"});
 public class Location implements Serializable {
 
 	private Point point;
