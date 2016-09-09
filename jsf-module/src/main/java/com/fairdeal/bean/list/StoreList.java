@@ -40,7 +40,7 @@ public class StoreList {
 	private long pageNo=1;
 	private long totalCount;
 	private List<Filter> filters;
-	private String feature;
+	private String features;
 	private String cordinates;
 	
 	public void doNothing() {
@@ -105,11 +105,14 @@ public class StoreList {
 		Map<String, String> queryParams = new HashMap<>();
 		queryParams.put("pageNo", ""+pageNo);
 		queryParams.put("maxcount", ""+PAGE_SIZE);
-		if (sortby!=null){
+		if (sortby!=null && !sortby.trim().isEmpty()){
 			queryParams.put("sort", sortby);
 		}
-		if (cordinates!=null){
+		if (cordinates!=null && !cordinates.trim().isEmpty()){
 			queryParams.put("cordinates", cordinates);
+		}
+		if (features!=null && !features.trim().isEmpty()){
+			queryParams.put("features", features);
 		}
 		return queryParams;
 	}
@@ -205,12 +208,12 @@ public class StoreList {
 		this.filters = filters;
 	}
 
-	public String getFeature() {
-		return feature;
+	public String getFeatures() {
+		return features;
 	}
 
-	public void setFeature(String feature) {
-		this.feature = feature;
+	public void setFeature(String features) {
+		this.features = features;
 	}
 
 	public String getCordinates() {
