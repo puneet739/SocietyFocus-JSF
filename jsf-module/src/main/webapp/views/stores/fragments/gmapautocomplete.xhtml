@@ -1,0 +1,53 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets">
+<!-- 	<script src="https://maps.googleapis.com/maps/api/js?sensor=false&amp;signed_in=true&amp;libraries=places"></script> -->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXkHhlHh8l4_T-tiG4r2X9ONrmD5C87Fc&amp;libraries=places"/>
+	<script>
+	var autocomplete;
+		function initAutocomplete() {
+			// Create the autocomplete object, restricting the search to geographical
+			// location types.
+			autocomplete = new google.maps.places.Autocomplete(
+			/** @type {!HTMLInputElement} */
+			(document.getElementById('#{inputid}')), {
+				types : [ 'geocode' ],
+				componentRestrictions : {
+					country : 'in'
+				}
+			});
+			
+			//This is entered to make sure enter doesnt send submit button. 
+			var input = document
+					.getElementById('#{inputid}');
+			google.maps.event.addDomListener(input, 'keydown', function(e) {
+				if (e.keyCode == 13) {
+					e.preventDefault();
+				}
+			});
+			var currentURL='#{request.contextPath}';
+			google.maps.event.addListener(autocomplete, 'place_changed', function() {
+			      var place = autocomplete.getPlace();
+			      debugger;
+			      //window.location = currentURL+"/stores?cordinates="+place.geometry.location.lat()+","+place.geometry.location.lng();
+			      if (#{lat} !=null )
+			      document.getElementById('#{lat}').value = place.geometry.location.lat();
+			      if (#{lng} !=null )
+			      document.getElementById('#{lng}').value =  place.geometry.location.lng(); 
+			      if (#{name} !=null )
+				  document.getElementById('#{name}').value =  place.name; 
+			      
+			      window.location=currentURL+"/stores?cordinates="+place.geometry.location.lat()+","+place.geometry.location.lng()+"&amp;name="+place.name;
+			      
+			});
+		}
+
+		var originalPrimeFacesAjaxUtilsSend = PrimeFaces.ajax.Request.send;
+		/* PrimeFaces.ajax.Request.send = function(cfg) {
+			if (!cfg.oncomplete) {
+				cfg.oncomplete = initAutocomplete;
+			}
+			originalPrimeFacesAjaxUtilsSend.apply(this, arguments);
+		}; */
+		google.maps.event.addDomListener(window, 'load', initAutocomplete);
+		
+	</script>
+</ui:composition>

@@ -7,14 +7,22 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	template="layout/storelayout.xhtml">
 
-	<ui:define name="meta">
+	<ui:define name="metaTags">
 		<f:metadata>
 			<f:viewParam name="sortby" value="#{storelist.sortby}" />
 			<f:viewParam name="page" value="#{storelist.pageNo}" />
 			<f:viewParam name="features" value="#{storelist.features}" />
 			<f:viewParam name="cordinates" value="#{storelist.cordinates}" />
+			<f:viewParam name="name" value="#{locationc.name}" />
 			<f:event type="preRenderView" listener="#{storelist.init}" />
 		</f:metadata>
+		
+		<ui:fragment rendered="#{locationc.name ne null}">
+			<title>Stores in #{locationc.name}</title>
+		</ui:fragment>
+		<ui:fragment rendered="#{locationc.name eq null}">
+			<title>Society Focus Store</title>
+		</ui:fragment>
 	</ui:define>
 
 	<ui:define name="banner">

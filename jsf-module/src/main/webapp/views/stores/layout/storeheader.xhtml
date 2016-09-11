@@ -1,91 +1,104 @@
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui"
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
-	
-	<!-- Navigation starts here -->
-	<nav class="navbar navbar-inverses" role="navigation">
-		<div class="container">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target="#bs-example-navbar-collapse-1">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#"><h2>Society focus</h2> <img
-					src="#{request.contextPath}/resources/images/logo1.png" id="logo" alt="" /></a>
-			</div>
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse"
-				id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav">
-					<li><a href="#{request.contextPath}/stores">Home</a></li>
-					<li><a href="#{request.contextPath}/stores">About Us</a></li>
-					<li><a href="#{request.contextPath}/stores">Services</a></li>
-					<li><a href="#{request.contextPath}/stores">Blog</a></li>
-				</ul>
 
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="http://societyfocus.com/helpdesk/askquestion">Ask a Question</a></li>
-					<li><a href="#"><span id="login">LOGIN</span></a></li>
-				</ul>
-				<ul class="nav navbar-nav navbar-right">
+<!-- Navigation starts here -->
+<nav class="navbar navbar-inverses" role="navigation">
+	<div class="container">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#"><h2>Society focus</h2> <img
+				src="#{request.contextPath}/resources/images/logo1.png" id="logo"
+				alt="" /></a>
+		</div>
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse"
+			id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				<li><a href="#{request.contextPath}/stores">Home</a></li>
+				<li><a href="#{request.contextPath}/stores">About Us</a></li>
+				<li><a href="#{request.contextPath}/stores">Services</a></li>
+				<li><a href="#{request.contextPath}/stores">Blog</a></li>
+			</ul>
+
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="http://societyfocus.com/helpdesk/askquestion">Ask
+						a Question</a></li>
+				<li><a href="#"><span id="login">LOGIN</span></a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
 				<a href="#{request.contextPath}/addRestaurant">
-					<div class="btn btn-default navbar-btn"
-						id="addbutton">
+					<div class="btn btn-default navbar-btn" id="addbutton">
 						<i class="glyphicon glyphicon-plus"></i>
 						<p id="addRestaurent">Add Restaurant</p>
-					</div></a>
-				</ul>
-
-			</div>
-			<!-- /.navbar-collapse -->
-		</div>
-		<!-- /.container -->
-	</nav>
-	<!-- Navigation ends here -->
-	
-	<!-- Page Content -->
-	<section class="search hidden-xs">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-8 col-xs-12 pading-" style="margin-top: 15px;">
-					<div class="col-md-4" style="margin-bottom: 10px;">
-						<div class="input-group first">
-							<input type="text" class="form-control" placeholder="City" /><span
-								class="input-group-btn">
-								<button class="btn btn-default" type="button">
-									<span class="glyphicon glyphicon-triangle-bottom"></span>
-								</button>
-							</span>
-						</div>
 					</div>
+				</a>
+			</ul>
 
-					<div class="col-md-8 col-xs-12">
-						<div class="input-group">
-							<input type="text" class="form-control filter-search1"
-								placeholder="Search for food..." /><span
-								class="input-group-btn">
-								<button class="btn btn-default filter-search2" type="button">
-									<span class="glyphicon glyphicon-search"></span>
-								</button>
-							</span>
-						</div>
+		</div>
+		<!-- /.navbar-collapse -->
+	</div>
+	<!-- /.container -->
+</nav>
+<!-- Navigation ends here -->
+
+<!-- Page Content -->
+<section class="search hidden-xs">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 col-xs-12 pading-" style="margin-top: 15px;">
+				<div class="col-md-4" style="margin-bottom: 10px;">
+					<div class="input-group first">
+						<input type="text" id="citysearch" class="form-control"
+							value="#{locationc.name}" placeholder="City" /><span
+							class="input-group-btn"> <!-- <button class="btn btn-default" type="button">
+									<span class="glyphicon glyphicon-triangle-bottom"></span>
+								</button> -->
+						</span>
+						<p:inputText type="hidden" id="lat"  value="#{locationc.latitute}" />
+						<p:inputText type="hidden" id="lng" value="#{locationc.longitude}" />
+						<p:inputText type="hidden" id="name" value="#{locationc.name}" />
+
+						<ui:include src="/views/stores/fragments/gmapautocomplete.xhtml">
+							<ui:param name="inputid" value="citysearch" />
+							<ui:param name="lat" value="lat" />
+							<ui:param name="lng" value="lng" />
+							<ui:param name="name" value="name" />
+						</ui:include>
 					</div>
 				</div>
 
-				<div class="col-md-4" style="padding: 0;">
-					<div class="col-md-8" style="padding: 0;">
-						<div class="orderlink hidden-sm hidden-xs">
-							<ul class="abcd">
-								<li><a href="#">Help</a></li>
-								<li><a href="#">Track Order</a></li>
-								<li><a href="#">Support</a></li>
-							</ul>
-						</div>
+				<div class="col-md-8 col-xs-12">
+					<div class="input-group">
+						<input type="text" class="form-control filter-search1"
+							placeholder="Search for food..." /><span class="input-group-btn">
+							<button class="btn btn-default filter-search2" type="button">
+								<span class="glyphicon glyphicon-search"></span>
+							</button>
+						</span>
 					</div>
-					<!-- Commenting out orders in phase1 -->
-					<!-- <div class="col-md-4 hidden-sm hidden-xs" style="padding: 0;">
+				</div>
+			</div>
+
+			<div class="col-md-4" style="padding: 0;">
+				<div class="col-md-8" style="padding: 0;">
+					<div class="orderlink hidden-sm hidden-xs">
+						<ul class="abcd">
+							<li><a href="#">Help</a></li>
+							<li><a href="#">Track Order</a></li>
+							<li><a href="#">Support</a></li>
+						</ul>
+					</div>
+				</div>
+				<!-- Commenting out orders in phase1 -->
+				<!-- <div class="col-md-4 hidden-sm hidden-xs" style="padding: 0;">
 						<div>
 							<img src="#{request.contextPath}/resources/images/basket.png" alt="" style="padding-top: 15px;" />
 							<button class="btn btn-primary bgbtn" type="button">
@@ -94,40 +107,42 @@
 							</button>
 						</div>
 					</div> -->
-				</div>
 			</div>
 		</div>
-	</section>
-	
-	<!-- links section starts here -->
-	<section class="types hidden-sm">
-		<!-- links section -->
-		<div class="container">
-			<div class="row">
-				<div class="col-md-10 col-xs-12"
-					style="padding-top: 15px; padding-left: 0;">
-					<ul>
-						<li><a href="#{request.contextPath}/stores?features=HOTEL">Hotels</a></li>
-						<li><a href="#{request.contextPath}/stores?features=DELIVERY">Delivery</a></li>
-						<li><a href="#{request.contextPath}/stores?features=DINE_OUT">Dine-Out</a></li>
-						<li><a href="#{request.contextPath}/stores?features=NIGHTLIFE">Drinks &amp; Nightlife</a></li>
-						<li><a href="#{request.contextPath}/stores?features=CAFE">Cafe's</a></li>
-						<li><a href="#{request.contextPath}/stores?features=BARS">Bars</a></li>
-						<li><a href="#{request.contextPath}/stores?features=PUBS">Pubs</a></li>
-						<li><a href="#{request.contextPath}/stores?features=BANQUET">Banquet Halls</a></li>
-					</ul>
-				</div>
-				<div class="col-md-2">
-					<button class="btn btn-default orderNow"
-						style="margin-top: 10px; font-size: 17px;">
-						<span class="glyphicon glyphicon-phone phone"></span>Order Now
-					</button>
-				</div>
+	</div>
+</section>
+
+<!-- links section starts here -->
+<section class="types hidden-sm">
+	<!-- links section -->
+	<div class="container">
+		<div class="row">
+			<div class="col-md-10 col-xs-12"
+				style="padding-top: 15px; padding-left: 0;">
+				<ul>
+					<li><a href="#{request.contextPath}/stores?features=HOTEL">Hotels</a></li>
+					<li><a href="#{request.contextPath}/stores?features=DELIVERY">Delivery</a></li>
+					<li><a href="#{request.contextPath}/stores?features=DINE_OUT">Dine-Out</a></li>
+					<li><a href="#{request.contextPath}/stores?features=NIGHTLIFE">Drinks
+							&amp; Nightlife</a></li>
+					<li><a href="#{request.contextPath}/stores?features=CAFE">Cafe's</a></li>
+					<li><a href="#{request.contextPath}/stores?features=BARS">Bars</a></li>
+					<li><a href="#{request.contextPath}/stores?features=PUBS">Pubs</a></li>
+					<li><a href="#{request.contextPath}/stores?features=BANQUET">Banquet
+							Halls</a></li>
+				</ul>
+			</div>
+			<div class="col-md-2">
+				<button class="btn btn-default orderNow"
+					style="margin-top: 10px; font-size: 17px;">
+					<span class="glyphicon glyphicon-phone phone"></span>Order Now
+				</button>
 			</div>
 		</div>
-	</section>
-	<!-- links section ends -->
-	
-	
-	
+	</div>
+</section>
+<!-- links section ends -->
+
+
+
 </html>
