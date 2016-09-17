@@ -13,8 +13,8 @@
 		<springboot.version>1.2.3.RELEASE</springboot.version>
 		<springwebflow-version>2.4.1.RELEASE</springwebflow-version>
 		<springsecurity-version>4.0.0.RELEASE</springsecurity-version>
-		<primefaces-version>5.1</primefaces-version>
-		<org.slf4j-version>1.7.5</org.slf4j-version>
+		<primefaces-version>5.3</primefaces-version>
+		<org.slf4j-version>1.7.12</org.slf4j-version>
 		<java-version>1.7</java-version>
 		<hibernate.verion>4.3.9.Final</hibernate.verion>
 		<prettyfaces.version>3.4.1.Final</prettyfaces.version>
@@ -23,7 +23,6 @@
 		<google.gson.version>2.3.1</google.gson.version>
 		<maven.surefire.plugin.version>2.18.1</maven.surefire.plugin.version>
 		<maven.surefire.junit.plugin.version>2.18.1</maven.surefire.junit.plugin.version>
-		
 		<propertyplayer.model.version>0.0.1-SNAPSHOT</propertyplayer.model.version>
 	</properties>
 
@@ -394,6 +393,67 @@
 				<version>2.5.2</version>
 			</plugin>
 		</plugins>
+		
+		<resources>
+			<resource>
+				<targetPath>${project.build.directory}/tomcat/conf/</targetPath>
+				<directory>${basedir}/src/test/resources</directory>
+				<includes>
+					<include>**/*.properties</include>
+				</includes>
+			</resource>
+
+			<resource>
+				<targetPath>${project.build.directory}/tomcat/conf/</targetPath>
+				<directory>${basedir}/src/test/resources</directory>
+				<includes>
+					<include>**/*.xml</include>
+				</includes>
+			</resource>
+
+			<resource>
+				<targetPath>${project.build.directory}/${project.build.finalName}/WEB-INF/classes</targetPath>
+				<directory>${basedir}/src/main/resources</directory>
+				<includes>
+					<include>**/*.properties</include>
+				</includes>
+			</resource>
+
+			<resource>
+				<targetPath>${project.build.directory}/${project.build.finalName}/WEB-INF/classes</targetPath>
+				<directory>${basedir}/src/main/resources/spring/</directory>
+				<includes>
+					<include>**/*.xml</include>
+				</includes>
+				<filtering>true</filtering>
+			</resource>
+
+			<resource>
+				<targetPath>${project.build.directory}/${project.build.finalName}/WEB-INF</targetPath>
+				<directory>${basedir}/src/main/webapp/WEB-INF</directory>
+				<includes>
+					<include>**/web.xml</include>
+				</includes>
+			</resource>
+		</resources>
+
+		<testResources>
+			<testResource>
+				<directory>${basedir}/src/main/resources/spring</directory>
+				<includes>
+					<include>**/*.xml</include>
+				</includes>
+			</testResource>
+			<testResource>
+				<directory>${basedir}/src/main/resources</directory>
+				<includes>
+					<include>**/*.properties</include>
+				</includes>
+			</testResource>
+			<testResource>
+				<directory>${basedir}/src/test/resources</directory>
+			</testResource>
+		</testResources>
 		<finalName>zircon-portal</finalName>
 	</build>
 </project>

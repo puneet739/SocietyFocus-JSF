@@ -1,5 +1,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
@@ -62,6 +63,11 @@
 									<span class="glyphicon glyphicon-triangle-bottom"></span>
 								</button> -->
 						</span>
+						<h:outputScript library="primefaces" name="jquery/jquery.js" target="head" />
+						<h:outputScript library="primefaces" name="jquery/jquery-plugins.js" target="head" />
+						<f:facet name="last">
+							<h:outputStylesheet name="css/primefaceoveride.css"/>
+						</f:facet>	
 						<p:inputText type="hidden" id="lat"  value="#{locationc.latitute}" />
 						<p:inputText type="hidden" id="lng" value="#{locationc.longitude}" />
 						<p:inputText type="hidden" id="name" value="#{locationc.name}" />
@@ -74,17 +80,25 @@
 						</ui:include>
 					</div>
 				</div>
-
+				<h:form>
 				<div class="col-md-8 col-xs-12">
 					<div class="input-group">
-						<input type="text" class="form-control filter-search1"
-							placeholder="Search for food..." /><span class="input-group-btn">
+						<p:autoComplete id="suggestions" style="display: inline;" value="#{suggestionlist.suggestionString}" 
+						 completeMethod="#{suggestionlist.initalizeSuggestions}"  minQueryLength="4"
+						 var="suggestion" itemLabel="#{suggestion.displayName}" itemValue="#{suggestion.url}" >
+						 	<p:ajax event="itemSelect" listener="#{suggestionlist.onItemSelect}" />
+						 </p:autoComplete>
+						 
+<!-- 						<input type="text" class="form-control filter-search1" -->
+<!-- 							placeholder="Search for food..." /> -->
+						<span class="input-group-btn">
 							<button class="btn btn-default filter-search2" type="button">
 								<span class="glyphicon glyphicon-search"></span>
 							</button>
 						</span>
 					</div>
 				</div>
+				</h:form>
 			</div>
 
 			<div class="col-md-4" style="padding: 0;">
