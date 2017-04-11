@@ -8,7 +8,7 @@ import com.property.player.model.mongo.Store;
 public class StoreBean extends Store implements Serializable{
 
 	public String getCordinates(){
-		String result="0,0";
+		String result="28.479742, 77.314719";
 		try{
 			result = getLocation().getPoint().getX()+","+getLocation().getPoint().getY();
 		}catch(NullPointerException ne){
