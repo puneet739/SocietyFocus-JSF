@@ -45,6 +45,7 @@ public class Store {
 	private StoreStatusEnum status;
 	private CategoryEnum category;
 	private String storeType;
+	private List<Review> reviews;
 	private Map<String, String> socialHandlers;
 
 	public String getStoreid() {
@@ -305,6 +306,14 @@ public class Store {
 
 	public void setVideoUrl(List<String> videoUrl) {
 		this.videoUrl = videoUrl;
+	}
+
+	public List<Review> getReviews() {
+		return reviews;
+	}
+
+	public void setReviews(List<Review> reviews) {
+		this.reviews = reviews;
 	}
 
 }
