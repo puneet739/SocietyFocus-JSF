@@ -274,6 +274,36 @@
 										</div>
 									</div>
 								</c:forEach>
+									<ui:repeat var="review" value="#{store.reviews}" varStatus="status">
+									<div class="panel panel-default"
+										style="border: transparent; box-shadow: none;">
+										<div class="panel-body">
+											<div class="row">
+												<div class="col-md-2 col-sm-2 r-image">
+													<img src="http://www.exclutips.com/wp-content/uploads/2015/08/wordpress-custom-user-avatar.png" alt=""
+														class="img-responsive img-circle thumbnail"
+														style="margin-bottom: 8px;" />
+													<h5
+														style="font-size: 14px; font-weight: 600; margin-top: 0;">Society Focus</h5>
+												</div>
+												<div class="col-md-10 col-sm-10" style="padding-left: 0;">
+													<div class="panel panel-default" style="margin-bottom: 0;">
+														<div class="panel-heading"
+															style="font-weight: 600; padding: 10px 15px 0;">
+															<p style="display: inline-block;">#{review.username}</p>
+															<b
+																style="margin-left: 10px; padding: 2px 4px 2px 4px; background-color: green; color: white; border-radius: 2px; font-weight: 900;">4.5</b>
+														</div>
+														<div class="panel-body">
+															<p style="margin-bottom: 0; font-size: 13px;">#{review.reviewText}</p>
+														</div>
+													</div>
+												</div>
+											</div>
+	
+										</div>
+									</div>
+								</ui:repeat>
 							</div>
 						</div>
 
