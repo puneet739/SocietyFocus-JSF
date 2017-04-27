@@ -54,4 +54,8 @@ public enum FeaturesEnum {
 	private FeaturesEnum(String title){
 		this.displayName=title;
 	}
+
+	public String getDisplayName() {
+		return displayName;
+	}
 }

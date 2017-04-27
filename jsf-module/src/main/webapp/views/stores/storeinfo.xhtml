@@ -34,6 +34,7 @@
 	</ui:define>
 
 	<ui:define name="main_body">
+		<script src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"/>
 		<link href="#{request.contextPath}/resources/css/storedetail.css" rel="stylesheet" />
 		<link href="#{request.contextPath}/resources/css/lightbox.css" rel="stylesheet" />
 		<script src="#{request.contextPath}/resources/js/lightbox.js"/>
@@ -80,8 +81,11 @@
 						</div>
 					</div>
 
-
-
+						
+					<ui:include src="/views/stores/layout/facebookpagelike.xhtml">
+								<ui:param name="fbpageurl" value="https://www.facebook.com/societyfocus"></ui:param>
+					</ui:include>
+						
 					<div class="row detail">
 						<div class="panel panel-default">
 							<div class="panel-body">
@@ -128,13 +132,30 @@
 								<div class="col-md-4">
 									<ul>
 										<li><h4 class="d-header">Highlights</h4></li>
-										<ui:repeat var="feature" value="#{store.features}"><li><span class="glyphicon glyphicon-ok"></span>#{feature}</li></ui:repeat>
+										<ui:repeat var="feature" value="#{store.features}"><li><span class="glyphicon glyphicon-ok"></span>#{feature.displayName}</li></ui:repeat>
 									</ul>
 								</div>
 							</div>
 						</div>
 					</div>
 
+					<div class="row">
+						<div class="panel panel-default">
+							<div class="panel-body" style="padding: 0;">
+								<div class="col-md-12">
+										<div class="text-center row" style="height: 6em; margin-bottom: 20px; margin-top: 10px; max-width: 100%;">
+											 <ins class="adsbygoogle"
+											     style="display:block"
+											     data-ad-client="ca-pub-7208785423388103"
+											     data-ad-slot="3743651329"
+											     data-ad-format="auto">
+											 </ins> 
+									   </div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
 					<div class="row">
 						<div class="panel panel-default" id="show-map">
 							<div class="panel-body" style="padding: 0;">
@@ -147,6 +168,7 @@
 							</div>
 						</div>
 					</div>
+					
 					<div class="row">
 						<div class="panel panel-default">
 							<div class="panel-body">
@@ -167,7 +189,7 @@
 									<h4 class="d-header" style="margin-bottom: 12px;">Discount</h4>
 									<p
 										style="font-weight: 900; font-size: 15px; margin-bottom: 3px;">#{store.promotion}
-										Dont forget to mention Society Focus while placing order.</p>
+										Dont forget to mention Society Focus while placing order. Whatsapp a copy of bill to 9711616135 and get 5% cashback in your PAYTM Wallet</p>
 								</div>
 							</div>
 						</div>
@@ -384,6 +406,10 @@
 			$("#map").click(function() {
 				$("#show-map").show('slow');
 			});
+			
+			[].forEach.call(document.querySelectorAll('.adsbygoogle'), function(){
+		        (adsbygoogle = window.adsbygoogle || []).push({});
+		        });
 		</script>
 
 	</ui:define>
