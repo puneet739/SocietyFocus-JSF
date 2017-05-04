@@ -1,0 +1,283 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="layout/servicelayout.xhtml">
+
+	<ui:define name="stylebg">
+		<style media="screen">
+			.ser-header {
+				height: 60vh;
+				background-image: url('#{request.contextPath}/resources/images/bg.jpg');
+				background-repeat: no-repeat;
+				background-size: cover;
+				background-position: center center;
+				position: relative;
+				margin-bottom: 50px;
+			}
+		</style>
+	</ui:define>
+	
+	<ui:define name="popup">
+		<!-- PopUp  -->
+		  <div class="modal fade myModal1" tabindex="-1" role="dialog">
+		    <div class="modal-dialog" role="document">
+		      <div class="modal-content pop">
+		        <div class="modal-header m-h">
+		          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        </div>
+		        <div class="modal-body m-b">
+		                        <div class="top-content">
+		
+		                    <div class="row">
+		                        <div class="col-md-12">
+		                          <form  class="f1">
+		
+		                            <h3 id="c">Electrations Service</h3>
+		                            <p id="c1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil delectus.</p>
+		                            <div class="f1-steps">
+		                              <div class="f1-progress">
+		                                  <div class="f1-progress-line" data-now-value="16.66" data-number-of-steps="3" style="width: 16.66%;"></div>
+		                              </div>
+		                              <div class="f1-step active">
+		                                <div class="f1-step-icon"><i class="fa fa-sticky-note"></i></div>
+		                                <p>Description</p>
+		                              </div>
+		                              <div class="f1-step">
+		                                <div class="f1-step-icon"><i class="fa fa-info-circle"></i></div>
+		                                <p>Registration</p>
+		                              </div>
+		                                <div class="f1-step">
+		                                <div class="f1-step-icon"><i class="fa fa-mobile"></i></div>
+		                                <p>Verification</p>
+		                              </div>
+		                            </div>
+		
+		                            <fieldset id="des-h">
+		                              <p>Our Promise</p>
+		                              <ul>
+		                                  <li>Background checked and trained technicians</li>
+		                                  <li>30-day service guarantee</li>
+		                              </ul>
+		
+		                              <p>Service Description</p>
+		                              <ul>
+		                                  <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi condimentum tortor id odio ornare, in aliquet turpis faucibus. Morbi ac feugiat nunc</li>
+		                                  <li>Proin ac vehicula erat, id commodo massa. Quisque sit amet justo vel lectus finibus ullamcorper sit amet at ex</li>
+		                              </ul>
+		
+		
+		                                    <div class="f1-buttons">
+		                                        <button type="button" class="btn btn-next mybutn">NEXT</button>
+		                                    </div>
+		                                </fieldset>
+		
+		                                <fieldset id="des-h">
+		                                    <p>Fill in the following details</p>
+		                                    <div class="form-group" id="mar">
+		                                        <label class="sr-only" for="f1-email">Name</label>
+		                                        <input type="text" name="f1-email" placeholder="Name..." class="f1-email form-control cus-input" id="f1-email"/>
+		                                    </div>
+		                                    <div class="form-group">
+		                                        <label class="sr-only" for="f1-password">Phone Numbet</label>
+		                                        <input type="text" name="f1-password" placeholder="Phone Numbet..." class="f1-password form-control cus-input" id="f1-password"/>
+		                                    </div>
+		                                    <div class="form-group">
+		                                        <label class="sr-only" for="f1-repeat-password">Pincode</label>
+		                                        <input type="text" name="f1-repeat-password" placeholder="Pincode"
+		                                                            class="f1-repeat-password form-control cus-input" id="f1-repeat-password"/>
+		                                    </div>
+		                                    <div class="f1-buttons">
+		                                        <button type="button" class="btn btn-previous mybutn mybutn-prev">Previous</button>
+		                                        <button type="button" class="btn btn-next mybutn">Next</button>
+		                                    </div>
+		                                </fieldset>
+		
+		                                <fieldset>
+		
+		                                    <div class="text-center otp-img">
+		                                      <img src="img/smartphone.png" alt=""/>
+		                                      <p>Enter the 4 digit OTP recieved</p>
+		                                      <p id="otp-err">Any error goes here</p>
+		                                    </div>
+		
+		                                    <div class="form-group text-center">
+		                                        <label class="sr-only" for="f1-facebook">Facebook</label>
+		                                        <input type="text" name="f1-facebook" placeholder="OTP PIN" class="f1-facebook form-control otp-verify cus-input" id="f1-facebook"/>
+		                                    </div>
+		
+		                                    <div class="f1-buttons text-center">
+		                                        <!-- <button type="button" class="btn btn-previous">Previous</button> -->
+		                                        <button type="button" class="btn btn-next verified mybutn">VERIFY</button>
+		
+		                                    </div>
+		                                </fieldset>
+		                          </form>
+		                        </div>
+		                    </div>
+		
+		              </div>
+		        </div>
+		      </div><!-- /.modal-content -->
+		    </div><!-- /.modal-dialog -->
+		  </div><!-- /.modal -->
+		
+		  <!-- PopUp 2 begins -->
+		
+		
+		<div class="modal fade myModal2" tabindex="-1" role="dialog">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close cl" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		      </div>
+		      <div class="modal-body text-center">
+		        <h6 id="t-head">THANK YOU !</h6>
+		        <img src="img/checked.png" alt="" class="t-img"/>
+		        <p id="t-sub-head">Thank you for submitting your details, We will reach you soon.</p>
+		      </div>
+		    </div><!-- /.modal-content -->
+		  </div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+		
+		  <!-- Popup 2 Ends -->
+	</ui:define>
+	
+	<ui:define name="main">
+		<div class="jumbotron ser-header">
+		  <div class="container text-center">
+		    <h1 class="revealOnScroll" data-animation="fadeInUp">Best Electricians |  bangalore</h1>
+		    <p class="revealOnScroll" data-animation="fadeIn"><a class="btn btn-primary btn-lg book-now" href="#" role="button">Book Now</a></p>
+		  </div>
+		</div>
+	</ui:define>
+	
+	<ui:define name="features">
+
+		<div class="text-center revealOnScroll" data-animation="fadeIn">
+			<h3 class="sec-heading">WHAT IS INCLUDED</h3>
+			<p class="sec-subheading">Minor electrical repairs/replacement
+				(fans, lightings, fuse, bells, etc)</p>
+
+
+		</div>
+
+		<div class="container text-center">
+			<div class="row">
+				<div class="col-md-4 revealOnScroll" data-animation="flipInX">
+					<img class="ser-img" src="#{request.contextPath}/resources/images/wallet.png" alt="cashless"/>
+						<h5 class="img-des">Go Cashless</h5>
+						<p class="img-sub-des">Pay online after your service</p>
+				</div>
+				<div class="col-md-4 revealOnScroll" data-animation="flipInX"
+					data-timeout="100">
+					<img class="ser-img" src="#{request.contextPath}/resources/images/icon.png" alt=""/>
+						<h5 class="img-des">Verified</h5>
+						<p class="img-sub-des">Background checked and trained
+							professionals</p>
+				</div>
+				<div class="col-md-4 revealOnScroll" data-animation="flipInX"
+					data-timeout="200">
+					<img class="ser-img" src="#{request.contextPath}/resources/images/rupee.png" alt=""/>
+						<h5 class="img-des">Insurance</h5>
+						<p class="img-sub-des">Upto Rs 5000 against damages</p>
+				</div>
+			</div>
+		</div>
+
+		<br/> <br/>
+
+				<div class="container text-center">
+					<div class="row">
+						<div class="col-md-4 revealOnScroll" data-animation="flipInX">
+							<img class="ser-img" src="#{request.contextPath}/resources/images/check-mark.png" alt=""/>
+								<h5 class="img-des">Service Guarantee</h5>
+								<p class="img-sub-des">Upto 30 days</p>
+						</div>
+
+						<div class="col-md-4 revealOnScroll" data-animation="flipInX">
+							<img class="ser-img" src="#{request.contextPath}/resources/images/company-workers.png" alt=""/>
+								<h5 class="img-des">Staff Size</h5>
+								<p class="img-sub-des">1 Personnel</p>
+						</div>
+						<div class="col-md-4 revealOnScroll" data-animation="flipInX">
+							<img class="ser-img" src="#{request.contextPath}/resources/images/repair.png" alt=""/>
+								<h5 class="img-des">Outside Scope</h5>
+								<p class="img-sub-des">Electronic appliances repair</p>
+						</div>
+					</div>
+				</div>
+	</ui:define>
+
+	<ui:define name="testimonial">
+		<section id="testimonial" data-section="testimonials">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 section-heading text-center">
+					<h3 id="testimonial-heading">TESTIMONIAL</h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<div class="box-testimony">
+						<blockquote class="revealOnScroll" data-animation="fadeInUp">
+							<p>&ldquo;Far far away, behind the word mountains, far from
+								the countries Vokalia and Consonantia, there live the blind
+								texts. Separated they live in Bookmarksgrove right at the coast
+								of the Semantics, a large language ocean.&rdquo;</p>
+						</blockquote>
+						<div class="author">
+							<figure> <img
+								src="#{request.contextPath}/resources/images/team/cto.jpg"
+								alt="Person" /></figure>
+							<p>
+								Jean Doe, CEO <span class="subtext">Creative Director</span>
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="box-testimony">
+						<blockquote class="revealOnScroll" data-animation="fadeInUp">
+							<p>&ldquo;Far far away, behind the word mountains, far from
+								the countries Vokalia and Consonantia.&rdquo;</p>
+						</blockquote>
+						<div class="author to-animate">
+							<figure> <img
+								src="#{request.contextPath}/resources/images/team/cto.jpg"
+								alt="Person" /></figure>
+							<p>
+								John Doe, Senior UI <span class="subtext">Creative
+									Director</span>
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<div class="box-testimony">
+						<blockquote class="revealOnScroll" data-animation="fadeInUp">
+							<p>&ldquo;Far far away, behind the word mountains, far from
+								the countries Vokalia and Consonantia, there live the blind
+								texts. &rdquo;</p>
+						</blockquote>
+						<div class="author">
+							<figure> <img
+								src="#{request.contextPath}/resources/images/team/cto.jpg"
+								alt="Person" /></figure>
+							<p>
+								Chris Nash, Director <span class="subtext">Creative
+									Director</span>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</section>
+	</ui:define>
+
+</ui:composition>

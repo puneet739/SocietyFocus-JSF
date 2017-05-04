@@ -1,0 +1,33 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+ <nav class="navbar navbar-default navbar-fixed-top navigationbar">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed s-b" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <i class="fa fa-search srch" aria-hidden="true"></i>
+      </button>
+
+      <a class="navbar-brand" href="#"><img src="#{request.contextPath}/resources/images/logo1.png" alt="" class="bimg hidden-xs"/><span class="hidden-md hidden-lg hid-logo">SocietyFocus</span></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <form class="navbar-form navbar-left mob-navbar">
+        <div class="form-group">
+          <input type="text" class="form-control top-search" placeholder="Loaction"/>
+           <input type="text" class="form-control top-search1" placeholder="Service"/>
+        </div>
+        <button type="submit" class="btn btn-default top-search-button">Search</button>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#" class="hm">Home</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+</html>
