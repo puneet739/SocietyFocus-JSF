@@ -19,6 +19,10 @@
 				margin-bottom: 50px;
 			}
 		</style>
+		<script>
+			var serverURL='http://localhost:8080/';
+			var requestType='ELECTRICIAN';
+		</script>
 	</ui:define>
 	
 	<ui:define name="popup">
@@ -42,15 +46,15 @@
 		                              <div class="f1-progress">
 		                                  <div class="f1-progress-line" data-now-value="16.66" data-number-of-steps="3" style="width: 16.66%;"></div>
 		                              </div>
-		                              <div class="f1-step active">
+		                              <div id="description" class="f1-step active">
 		                                <div class="f1-step-icon"><i class="fa fa-sticky-note"></i></div>
 		                                <p>Description</p>
 		                              </div>
-		                              <div class="f1-step">
+		                              <div id="registration" class="f1-step">
 		                                <div class="f1-step-icon"><i class="fa fa-info-circle"></i></div>
 		                                <p>Registration</p>
 		                              </div>
-		                                <div class="f1-step">
+		                              <div id="verification" class="f1-step">
 		                                <div class="f1-step-icon"><i class="fa fa-mobile"></i></div>
 		                                <p>Verification</p>
 		                              </div>
@@ -75,33 +79,32 @@
 		                                    </div>
 		                                </fieldset>
 		
-		                                <fieldset id="des-h">
+	                                <fieldset id="des-h">
 		                                    <p>Fill in the following details</p>
 		                                    <div class="form-group" id="mar">
 		                                        <label class="sr-only" for="f1-email">Name</label>
-		                                        <input type="text" name="f1-email" placeholder="Name..." class="f1-email form-control cus-input" id="f1-email"/>
+		                                        <input type="email" name="f1-email" placeholder="Name..." class="f1-email form-control cus-input" id="f1-name"/>
 		                                    </div>
 		                                    <div class="form-group">
 		                                        <label class="sr-only" for="f1-password">Phone Numbet</label>
-		                                        <input type="text" name="f1-password" placeholder="Phone Numbet..." class="f1-password form-control cus-input" id="f1-password"/>
+		                                        <input type="number" name="f1-password" placeholder="Phone Numbet..." class="f1-password form-control cus-input" id="f1-phoneno"/>
 		                                    </div>
 		                                    <div class="form-group">
 		                                        <label class="sr-only" for="f1-repeat-password">Pincode</label>
-		                                        <input type="text" name="f1-repeat-password" placeholder="Pincode"
-		                                                            class="f1-repeat-password form-control cus-input" id="f1-repeat-password"/>
+		                                        <input type="number" name="f1-repeat-password" placeholder="Pincode"  class="f1-repeat-password form-control cus-input" id="f1-pincode"/>
 		                                    </div>
 		                                    <div class="f1-buttons">
 		                                        <button type="button" class="btn btn-previous mybutn mybutn-prev">Previous</button>
-		                                        <button type="button" class="btn btn-next mybutn">Next</button>
+		                                        <button id="next" type="button" class="btn btn-next mybutn">Next</button>
 		                                    </div>
 		                                </fieldset>
 		
-		                                <fieldset>
+	                                <fieldset id="des-h">
 		
 		                                    <div class="text-center otp-img">
 		                                      <img src="img/smartphone.png" alt=""/>
 		                                      <p>Enter the 4 digit OTP recieved</p>
-		                                      <p id="otp-err">Any error goes here</p>
+		                                      <p id="otp-err"></p>
 		                                    </div>
 		
 		                                    <div class="form-group text-center">
@@ -150,7 +153,7 @@
 		<div class="jumbotron ser-header">
 		  <div class="container text-center">
 		    <h1 class="revealOnScroll" data-animation="fadeInUp">Best Electricians |  bangalore</h1>
-		    <p class="revealOnScroll" data-animation="fadeIn"><a class="btn btn-primary btn-lg book-now" href="#" role="button">Book Now</a></p>
+		    <p class="revealOnScroll" data-animation="fadeIn"><a class="btn btn-primary btn-lg book-now" href="" role="button">Book Now</a></p>
 		  </div>
 		</div>
 	</ui:define>

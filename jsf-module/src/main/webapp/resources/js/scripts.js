@@ -19,6 +19,7 @@ function bar_progress(progress_line_object, direction) {
 	progress_line_object.attr('style', 'width: ' + new_value + '%;').data('now-value', new_value);
 }
 
+var requestId;
 jQuery(document).ready(function() {
 
 
@@ -32,18 +33,30 @@ jQuery(document).ready(function() {
     	$(this).removeClass('input-error');
     });
 
+    var moveForward=false;
     // next step
     $('.f1 .btn-next').on('click', function() {
+    	console.log('This is called to get next page');
     	var parent_fieldset = $(this).parents('fieldset');
     	var next_step = true;
     	// navigation steps / progress steps
     	var current_active_step = $(this).parents('.f1').find('.f1-step.active');
     	var progress_line = $(this).parents('.f1').find('.f1-progress-line');
-
-    	// fields validation
-
-    	// fields validation
-
+    	
+    	var currentID=current_active_step.attr('id');
+    	
+    	if(currentID=='description'){
+    		moveForward=true;
+    	}
+    	if (currentID=='registration'){
+    		registerRequest();
+    	}
+    	
+    	if (currentID=='verification'){
+    		verification();
+    	}
+    	
+    	
     	if( next_step ) {
     		parent_fieldset.fadeOut(400, function() {
     			// change icons
@@ -58,9 +71,52 @@ jQuery(document).ready(function() {
     	}
 
     });
-
+    
+    function registerRequest(){
+    	// fields validation
+    	var request = [];
+    	request.phoneNo=document.getElementById("f1-phoneno").value;
+    	request.name=document.getElementById("f1-name").value;
+    	request.pincode=document.getElementById("f1-pincode").value;;;
+    	request.requestType=requestType;
+    	
+    	var myObj = { "name":request.name, "phoneNo":request.phoneNo, "requestType":request.requestType, "pincode":request.pincode }; 
+    		$.ajax({
+    			type: 'POST',
+    			url: serverURL+"zircon/services/v1/openrequest",
+    			data: JSON.stringify(myObj),
+    			contentType: "application/json",
+    		    dataType: "json",
+    		    success: function(response) {
+    		    	console.log("Data added! response received is: ", response);
+    		    	requestId=response.id;
+    		    	moveForward=true;
+    		    }
+    		})
+    };
+    
+    function verification(){
+    	// fields validation
+    	// http://localhost:8080/zircon/services/v1/openrequest/validateotp?requestID=123123123&otp=12312
+    	var otp=1212;
+    		$.ajax({
+    			type: 'POST',
+    			url: serverURL+"zircon/services/v1/openrequest/validateotp?requestID="+requestId+"&otp="+otp,
+    			contentType: "application/json",
+    		    dataType: "json",
+    		    success: function(response) {
+    		    	console.log("Data added! response received is: ", response);
+    		    	moveForward=true;
+    		    },
+    		    failure : function(response){
+    		    	moveForward=false;
+    		    }
+    		})
+    }
+    
     // previous step
     $('.f1 .btn-previous').on('click', function() {
+    	console.log('This is called to get previous page');
     	// navigation steps / progress steps
     	var current_active_step = $(this).parents('.f1').find('.f1-step.active');
     	var progress_line = $(this).parents('.f1').find('.f1-progress-line');
@@ -79,9 +135,10 @@ jQuery(document).ready(function() {
 
     // submit
     $('.verified').on('submit', function(e) {
-
+    	debugger;
     	// fields validation
     	$('#myModal1').modal('hide')
+    	console.debug('Clicking of verified button here');
     	// fields validation
 
     });
