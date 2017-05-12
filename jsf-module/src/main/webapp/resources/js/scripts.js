@@ -104,16 +104,44 @@ jQuery(document).ready(function() {
     		    dataType: "json",
     		    success: function(response) {
     		    	console.log("Data added! response received is: ", response);
-    		    	requestId=response.id;
+    		    	requestId=response.body.id;
     		    	doMoveFurther(currentTarget);
     		    }
     		})
     };
     
+    function validateRegistration() {
+        if (validatePrice(document.form.price) && 
+            validatePrice(document.form.price2) && 
+            validatePrice(document.form.price3) && 
+            validatePrice(document.form.price4) && 
+            validatePrice(document.form.price5))
+           return true;
+        else
+           return false;
+    }
+    
+    function validatePrice(input){
+    	 	if (input.value.trim() === "") {
+    	        alert("Please enter a price");
+    	        input.focus();
+    	        return false;
+    	    }
+    	    if (input.value !== "") {
+    	        if (! (/^\d*(?:\.\d{0,2})?$/.test(input.value))) {
+    	            alert("Please enter a valid price");
+    	            input.focus();
+    	            return false;
+    	        }
+    	    }
+    	    return true; 
+    }
+
+    
     function verification(currentTarget){
     	// fields validation
     	// http://localhost:8080/zircon/services/v1/openrequest/validateotp?requestID=123123123&otp=12312
-    	var otp=1212;
+    	var otp=document.getElementById("f1-otp").value;
     		$.ajax({
     			type: 'POST',
     			url: serverURL+"zircon/services/v1/openrequest/validateotp?requestID="+requestId+"&otp="+otp,
@@ -122,8 +150,12 @@ jQuery(document).ready(function() {
     		    success: function(response) {
     		    	console.log("Data added! response received is: ", response);
     		    	doMoveFurther(currentTarget);
+    		    	$('.myModal1').modal('hide');
+    		    	$('.myModal2').modal('show');
     		    },
-    		    failure : function(response){
+    		    error  : function(response){
+    		    	console.log("Error caused while validating the pin: ");
+    		    	$("#otp-err").text("Pin Entered is incorrect")
     		    	moveForward=false;
     		    }
     		})
@@ -219,7 +251,6 @@ $('.book-now').click(function(){
 
 $('.f1-buttons .verified').click(function() {
 
-	$('.myModal1').modal('hide');
-	$('.myModal2').modal('show');
+	
 
 });
