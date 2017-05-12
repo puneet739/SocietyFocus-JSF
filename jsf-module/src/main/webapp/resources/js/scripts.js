@@ -98,7 +98,7 @@ jQuery(document).ready(function() {
     	var myObj = { "name":request.name, "phoneNo":request.phoneNo, "requestType":request.requestType, "pincode":request.pincode }; 
     		$.ajax({
     			type: 'POST',
-    			url: serverURL+"zircon/services/v1/openrequest",
+    			url: serverURL+"v1/openrequest",
     			data: JSON.stringify(myObj),
     			contentType: "application/json",
     		    dataType: "json",
@@ -144,7 +144,7 @@ jQuery(document).ready(function() {
     	var otp=document.getElementById("f1-otp").value;
     		$.ajax({
     			type: 'POST',
-    			url: serverURL+"zircon/services/v1/openrequest/validateotp?requestID="+requestId+"&otp="+otp,
+    			url: serverURL+"v1/openrequest/validateotp?requestID="+requestId+"&otp="+otp,
     			contentType: "application/json",
     		    dataType: "json",
     		    success: function(response) {

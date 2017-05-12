@@ -1,5 +1,6 @@
 package com.property.player.model.mongo;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -13,7 +14,7 @@ import com.property.player.model.generic.FeaturesEnum;
 import com.property.player.model.generic.StoreStatusEnum;
 
 @Document
-public class Store {
+public class Store implements Serializable{
 	@Id
 	private String storeid;
 	private Location location;

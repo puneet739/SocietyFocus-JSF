@@ -1,12 +1,13 @@
 package com.property.player.model.mongo;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
-public class Review {
+public class Review implements Serializable {
 
 	private String reviewId;
 	private String storeid;

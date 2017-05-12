@@ -21,6 +21,7 @@
 		</style>
 		<script>
 			var requestType='ELECTRICIAN';
+			$("#servicetype").val(requestType);
 		</script>
 	</ui:define>
 	
@@ -39,8 +40,8 @@
 		                        <div class="col-md-12">
 		                          <form  class="f1">
 		
-		                            <h3 id="c">Electrations Service</h3>
-		                            <p id="c1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil delectus.</p>
+		                            <h3 id="c">Electration Service</h3>
+		                            <p id="c1">Best professionals : Trusted Services</p>
 		                            <div class="f1-steps">
 		                              <div class="f1-progress">
 		                                  <div class="f1-progress-line" data-now-value="16.66" data-number-of-steps="3" style="width: 16.66%;"></div>
@@ -64,12 +65,13 @@
 		                              <ul>
 		                                  <li>Background checked and trained technicians</li>
 		                                  <li>30-day service guarantee</li>
+		                                  <li>On Time guarantee</li>
 		                              </ul>
 		
-		                              <p>Service Description</p>
+		                              <p>Pricing</p>
 		                              <ul>
-		                                  <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi condimentum tortor id odio ornare, in aliquet turpis faucibus. Morbi ac feugiat nunc</li>
-		                                  <li>Proin ac vehicula erat, id commodo massa. Quisque sit amet justo vel lectus finibus ullamcorper sit amet at ex</li>
+		                              		<li>0 -1hr. - Rs. 159/- + Rs 50 per half an hour</li>
+		                                  <li>Visiting Charges - Rs. 99/- if no service is availed</li>
 		                              </ul>
 		
 		
@@ -86,11 +88,11 @@
 		                                    </div>
 		                                    <div class="form-group">
 		                                        <label class="sr-only" for="f1-password">Phone Numbet</label>
-		                                        <input type="number" name="f1-password" placeholder="Phone Numbet..." class="f1-password form-control cus-input" id="f1-phoneno"/>
+		                                        <input type="number" name="f1-password" placeholder="Phone Number..." class="f1-password form-control cus-input" id="f1-phoneno"/>
 		                                    </div>
 		                                    <div class="form-group">
 		                                        <label class="sr-only" for="f1-repeat-password">Pincode</label>
-		                                        <input type="number" name="f1-repeat-password" placeholder="Pincode"  class="f1-repeat-password form-control cus-input" id="f1-pincode"/>
+		                                        <input type="number" name="f1-repeat-password" placeholder="Pincode..."  class="f1-repeat-password form-control cus-input" id="f1-pincode"/>
 		                                    </div>
 		                                    <div class="f1-buttons">
 		                                        <button type="button" class="btn btn-previous mybutn mybutn-prev">Previous</button>
@@ -102,13 +104,13 @@
 		
 		                                    <div class="text-center otp-img">
 		                                      <img src="#{request.contextPath}/resources/images//smartphone.png" alt=""/>
-		                                      <p>Enter the 4 digit OTP recieved</p>
+		                                      <p>Enter the 6 digit OTP recieved</p>
 		                                      <p id="otp-err"></p>
 		                                    </div>
 		
 		                                    <div class="form-group text-center">
-		                                        <label class="sr-only" for="f1-facebook">Facebook</label>
-		                                        <input type="text" name="f1-facebook" placeholder="OTP PIN" class="f1-facebook form-control otp-verify cus-input" id="f1-otp"/>
+		                                        <label class="sr-only" for="f1-otp">OTP</label>
+		                                        <input type="text" name="f1-otp" placeholder="OTP PIN" class="f1-facebook form-control otp-verify cus-input" id="f1-otp"/>
 		                                    </div>
 		
 		                                    <div class="f1-buttons text-center">
@@ -151,7 +153,7 @@
 	<ui:define name="main">
 		<div class="jumbotron ser-header">
 		  <div class="container text-center">
-		    <h1 class="revealOnScroll" data-animation="fadeInUp">Best Electricians |  bangalore</h1>
+		    <h1 class="revealOnScroll" data-animation="fadeInUp">Best Electricians |  Delhi/NCR</h1>
 		    <p class="revealOnScroll" data-animation="fadeIn"><a class="btn btn-primary btn-lg book-now" href="" role="button">Book Now</a></p>
 		  </div>
 		</div>
@@ -226,17 +228,14 @@
 				<div class="col-md-4">
 					<div class="box-testimony">
 						<blockquote class="revealOnScroll" data-animation="fadeInUp">
-							<p>&ldquo;Far far away, behind the word mountains, far from
-								the countries Vokalia and Consonantia, there live the blind
-								texts. Separated they live in Bookmarksgrove right at the coast
-								of the Semantics, a large language ocean.&rdquo;</p>
+							<p>&ldquo;Perfect service and on time request resolution. Thanks team.&rdquo;</p>
 						</blockquote>
 						<div class="author">
 							<figure> <img
-								src="#{request.contextPath}/resources/images/team/cto.jpg"
+								src="http://bootdey.com/img/Content/avatar/avatar5.png"
 								alt="Person" /></figure>
 							<p>
-								Jean Doe, CEO <span class="subtext">Creative Director</span>
+								Megha <span class="subtext">Faridabad</span>
 							</p>
 						</div>
 					</div>
@@ -244,16 +243,14 @@
 				<div class="col-md-4">
 					<div class="box-testimony">
 						<blockquote class="revealOnScroll" data-animation="fadeInUp">
-							<p>&ldquo;Far far away, behind the word mountains, far from
-								the countries Vokalia and Consonantia.&rdquo;</p>
+							<p>&ldquo;Very prominent response .&rdquo;</p>
 						</blockquote>
 						<div class="author to-animate">
 							<figure> <img
-								src="#{request.contextPath}/resources/images/team/cto.jpg"
+								src="http://bootdey.com/img/Content/avatar/avatar4.png"
 								alt="Person" /></figure>
 							<p>
-								John Doe, Senior UI <span class="subtext">Creative
-									Director</span>
+								Ritesh <span class="subtext">Rohini</span>
 							</p>
 						</div>
 					</div>
@@ -262,17 +259,14 @@
 				<div class="col-md-4">
 					<div class="box-testimony">
 						<blockquote class="revealOnScroll" data-animation="fadeInUp">
-							<p>&ldquo;Far far away, behind the word mountains, far from
-								the countries Vokalia and Consonantia, there live the blind
-								texts. &rdquo;</p>
+							<p>&ldquo;Very usefull and quick resolution. &rdquo;</p>
 						</blockquote>
 						<div class="author">
 							<figure> <img
-								src="#{request.contextPath}/resources/images/team/cto.jpg"
+								src="http://bootdey.com/img/Content/avatar/avatar3.png"
 								alt="Person" /></figure>
 							<p>
-								Chris Nash, Director <span class="subtext">Creative
-									Director</span>
+								Neha Sahni <span class="subtext">BPTB</span>
 							</p>
 						</div>
 					</div>
