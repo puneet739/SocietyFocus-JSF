@@ -35,9 +35,10 @@ jQuery(document).ready(function() {
 
     var moveForward=false;
     // next step
-    $('.f1 .btn-next').on('click', function() {
+    $('.f1 .btn-next').on('click', function(event) {
     	console.log('This is called to get next page');
-    	var parent_fieldset = $(this).parents('fieldset');
+    	var currentTarget = event.currentTarget;
+    	var parent_fieldset = $(currentTarget).parents('fieldset');
     	var next_step = true;
     	// navigation steps / progress steps
     	var current_active_step = $(this).parents('.f1').find('.f1-step.active');
@@ -46,33 +47,47 @@ jQuery(document).ready(function() {
     	var currentID=current_active_step.attr('id');
     	
     	if(currentID=='description'){
-    		moveForward=true;
+    		doMoveFurther(currentTarget);
     	}
     	if (currentID=='registration'){
-    		registerRequest();
+    		registerRequest(currentTarget);
     	}
     	
     	if (currentID=='verification'){
-    		verification();
+    		verification(currentTarget);
     	}
     	
     	
     	if( next_step ) {
-    		parent_fieldset.fadeOut(400, function() {
-    			// change icons
-    			current_active_step.removeClass('active').addClass('activated').next().addClass('active');
-    			// progress bar
-    			bar_progress(progress_line, 'right');
-    			// show next step
-	    		$(this).next().fadeIn();
-	    		// scroll window to beginning of the form
-    			scroll_to_class( $('.f1'), 20 );
-	    	});
+    		//doSoimething()
     	}
 
     });
     
-    function registerRequest(){
+    
+    function doMoveFurther(target){
+
+    	var parent_fieldset = $(target).parents('fieldset');
+    	var next_step = true;
+    	// navigation steps / progress steps
+    	var current_active_step = $(target).parents('.f1').find('.f1-step.active');
+    	var progress_line = $(target).parents('.f1').find('.f1-progress-line');
+    	
+		parent_fieldset.fadeOut('400', function(){
+			// change icons
+			current_active_step.removeClass('active').addClass('activated').next().addClass('active');
+			// progress bar
+			bar_progress(progress_line, 'right');
+			// show next step
+			$(parent_fieldset).next().fadeIn();
+			// scroll window to beginning of the form
+			scroll_to_class( $('.f1'), 20 );
+		});
+	
+		
+    }
+    
+    function registerRequest(currentTarget){
     	// fields validation
     	var request = [];
     	request.phoneNo=document.getElementById("f1-phoneno").value;
@@ -90,12 +105,12 @@ jQuery(document).ready(function() {
     		    success: function(response) {
     		    	console.log("Data added! response received is: ", response);
     		    	requestId=response.id;
-    		    	moveForward=true;
+    		    	doMoveFurther(currentTarget);
     		    }
     		})
     };
     
-    function verification(){
+    function verification(currentTarget){
     	// fields validation
     	// http://localhost:8080/zircon/services/v1/openrequest/validateotp?requestID=123123123&otp=12312
     	var otp=1212;
@@ -106,7 +121,7 @@ jQuery(document).ready(function() {
     		    dataType: "json",
     		    success: function(response) {
     		    	console.log("Data added! response received is: ", response);
-    		    	moveForward=true;
+    		    	doMoveFurther(currentTarget);
     		    },
     		    failure : function(response){
     		    	moveForward=false;
