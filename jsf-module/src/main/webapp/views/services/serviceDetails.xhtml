@@ -24,7 +24,16 @@
 		</script>
 	</ui:define>
 	
+	<ui:define name="metaTags">
+		<f:metadata>
+			<f:viewParam name="id" value="#{servicebean.serviceId}" />
+			<f:event type="preRenderView" listener="#{servicebean.fetchService(servicebean.serviceId)}" />
+		</f:metadata>
+	
+	</ui:define>	
+	
 	<ui:define name="popup">
+		<ui:param name="service" value="#{servicebean.service}" />			
 		<!-- PopUp  -->
 		  <div class="modal fade myModal1" tabindex="-1" role="dialog">
 		    <div class="modal-dialog" role="document">
@@ -38,8 +47,7 @@
 		                    <div class="row">
 		                        <div class="col-md-12">
 		                          <form  class="f1">
-		
-		                            <h3 id="c">Electration Service</h3>
+		                            <h3 id="c">#{service.requestName}</h3>
 		                            <p id="c1">Best professionals : Trusted Services</p>
 		                            <div class="f1-steps">
 		                              <div class="f1-progress">
@@ -62,15 +70,16 @@
 		                            <fieldset id="des-h">
 		                              <p>Our Promise</p>
 		                              <ul>
-		                                  <li>Background checked and trained technicians</li>
-		                                  <li>30-day service guarantee</li>
-		                                  <li>On Time guarantee</li>
+		                              	  <ui:repeat var="promises" value="#{service.promises}">
+		                              	  	<li>#{promises}</li>
+		                              	  </ui:repeat>
 		                              </ul>
 		
 		                              <p>Pricing</p>
 		                              <ul>
-		                              		<li>0 -1hr. - Rs. 159/- + Rs 50 per half an hour</li>
-		                                  <li>Visiting Charges - Rs. 99/- if no service is availed</li>
+		                              		<ui:repeat var="pricing" value="#{service.pricing}">
+		                              	  		<li>#{pricing}</li>
+		                              	  	</ui:repeat>
 		                              </ul>
 		
 		
@@ -152,7 +161,7 @@
 	<ui:define name="main">
 		<div class="jumbotron ser-header">
 		  <div class="container text-center">
-		    <h1 class="revealOnScroll" data-animation="fadeInUp">Best Electricians |  Delhi/NCR</h1>
+		    <h1 class="revealOnScroll" data-animation="fadeInUp">Best #{service.requestName} |  #{service.location}</h1>
 		    <p class="revealOnScroll" data-animation="fadeIn"><a class="btn btn-primary btn-lg book-now" href="" role="button">Book Now</a></p>
 		  </div>
 		</div>

@@ -17,5 +17,10 @@
 		<pattern value="/detail" />
 		<view-id value="/views/stores/storeinfo.xhtml" />
 	</url-mapping>
+	
+	<url-mapping id="electricial">
+		<pattern value="/electrician" />
+		<view-id value="/views/services/serviceDetails.xhtml?id=2" />
+	</url-mapping>
 
 </pretty-config>
