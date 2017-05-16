@@ -1,5 +1,8 @@
 package com.property.player.model.mongo;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -16,6 +19,11 @@ public class ServiceObject {
 	private Testimonial[] testimonials;
 	private String[] promises;
 	private String[] pricing;
+	
+	//SEO tags
+	private Map<String,String> metaTags=new HashMap<String, String>();
+	private String title;
+	private String description;
 
 	public String getRequestName() {
 		return requestName;
@@ -87,6 +95,30 @@ public class ServiceObject {
 
 	public void setPricing(String[] pricing) {
 		this.pricing = pricing;
+	}
+
+	public Map<String, String> getMetaTags() {
+		return metaTags;
+	}
+
+	public void setMetaTags(Map<String, String> metaTags) {
+		this.metaTags = metaTags;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 }
 
