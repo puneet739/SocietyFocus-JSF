@@ -19,6 +19,15 @@ function bar_progress(progress_line_object, direction) {
 	progress_line_object.attr('style', 'width: ' + new_value + '%;').data('now-value', new_value);
 }
 
+var constraints = {
+		"name": {
+			//name is required attribute
+			 presence: {
+				 message:'can not be blank',
+			 }
+        }
+}
+        
 var requestId;
 jQuery(document).ready(function() {
 
@@ -50,7 +59,13 @@ jQuery(document).ready(function() {
     		doMoveFurther(currentTarget);
     	}
     	if (currentID=='registration'){
-    		registerRequest(currentTarget);
+    		var form =  document.getElementById("des-i");
+            var errors = validate(form, constraints);
+            showErrors(form, errors || {});
+            if (!errors) {
+            	registerRequest(currentTarget);
+            }else{
+            }
     	}
     	
     	if (currentID=='verification'){
@@ -63,6 +78,68 @@ jQuery(document).ready(function() {
     	}
 
     });
+    
+    function addError(messages, error) {
+        var block = document.createElement("p");
+        block.classList.add("help-block");
+        block.classList.add("error");
+        block.innerText = error;
+        messages.appendChild(block);
+      }
+    
+    // Shows the errors for a specific input
+    function showErrorsForInput(input, errors) {
+      // This is the root of the input
+      var formGroup = closestParent(input.parentNode, "form-group")
+        // Find where the error messages will be insert into
+        , messages = formGroup.querySelector(".messages");
+      // First we remove any old messages and resets the classes
+      resetFormGroup(formGroup);
+      // If we have errors
+      if (errors) {
+        // we first mark the group has having errors
+        formGroup.classList.add("has-error");
+        // then we append all the errors
+        _.each(errors, function(error) {
+          addError(messages, error);
+        });
+      } else {
+        // otherwise we simply mark it as success
+        formGroup.classList.add("has-success");
+      }
+    };
+    
+    function resetFormGroup(formGroup) {
+        // Remove the success and error classes
+        formGroup.classList.remove("has-error");
+        formGroup.classList.remove("has-success");
+        // and remove any old messages
+        _.each(formGroup.querySelectorAll(".help-block.error"), function(el) {
+          el.parentNode.removeChild(el);
+        });
+      }
+    
+    // Recusively finds the closest parent that has the specified class
+    function closestParent(child, className) {
+      if (!child || child == document) {
+        return null;
+      }
+      if (child.classList.contains(className)) {
+        return child;
+      } else {
+        return closestParent(child.parentNode, className);
+      }
+    }
+
+    
+    function showErrors(form, errors) {
+        // We loop through all the inputs and show the errors for that input
+    	_.each(form.querySelectorAll("input[name], select[name]"), function(input) {
+          // Since the errors can be null if no errors were found we need to handle
+          // that
+          showErrorsForInput(input, errors && errors[input.name]);
+        });
+    };
     
     
     function doMoveFurther(target){
@@ -85,7 +162,7 @@ jQuery(document).ready(function() {
 		});
 	
 		
-    }
+    };
     
     function registerRequest(currentTarget){
     	// fields validation
@@ -94,7 +171,6 @@ jQuery(document).ready(function() {
     	request.name=document.getElementById("f1-name").value;
     	request.pincode=document.getElementById("f1-pincode").value;;;
     	request.requestType=requestType;
-    	
     	var myObj = { "name":request.name, "phoneNo":request.phoneNo, "requestType":request.requestType, "pincode":request.pincode }; 
     		$.ajax({
     			type: 'POST',
@@ -109,34 +185,6 @@ jQuery(document).ready(function() {
     		    }
     		})
     };
-    
-    function validateRegistration() {
-        if (validatePrice(document.form.price) && 
-            validatePrice(document.form.price2) && 
-            validatePrice(document.form.price3) && 
-            validatePrice(document.form.price4) && 
-            validatePrice(document.form.price5))
-           return true;
-        else
-           return false;
-    }
-    
-    function validatePrice(input){
-    	 	if (input.value.trim() === "") {
-    	        alert("Please enter a price");
-    	        input.focus();
-    	        return false;
-    	    }
-    	    if (input.value !== "") {
-    	        if (! (/^\d*(?:\.\d{0,2})?$/.test(input.value))) {
-    	            alert("Please enter a valid price");
-    	            input.focus();
-    	            return false;
-    	        }
-    	    }
-    	    return true; 
-    }
-
     
     function verification(currentTarget){
     	// fields validation
