@@ -21,17 +21,35 @@ function bar_progress(progress_line_object, direction) {
 
 var constraints = {
 		"name": {
-			//name is required attribute
 			 presence: {
 				 message:'can not be blank',
 			 }
+        },
+        "phoneno":{
+        	presence:{
+				 message:'can not be blank',
+			 },
+        	length : {
+        		maximum : 10,
+        		minimum : 10,
+        	}
+        },
+        "pincode":{
+        	presence:{
+				 message:'can not be blank',
+			 },
+        	length:{
+        		minimum : 6,
+        		maximum : 6,
+        	}
         }
 }
         
 var requestId;
 jQuery(document).ready(function() {
 
-
+	$('.phoneno').on('keydown', function(e){-1!==$.inArray(e.keyCode,[46,8,9,27,13,110,190])||/65|67|86|88/.test(e.keyCode)&&(!0===e.ctrlKey||!0===e.metaKey)||35<=e.keyCode&&40>=e.keyCode||(e.shiftKey||48>e.keyCode||57<e.keyCode)&&(96>e.keyCode||105<e.keyCode)&&e.preventDefault()});
+	$('#f1-otp').on('keydown', function(e){ $("#otp-err").text("") });
 
     /*
         Form
@@ -240,8 +258,6 @@ jQuery(document).ready(function() {
 
 
 });
-
-
 
 $(function() {
 
