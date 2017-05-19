@@ -1,0 +1,78 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="layout/servicelayout.xhtml">
+
+	<ui:define name="main">
+		<div class="jumbotron s-heading">
+			<div class="container">
+				<h1>Your Service Expert</h1>
+				<p>Get instant access to reliable and affordable services</p>
+			</div>
+		</div>
+
+
+
+		<!-- Service Section -->
+		<div class="service-offered">
+			<div class="container s-row">
+				<h3>Home Repair Service</h3>
+				<br/>
+					<div class="row">
+						<div class="col-md-4 col-sm-4" id="sm-device">
+							<a href="#{request.contextPath}/views/services/serviceDetails.xhtml?id=1"><div class="e">
+									<img src="http://res.cloudinary.com/dgrrxe4i7/image/upload/v1495199777/10_gnyfgj.jpg" alt="AC Service" />
+								</div>
+								<h4>AC Repair</h4></a>
+						</div>
+
+						<div class="col-md-4 col-sm-4" id="sm-device">
+							<a href="#{request.contextPath}/views/services/serviceDetails.xhtml?id=3"><div class="e">
+									<img src="http://res.cloudinary.com/dgrrxe4i7/image/upload/v1495199774/2_vl1zjo.jpg" alt="" />
+								</div>
+								<h4>Plumber</h4></a>
+						</div>
+
+						<div class="col-md-4 col-sm-4" id="sm-device">
+							<a href="#{request.contextPath}/views/services/serviceDetails.xhtml?id=2"><div class="e">
+									<img src="http://res.cloudinary.com/dgrrxe4i7/image/upload/v1495199774/3_j6p13h.jpg" alt="" />
+								</div>
+								<h4>Electration</h4></a>
+						</div>
+					</div>
+			</div>
+
+			<div class="container s-row" id="m-top">
+				<h3>Wedding Services</h3>
+				<br />
+					<div class="row">
+						<div class="col-md-4 col-sm-4" id="sm-device">
+							<a href="#"><div class="e">
+									<img src="http://res.cloudinary.com/dgrrxe4i7/image/upload/v1495199775/7_orfhvw.jpg" alt="" />
+								</div>
+								<h4>Wedding Dj</h4></a>
+						</div>
+
+						<div class="col-md-4 col-sm-4" id="sm-device">
+							<a href="#"><div class="e">
+									<img src="http://res.cloudinary.com/dgrrxe4i7/image/upload/v1495199774/5_bq2mpu.jpg" alt="" />
+								</div>
+								<h4>Pre Wedding-shoot</h4></a>
+						</div>
+
+						<div class="col-md-4 col-sm-4" id="sm-device">
+							<a href="#"><div class="e">
+									<img src="http://res.cloudinary.com/dgrrxe4i7/image/upload/v1495199776/13_vghx7g.jpg" alt="" />
+								</div>
+								<h4>Wedding Food</h4></a>
+						</div>
+					</div>
+			</div>
+		</div>
+
+		</ui:define>
+</ui:composition>
