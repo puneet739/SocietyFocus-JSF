@@ -25,12 +25,13 @@ public class forgotPasswordBean {
 	private List<Society> societyList = new LinkedList<>();
 	private String selectedSociety;
 	private String secretKey;
+	private String newPassword;
 
 	public void init() {
 		JsonArray jsonResponse = Util.httpGetArrayRequest(Constants.SERVICE_URL + "/society/");
 		LoggerUtil.debug(jsonResponse);
-		societyList=new LinkedList<>();
-		for (int i=0; i<jsonResponse.size(); i++){
+		societyList = new LinkedList<>();
+		for (int i = 0; i < jsonResponse.size(); i++) {
 			JsonElement societyObject = jsonResponse.get(i);
 			String societyId = societyObject.getAsJsonObject().get("societyId").getAsString();
 			String name = societyObject.getAsJsonObject().get("name").getAsString();
@@ -40,16 +41,26 @@ public class forgotPasswordBean {
 
 	public void generateRequest() throws IOException {
 		LoggerUtil.debug("Request raised for forgot Password" + emailAddress + " and society:" + selectedSociety);
-		JsonObject jsonObject = Util.httpGetRequest(Constants.SERVICE_URL + "/user/forgotPassword?email="+emailAddress+"&societyid="+selectedSociety);
-		if (jsonObject!=null){
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Email has been sent to registered Email address for reset password",null));
-		}else{
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"User does not exist in this society, kindly check the email/society",null));
-		}
+		JsonObject jsonObject = Util.httpGetRequest(
+				Constants.SERVICE_URL + "/user/forgotPassword?email=" + emailAddress + "&societyid=" + selectedSociety);
+		validate(jsonObject,"Email has been sent to registered Email address for reset password","User does not exist in this society, kindly check the email/society");
 	}
 
-	public void completeRequest(){
-		
+	public void completeRequest() {
+		LoggerUtil.debug("Request received to complete forgot Password with secretkey+"+secretKey+" , society"+selectedSociety+" and newPassword :"+newPassword);
+		JsonObject jsonObject = Util.httpGetRequest(
+				Constants.SERVICE_URL + "/user/validateforgotPassword?secretkey=" + secretKey + "&societyid=" + selectedSociety+"newpass="+newPassword);
+		validate(jsonObject,"Reset Password Successfull","Request faced some error, Kindly try again");
+	}
+
+	public void validate(JsonObject response ,String successMessage, String failureMessage){
+		if (response != null) {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+					successMessage, null));
+		}else{
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+					failureMessage, null));
+		}
 	}
 	
 	public String getEmailAddress() {
@@ -84,5 +95,12 @@ public class forgotPasswordBean {
 		this.secretKey = secretKey;
 	}
 
-}
+	public String getNewPassword() {
+		return newPassword;
+	}
 
+	public void setNewPassword(String newPassword) {
+		this.newPassword = newPassword;
+	}
+
+}
