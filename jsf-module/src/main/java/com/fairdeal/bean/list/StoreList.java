@@ -75,6 +75,7 @@ public class StoreList {
 				Banner banner = new Banner();
 				banner.setImage_url(Config.getString(prefix+"image_url"));
 				banner.setTitle(Config.getString(prefix+"title"));
+				banner.setLandingurl(Config.getString(prefix+"landingurl"));
 				banner.setDescription(Config.getString(prefix+"description"));
 				banners.add(banner);
 			}

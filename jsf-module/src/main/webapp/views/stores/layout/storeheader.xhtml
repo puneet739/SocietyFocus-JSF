@@ -84,7 +84,7 @@
 				<div class="col-md-8 col-xs-12">
 					<div class="input-group">
 						<p:autoComplete id="suggestions" style="display: inline;" value="#{suggestionlist.suggestionString}" 
-						 completeMethod="#{suggestionlist.initalizeSuggestions}"  minQueryLength="4"
+						 completeMethod="#{suggestionlist.initalizeSuggestions}"  minQueryLength="1"
 						 placeholder="Search for your favorite restaurant"
 						 var="suggestion" itemLabel="#{suggestion.displayName}" itemValue="#{suggestion.url}" >
 						 	<p:ajax event="itemSelect" listener="#{suggestionlist.onItemSelect}" />
