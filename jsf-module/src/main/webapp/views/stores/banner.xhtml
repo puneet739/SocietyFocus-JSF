@@ -15,12 +15,14 @@
 				<div class="carousel-inner">
 					<ui:repeat var="banner" value="#{banners}" varStatus="status">
 						<div class="#{status.index==0 ? 'item active' : 'item'}">
-							<a href="#{banner.landingurl}"> <img src="#{banner.image_url}" alt="#{banner.title}" />
-								<div class="carousel-caption">
-									<h1>#{banner.title}</h1>
-									<p>#{banner.description}</p>
-								</div>
-							</a>
+							<div class="crop">
+								<a href="#{banner.landingurl}"> <img align="middle" src="#{banner.image_url}" alt="#{banner.title}" />
+									<div class="carousel-caption">
+										<h1>#{banner.title}</h1>
+										<p>#{banner.description}</p>
+									</div>
+								</a>
+							</div>
 						</div>
 					</ui:repeat>
 				</div>
