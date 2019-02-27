@@ -1,7 +1,7 @@
-<pretty-config xmlns="http://ocpsoft.org/schema/rewrite-config-prettyfaces" 
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-  xsi:schemaLocation="http://ocpsoft.org/schema/rewrite-config-prettyfaces
-                      http://ocpsoft.org/xml/ns/prettyfaces/rewrite-config-prettyfaces.xsd">
+<pretty-config
+	xmlns="http://ocpsoft.org/schema/rewrite-config-prettyfaces"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://ocpsoft.org/schema/rewrite-config-prettyfaces http://ocpsoft.org/xml/ns/prettyfaces/rewrite-config-prettyfaces.xsd" >
 
 	<url-mapping id="homepage">
 		<pattern value="/stores" />
@@ -12,12 +12,12 @@
 		<pattern value="/addRestaurant" />
 		<view-id value="/views/stores/addrestaurant.xhtml" />
 	</url-mapping>
-	
+
 	<url-mapping id="details">
 		<pattern value="/detail" />
 		<view-id value="/views/stores/storeinfo.xhtml" />
 	</url-mapping>
-	
+
 	<url-mapping id="electricial">
 		<pattern value="/electrician" />
 		<view-id value="/views/services/serviceDetails.xhtml?id=2" />
