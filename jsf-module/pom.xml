@@ -17,13 +17,12 @@
 
 	<properties>
 		<springboot.version>2.1.3.RELEASE</springboot.version>
-		<springwebflow-version>2.4.1.RELEASE</springwebflow-version>
-		<springsecurity-version>4.0.0.RELEASE</springsecurity-version>
-		<primefaces-version>5.3</primefaces-version>
-		<org.slf4j-version>1.7.12</org.slf4j-version>
-		<java-version>1.7</java-version>
-		<hibernate.verion>4.3.9.Final</hibernate.verion>
-		<prettyfaces.version>3.4.1.Final</prettyfaces.version>
+		<springwebflow-version>2.4.8.RELEASE</springwebflow-version>
+		<primefaces-version>6.2</primefaces-version>
+		<org.slf4j-version>1.7.26</org.slf4j-version>
+		<java-version>1.8</java-version>
+		<sunfaces.version>2.1.7</sunfaces.version>
+		<prettyfaces.version>3.4.2.Final</prettyfaces.version>
 		<!-- Common Configuration version -->
 		<common.configuration.version>1.10</common.configuration.version>
 		<maven.surefire.plugin.version>2.18.1</maven.surefire.plugin.version>
@@ -42,11 +41,24 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
 			<groupId>com.property.player</groupId>
 			<artifactId>model</artifactId>
 			<version>${propertyplayer.model.version}</version>
 		</dependency>
-
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -162,34 +174,42 @@
 		</dependency>
 
 		<!-- Servlet -->
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
-			<version>2.5</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
+		<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+<dependency>
+    <groupId>javax.servlet</groupId>
+    <artifactId>javax.servlet-api</artifactId>
+    <version>4.0.1</version>
+    <scope>provided</scope>
+</dependency>
+
+		<!-- <dependency>
 			<groupId>javax.servlet.jsp</groupId>
 			<artifactId>jsp-api</artifactId>
 			<version>2.1</version>
 			<scope>provided</scope>
-		</dependency>
+		</dependency> -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
 		<!-- Sun Mojarra JSF 2 runtime -->
+		<!-- <dependency> <groupId>com.sun.faces</groupId> <artifactId>jsf-api</artifactId> 
+			<version>${sunfaces.version}</version> </dependency> <dependency> <groupId>com.sun.faces</groupId> 
+			<artifactId>jsf-impl</artifactId> <version>${sunfaces.version}</version> 
+			</dependency> -->
+
 		<dependency>
-			<groupId>com.sun.faces</groupId>
-			<artifactId>jsf-api</artifactId>
-			<version>2.1.7</version>
+			<groupId>org.apache.myfaces.core</groupId>
+			<artifactId>myfaces-impl</artifactId>
+			<version>2.2.12</version>
 		</dependency>
 		<dependency>
-			<groupId>com.sun.faces</groupId>
-			<artifactId>jsf-impl</artifactId>
-			<version>2.1.7</version>
+			<groupId>org.apache.myfaces.core</groupId>
+			<artifactId>myfaces-api</artifactId>
+			<version>2.2.12</version>
 		</dependency>
+
 		<!-- PrimeFaces component library -->
 		<dependency>
 			<groupId>org.primefaces</groupId>
@@ -246,7 +266,7 @@
 	</pluginRepositories>
 
 	<build>
-	    <outputDirectory>src/main/webapp/WEB-INF/classes</outputDirectory>
+		<outputDirectory>src/main/webapp/WEB-INF/classes</outputDirectory>
 		<pluginManagement>
 			<plugins>
 				<!-- Javascript and CSS files compression -->
@@ -328,6 +348,8 @@
 					<target>${java-version}</target>
 				</configuration>
 			</plugin>
+			
+			
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -384,67 +406,58 @@
 				<artifactId>maven-release-plugin</artifactId>
 				<version>2.5.2</version>
 			</plugin>
+			
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			
 		</plugins>
 
 		<resources>
-			<!-- <resource>
-				<targetPath>${project.build.directory}/tomcat/conf/</targetPath>
+			<resource>
 				<directory>${basedir}/src/test/resources</directory>
 				<includes>
 					<include>**/*.properties</include>
 				</includes>
-			</resource> -->
+			</resource>
 
-			<!-- <resource>
-				<targetPath>${project.build.directory}/tomcat/conf/</targetPath>
+			<resource>
 				<directory>${basedir}/src/test/resources</directory>
 				<includes>
 					<include>**/*.xml</include>
 				</includes>
-			</resource> -->
+			</resource>
 
-			<!-- <resource>
-				<targetPath>${project.build.directory}/${project.build.finalName}/WEB-INF/classes</targetPath>
+			<resource>
 				<directory>${basedir}/src/main/resources</directory>
 				<includes>
 					<include>**/*.properties</include>
 				</includes>
-			</resource> -->
+			</resource>
 
-			<!-- <resource>
-				<targetPath>${project.build.directory}/${project.build.finalName}/WEB-INF/classes</targetPath>
+			<resource>
 				<directory>${basedir}/src/main/resources/spring/</directory>
 				<includes>
 					<include>**/*.xml</include>
 				</includes>
 				<filtering>true</filtering>
-			</resource> 
+			</resource>
 
-		 	<resource>
-				<targetPath>${project.build.directory}/${project.build.finalName}/WEB-INF</targetPath>
+			<resource>
 				<directory>${basedir}/src/main/webapp/WEB-INF</directory>
 				<includes>
 					<include>**/web.xml</include>
 				</includes>
-			</resource> -->
-		</resources> 
+			</resource>
+		</resources>
 
 		<testResources>
-			<!-- <testResource>
-				<directory>${basedir}/src/main/resources/spring</directory>
-				<includes>
-					<include>**/*.xml</include>
-				</includes>
-			</testResource>
-			<testResource>
-				<directory>${basedir}/src/main/resources</directory>
-				<includes>
-					<include>**/*.properties</include>
-				</includes>
-			</testResource>
-			<testResource>
-				<directory>${basedir}/src/test/resources</directory>
-			</testResource> -->
+			<!-- <testResource> <directory>${basedir}/src/main/resources/spring</directory> 
+				<includes> <include>**/*.xml</include> </includes> </testResource> <testResource> 
+				<directory>${basedir}/src/main/resources</directory> <includes> <include>**/*.properties</include> 
+				</includes> </testResource> <testResource> <directory>${basedir}/src/test/resources</directory> 
+				</testResource> -->
 		</testResources>
 		<finalName>zircon-portal</finalName>
 	</build>

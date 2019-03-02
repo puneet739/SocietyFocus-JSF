@@ -71,6 +71,10 @@
 	<listener>
 		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
 	</listener>
+<listener>
+     <listener-class>org.springframework.boot.legacy.context.web.SpringBootContextLoaderListener</listener-class>
+</listener> 
+	
 
 	<context-param>
 		<param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
